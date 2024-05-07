@@ -30,14 +30,14 @@ open class ICSVManager(filename: String) {
         this.file.createNewFile()
     }
 
-    fun readCSV(): MutableList<MutableList<String>> {
+    protected fun readCSV(): MutableList<MutableList<String>> {
         val lines = this.file.readLines()
         return lines.map { line ->
             line.split(",").toMutableList()
         }.toMutableList()
     }
 
-    fun writeCSV(data: MutableList<MutableList<String>>) {
+    protected fun writeCSV(data: MutableList<MutableList<String>>) {
         this.file.printWriter().use { out ->
             data.forEach { row ->
                 out.println(row.joinToString(","))

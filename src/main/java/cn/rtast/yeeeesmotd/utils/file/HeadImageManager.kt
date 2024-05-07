@@ -36,7 +36,7 @@ class HeadImageManager : ICSVManager("head.csv") {
     fun exists(value: String): Boolean {
         val allHeads = this.readCSV()
         allHeads.forEach {
-            if (it.contains(value)) {
+            if (it.last() == value) {
                 return true
             }
         }
@@ -56,17 +56,29 @@ class HeadImageManager : ICSVManager("head.csv") {
                     return@forEachIndexed
                 }
             }
-                this.writeCSV(allHeads)
+            this.writeCSV(allHeads)
         }
     }
 
     fun getHead(ip: String): List<String> {
         val allHeads = this.readCSV()
         for (allHead in allHeads) {
-            if (allHead.contains(ip)) {
+            if (allHead.last() == ip) {
                 return allHead
             }
         }
         return listOf("", "", "", "")
+    }
+
+    fun removeHead(name: String) {
+        val allHeads = this.readCSV()
+        var eleIndex = 0
+        allHeads.forEachIndexed { index, head ->
+            if (head[0] == name) {
+                eleIndex = index
+                return@forEachIndexed
+            }
+        }
+        allHeads.removeAt(eleIndex)
     }
 }
