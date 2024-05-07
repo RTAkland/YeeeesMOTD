@@ -36,7 +36,7 @@
 
 > 你需要先启动一次mod初始化所需的文件, 在`config/yeeeesMotd/`文件夹内你可以找到
 > `descriptions.csv`文件, 用任意一个文本编辑器(比如: Windows自带的记事本), 打开后
-> 每一行表示一句话, 每句话可以有两行, 每一行用逗号分割,假如我想做到如下效果:
+> 每一行表示一句话, 每句话可以有两行, 每一行用逗号分割,假如需要做到如下效果:
 
 <img src="./images/description.png" alt="description">
 
