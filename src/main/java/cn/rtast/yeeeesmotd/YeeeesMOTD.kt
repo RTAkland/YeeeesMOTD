@@ -18,6 +18,7 @@
 package cn.rtast.yeeeesmotd
 
 import cn.rtast.yeeeesmotd.command.ReloadCommand
+import cn.rtast.yeeeesmotd.utils.file.DescriptionManager
 import cn.rtast.yeeeesmotd.utils.file.FaviconManager
 import cn.rtast.yeeeesmotd.utils.file.HeadImageManager
 import com.google.gson.Gson
@@ -31,6 +32,7 @@ class YeeeesMOTD : ModInitializer {
 
         val skinManager = HeadImageManager()
         val iconManager = FaviconManager()
+        val descriptionManager = DescriptionManager()
     }
 
     override fun onInitialize() {
