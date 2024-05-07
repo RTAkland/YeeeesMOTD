@@ -18,7 +18,7 @@
 package cn.rtast.yeeeesmotd.mixin;
 
 import cn.rtast.yeeeesmotd.YeeeesMOTD;
-import cn.rtast.yeeeesmotd.utils.CustomDescriptionUtil;
+import cn.rtast.yeeeesmotd.utils.DescUtil;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.packet.c2s.query.QueryRequestC2SPacket;
 import net.minecraft.network.packet.s2c.query.QueryResponseS2CPacket;
@@ -54,19 +54,16 @@ public class ServerQueryNetworkHandlerMixin {
         var ip = this.connection.getAddress().toString().replace("/", "").split(":")[0];
         var ifShowHead = new Random().nextBoolean();
         var favicon = this.metadata.favicon();
-        var description = this.metadata.description();
+        var description = Text.literal(this.metadata.description().getString()).styled(style -> style.withFormatting(Formatting.GREEN));
         if (ifShowHead && YeeeesMOTD.Companion.getSkinManager().exists(ip)) {
             var userData = YeeeesMOTD.Companion.getSkinManager().getHead(ip);
             var skin = Base64.getDecoder().decode(userData.get(2));
             var name = userData.get(0);
             favicon = Optional.of(new ServerMetadata.Favicon(skin));
-            var randomDescription = CustomDescriptionUtil.INSTANCE.getDesc().replace("$player", name);
-            description = Text.literal(randomDescription).styled(style -> style.withFormatting(Formatting.GREEN));
+            description = Text.literal(DescUtil.INSTANCE.getRndDesc().replace("$player", name)).styled(style -> style.withFormatting(Formatting.GREEN));
         } else {
             var randomIcon = YeeeesMOTD.Companion.getIconManager().getRandomIcon();
-            if (randomIcon == null) {
-                favicon = Optional.empty();
-            } else {
+            if (randomIcon != null) {
                 favicon = Optional.of(new ServerMetadata.Favicon(randomIcon));
             }
         }
