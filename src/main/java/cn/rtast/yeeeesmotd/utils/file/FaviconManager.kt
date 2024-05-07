@@ -15,7 +15,7 @@
  */
 
 
-package cn.rtast.yeeeesmotd.utils
+package cn.rtast.yeeeesmotd.utils.file
 
 import cn.rtast.yeeeesmotd.ROOT_PATH
 import java.io.File

@@ -15,37 +15,13 @@
  */
 
 
-package cn.rtast.yeeeesmotd.utils
+package cn.rtast.yeeeesmotd.utils.file
 
-import cn.rtast.yeeeesmotd.ROOT_PATH
-import java.io.File
+import cn.rtast.yeeeesmotd.utils.SkinUtil
 import java.util.*
 import kotlin.concurrent.thread
 
-class CSVHeadImageManager {
-
-    private val file = File(ROOT_PATH, "csv_head.csv")
-
-    init {
-        val configPath = File(ROOT_PATH)
-        if (!configPath.exists()) configPath.mkdirs()
-        this.file.createNewFile()
-    }
-
-    private fun readCSV(): MutableList<MutableList<String>> {
-        val lines = this.file.readLines()
-        return lines.map { line ->
-            line.split(",").toMutableList()
-        }.toMutableList()
-    }
-
-    private fun writeCSV(data: MutableList<MutableList<String>>) {
-        this.file.printWriter().use { out ->
-            data.forEach { row ->
-                out.println(row.joinToString(","))
-            }
-        }
-    }
+class HeadImageManager : ICSVManager("head.csv") {
 
     fun addHead(name: String, uuid: String, ip: String) {
         thread {
