@@ -36,7 +36,7 @@ class ReloadCommand : CommandRegistrationCallback {
     ) {
         dispatcher.register(
             CommandManager.literal("yesmotd")
-                .then(CommandManager.literal("reload")
+                .then(CommandManager.literal("reload").requires { it.hasPermissionLevel(4) }
                     .executes {
                         YeeeesMOTD.iconManager.setValidIcons()
                         it.source.sendMessage(
