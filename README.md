@@ -38,7 +38,7 @@
 > `descriptions.csv`文件, 用任意一个文本编辑器(比如: Windows自带的记事本), 打开后
 > 每一行表示一句话, 每句话可以有两行, 每一行用逗号分割,假如我想做到如下效果:
 
-<img src="./images/description.png", alt="description">
+<img src="./images/description.png" alt="description">
 
 > 你需要打开`description.csv`添加一下内容到文件末尾
 
