@@ -17,7 +17,7 @@ val gson_version: String by project
 val archives_base_name: String by project
 
 base {
-    archivesName = archives_base_name + ".fabric+" + minecraft_version
+    archivesName = "$archives_base_name.fabric+$minecraft_version"
 }
 
 group = maven_group
@@ -40,21 +40,17 @@ dependencies {
 
 }
 
-//loom {
-//    splitEnvironmentSourceSets()
-//
-//    mods {
-//        create("modid") {
-//            sourceSet("main")
-//        }
-//    }
-//}
-
 tasks.processResources {
-    inputs.property("version", project.version)
+    inputs.property("version", mod_version)
 
     filesMatching("fabric.mod.json") {
-        expand(mapOf("version" to project.version))
+        expand(
+            mapOf(
+                "version" to mod_version,
+                "loader_version" to loader_version,
+                "minecraft_version" to minecraft_version
+            )
+        )
     }
 }
 
@@ -67,12 +63,9 @@ tasks.compileKotlin {
     kotlinOptions.jvmTarget = "21"
 }
 
-//java {
-//    sourceCompatibility = JavaVersion.VERSION_21
-//    targetCompatibility = JavaVersion.VERSION_21
-//
-//    withSourcesJar()
-//}
+java {
+    withSourcesJar()
+}
 
 tasks.jar {
     from("LICENSE")
