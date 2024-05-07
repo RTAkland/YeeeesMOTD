@@ -19,6 +19,7 @@ package cn.rtast.yeeeesmotd.command
 
 import cn.rtast.yeeeesmotd.YeeeesMOTD
 import com.mojang.brigadier.CommandDispatcher
+import com.mojang.brigadier.arguments.StringArgumentType
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
 import net.minecraft.command.CommandRegistryAccess
 import net.minecraft.server.command.CommandManager
@@ -27,7 +28,7 @@ import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 
 
-class ReloadCommand : CommandRegistrationCallback {
+class YesMOTDCommand : CommandRegistrationCallback {
 
     override fun register(
         dispatcher: CommandDispatcher<ServerCommandSource>,
@@ -35,14 +36,29 @@ class ReloadCommand : CommandRegistrationCallback {
         environment: CommandManager.RegistrationEnvironment,
     ) {
         dispatcher.register(
-            CommandManager.literal("yesmotd")
-                .then(CommandManager.literal("reload").requires { it.hasPermissionLevel(4) }
+            CommandManager.literal("yesmotd").requires { it.hasPermissionLevel(2) }
+                .then(CommandManager.literal("reload")
                     .executes {
                         YeeeesMOTD.iconManager.setValidIcons()
                         it.source.sendMessage(
                             Text.translatable("reload.success").styled { style -> style.withColor(Formatting.YELLOW) })
                         return@executes 1
                     })
+                .then(
+                    CommandManager.literal("set-motd")
+                        .then(
+                            CommandManager.argument("motd", StringArgumentType.string())
+                                .executes {
+                                    it.source.server.setMotd(
+                                        StringArgumentType.getString(
+                                            it,
+                                            "motd"
+                                        )
+                                    ); return@executes 1
+                                }
+                        )
+
+                )
         )
     }
 }

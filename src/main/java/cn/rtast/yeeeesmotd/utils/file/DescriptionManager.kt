@@ -15,20 +15,31 @@
  */
 
 
-package cn.rtast.yeeeesmotd.utils
+package cn.rtast.yeeeesmotd.utils.file
 
 import kotlin.random.Random
 
-object DescUtil {
+class DescriptionManager : ICSVManager("description.csv") {
 
     private val buildInDesc = listOf(
-        "\$player 是吧！ 还不赶紧进来\n不然有你好果汁吃！",
+        "\$player 是吧? 还不赶紧进来\n不然有你好果汁吃!",
         "这是 \$player 的专属服务器呢~",
-        "逸一时误一世！ \$player 赶紧给我进来！"
+        "逸一时误一世! \n\$player 赶紧给我进来!"
     )
 
-    fun getRndDesc(): String {
+
+    fun randomBuildInDesc(): String {
         val rnd = Random.nextInt(0, buildInDesc.size)
         return buildInDesc[rnd]
     }
+
+    fun randomDescription(): List<String>? {
+        val allDesc = this.readCSV()
+        if (allDesc.isEmpty()) {
+            return null
+        }
+
+        return allDesc[Random.nextInt(0, allDesc.size)]
+    }
+
 }
