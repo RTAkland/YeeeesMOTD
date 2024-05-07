@@ -17,5 +17,32 @@
 
 package cn.rtast.yeeeesmotd.command
 
-class ReloadCommand {
+import cn.rtast.yeeeesmotd.YeeeesMOTD
+import com.mojang.brigadier.CommandDispatcher
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
+import net.minecraft.command.CommandRegistryAccess
+import net.minecraft.server.command.CommandManager
+import net.minecraft.server.command.ServerCommandSource
+import net.minecraft.text.Text
+import net.minecraft.util.Formatting
+
+
+class ReloadCommand : CommandRegistrationCallback {
+
+    override fun register(
+        dispatcher: CommandDispatcher<ServerCommandSource>,
+        registryAccess: CommandRegistryAccess,
+        environment: CommandManager.RegistrationEnvironment,
+    ) {
+        dispatcher.register(
+            CommandManager.literal("yesmotd")
+                .then(CommandManager.literal("reload")
+                    .executes {
+                        YeeeesMOTD.iconManager.setValidIcons()
+                        it.source.sendMessage(
+                            Text.translatable("reload.success").styled { style -> style.withColor(Formatting.YELLOW) })
+                        return@executes 1
+                    })
+        )
+    }
 }
