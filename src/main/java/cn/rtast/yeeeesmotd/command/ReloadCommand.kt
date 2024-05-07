@@ -43,6 +43,11 @@ class ReloadCommand : CommandRegistrationCallback {
                             Text.translatable("reload.success").styled { style -> style.withColor(Formatting.YELLOW) })
                         return@executes 1
                     })
+                .then(CommandManager.literal("clear")
+                    .executes {
+                        YeeeesMOTD.skinManager.clear()
+                        return@executes 1
+                    })
         )
     }
 }

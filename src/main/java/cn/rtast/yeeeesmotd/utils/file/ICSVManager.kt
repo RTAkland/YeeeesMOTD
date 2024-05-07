@@ -22,7 +22,7 @@ import java.io.File
 
 open class ICSVManager(filename: String) {
 
-    val file = File(ROOT_PATH, filename)
+    protected val file = File(ROOT_PATH, filename)
 
     init {
         val configPath = File(ROOT_PATH)

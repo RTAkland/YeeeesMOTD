@@ -81,4 +81,8 @@ class HeadImageManager : ICSVManager("head.csv") {
         }
         allHeads.removeAt(eleIndex)
     }
+
+    fun clear() {
+        this.file.writeText("")
+    }
 }
