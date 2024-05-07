@@ -39,4 +39,10 @@ public class PlayerManagerMixin {
             YeeeesMOTD.Companion.getSkinManager().addHead(name, uuid, ip);
         }
     }
+
+    @Inject(method = "remove", at = @At("HEAD"))
+    public void remove(ServerPlayerEntity player, CallbackInfo ci) {
+        var uuid = player.getUuid().toString();
+        YeeeesMOTD.Companion.getSkinManager().updateHead(uuid);
+    }
 }
