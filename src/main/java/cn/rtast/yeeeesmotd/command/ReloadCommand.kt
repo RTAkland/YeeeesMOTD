@@ -19,7 +19,6 @@ package cn.rtast.yeeeesmotd.command
 
 import cn.rtast.yeeeesmotd.YeeeesMOTD
 import com.mojang.brigadier.CommandDispatcher
-import com.mojang.brigadier.arguments.StringArgumentType
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
 import net.minecraft.command.CommandRegistryAccess
 import net.minecraft.server.command.CommandManager
@@ -28,7 +27,7 @@ import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 
 
-class YesMOTDCommand : CommandRegistrationCallback {
+class ReloadCommand : CommandRegistrationCallback {
 
     override fun register(
         dispatcher: CommandDispatcher<ServerCommandSource>,
@@ -44,21 +43,6 @@ class YesMOTDCommand : CommandRegistrationCallback {
                             Text.translatable("reload.success").styled { style -> style.withColor(Formatting.YELLOW) })
                         return@executes 1
                     })
-                .then(
-                    CommandManager.literal("set-motd")
-                        .then(
-                            CommandManager.argument("motd", StringArgumentType.string())
-                                .executes {
-                                    it.source.server.setMotd(
-                                        StringArgumentType.getString(
-                                            it,
-                                            "motd"
-                                        )
-                                    ); return@executes 1
-                                }
-                        )
-
-                )
         )
     }
 }
