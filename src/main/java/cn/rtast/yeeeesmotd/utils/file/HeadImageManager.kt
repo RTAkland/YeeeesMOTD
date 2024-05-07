@@ -43,22 +43,20 @@ class HeadImageManager : ICSVManager("head.csv") {
         return false
     }
 
-    fun updateHead(name: String, uuid: String, ip: String) {
+    fun updateHead(uuid: String) {
         thread {
             val allHeads = this.readCSV()
-            var found = false
             allHeads.forEachIndexed { index, head ->
                 if (head.contains(uuid)) {
-                    found = true
+                    val ip = head.last()
+                    val name = head.first()
                     val skin = SkinUtil.getSkinFavicon(uuid)
                     val encodedSkinImage = String(Base64.getEncoder().encode(skin), Charsets.UTF_8)
                     allHeads[index] = mutableListOf(name, uuid, encodedSkinImage, ip)
                     return@forEachIndexed
                 }
             }
-            if (found) {
                 this.writeCSV(allHeads)
-            }
         }
     }
 
