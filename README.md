@@ -21,7 +21,10 @@
 # 使用
 
 > 本项目为`fabric`模组, 仅在服务端生效, 可以在releases中找到对应的游戏版本, 
-> 使用本模组需要安装`fabric api` 以及 `fabric-language-kotlin`
+> 使用本模组需要安装[`fabric api`](https://github.com/FabricMC/fabric/releases/latest) 
+> 以及 [`fabric-language-kotlin`](https://github.com/FabricMC/fabric-language-kotlin/releases)
+
+> ***注意*** 请确保下载到的所有jar文件对应的游戏版本是正确的
 
 # 使用展示
 >ip指纹可以记录玩家登陆游戏的ip在下次玩家使用这个ip ping服务器的时候就会有如下效果(将玩家皮肤的头作为服务器的icon显示给玩家):
