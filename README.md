@@ -26,11 +26,27 @@
 # 使用展示
 >ip指纹可以记录玩家登陆游戏的ip在下次玩家使用这个ip ping服务器的时候就会有如下效果(将玩家皮肤的头作为服务器的icon显示给玩家):
 
-<img src="https://static.rtast.cn/static/Minecraft%201.20.6%202024_5_7%2013_37_13.png" alt="showcase">
+<img src="./images/description.png" alt="showcase">
 
-> 随机服务器的icon需要提前准备好多张64x64像素大小的图片放入服务器`config/yeeeesMotd/icons`文件夹内且图片格式必须为`png`
+> 随机服务器的icon需要提前准备好多张`64x64`像素大小的图片放入服务器`config/yeeeesMotd/icons`文件夹内且图片格式必须为`png`
 
 > 使用`yesmotd reload`可以热重载服务器随机icon列表
+
+## 随机MOTD信息
+
+> 你需要先启动一次mod初始化所需的文件, 在`config/yeeeesMotd/`文件夹内你可以找到
+> `descriptions.csv`文件, 用任意一个文本编辑器(比如: Windows自带的记事本), 打开后
+> 每一行表示一句话, 每句话可以有两行, 每一行用逗号分割,假如我想做到如下效果:
+
+<img src="./images/description.png", alt="description">
+
+> 你需要打开`description.csv`添加一下内容到文件末尾
+
+```csv
+XXXXXX 是吧! 还不赶紧进来！,不然有你好果汁吃
+```
+
+> ***注意*** 这个逗号必须是英文的逗号, 并且一行只能有一个逗号,中文的逗号可以有多个,如果要分行显示只能用英文逗号隔开
 
 # 开源
 
