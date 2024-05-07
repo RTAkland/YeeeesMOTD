@@ -17,21 +17,24 @@
 
 package cn.rtast.yeeeesmotd
 
-import cn.rtast.yeeeesmotd.utils.CSVHeadImageManager
-import cn.rtast.yeeeesmotd.utils.FaviconManager
+import cn.rtast.yeeeesmotd.command.ReloadCommand
+import cn.rtast.yeeeesmotd.utils.file.FaviconManager
+import cn.rtast.yeeeesmotd.utils.file.HeadImageManager
 import com.google.gson.Gson
 import net.fabricmc.api.ModInitializer
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
 
 class YeeeesMOTD : ModInitializer {
 
     companion object {
         val gson = Gson()
 
-        val skinManager = CSVHeadImageManager()
+        val skinManager = HeadImageManager()
         val iconManager = FaviconManager()
     }
 
     override fun onInitialize() {
         iconManager.setValidIcons()
+        CommandRegistrationCallback.EVENT.register(ReloadCommand())
     }
 }
