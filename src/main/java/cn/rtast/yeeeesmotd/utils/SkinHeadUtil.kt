@@ -17,10 +17,8 @@
 
 package cn.rtast.yeeeesmotd.utils
 
-import cn.rtast.yeeeesmotd.SKIN_URL
 import cn.rtast.yeeeesmotd.YeeeesMOTD
 import cn.rtast.yeeeesmotd.entity.DecodedSkinEntity
-import cn.rtast.yeeeesmotd.entity.SkinEntity
 import java.awt.AlphaComposite
 import java.awt.image.BufferedImage
 import java.io.ByteArrayOutputStream
