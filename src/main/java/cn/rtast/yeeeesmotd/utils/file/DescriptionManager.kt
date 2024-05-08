@@ -32,9 +32,9 @@ class DescriptionManager : IJsonManager<MutableList<Description>>("description.j
     }
 
     private val buildIn = listOf(
-        "\$player 是吧? 还不赶紧进来\n不然有你好果汁吃!",
-        "这是 \$player 的专属服务器呢~",
-        "逸一时误一世! \n\$player 赶紧给我进来!"
+        "\$player 是吧? 还不赶快进来\n不然有你好果子吃的!",
+        "这是 \$player 的专属服务器呀~",
+        "逸一时误一世! \n\$player 赶快给我进来!"
     )
 
     private fun read(): MutableList<Description> {
