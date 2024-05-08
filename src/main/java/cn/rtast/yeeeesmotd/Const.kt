@@ -20,3 +20,16 @@ package cn.rtast.yeeeesmotd
 const val ROOT_PATH = "./config/YeeeesMotd/"
 
 const val SKIN_URL = "https://sessionserver.mojang.com/session/minecraft/profile/"
+
+const val DEFAULT_DESCRIPTION = """[
+  {
+    "line1": "YeeeesMOTD",
+    "line2": "powered by RTAkland: https://github.com/RTAkland",
+    "color": "#00FFCC"
+  },
+  {
+    "line1": "DangoTown 团子小镇 生电服务器欢迎你",
+    "line2": "https://dgtmc.top",
+    "color": "#F7F709"
+  }
+]"""
