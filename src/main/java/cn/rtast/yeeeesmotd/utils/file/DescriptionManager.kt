@@ -23,7 +23,7 @@ import cn.rtast.yeeeesmotd.entity.file.Description
 import com.google.gson.reflect.TypeToken
 import kotlin.random.Random
 
-class DescriptionManager : IJsonManager<MutableList<Description>>("description.json", mutableListOf<Description>()) {
+class DescriptionManager : IJsonManager<MutableList<Description>>("description.json", mutableListOf()) {
 
     init {
         if (this.file.readText() == "[]") {
