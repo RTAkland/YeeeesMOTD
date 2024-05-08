@@ -45,7 +45,7 @@ class ReloadCommand : CommandRegistrationCallback {
                     })
                 .then(CommandManager.literal("clear")
                     .executes {
-                        YeeeesMOTD.skinManager.clear()
+                        YeeeesMOTD.skinHeadManagerV2.clear()
                         return@executes 1
                     })
         )
