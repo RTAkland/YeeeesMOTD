@@ -20,7 +20,7 @@ package cn.rtast.yeeeesmotd
 import cn.rtast.yeeeesmotd.command.ReloadCommand
 import cn.rtast.yeeeesmotd.utils.file.DescriptionManager
 import cn.rtast.yeeeesmotd.utils.file.FaviconManager
-import cn.rtast.yeeeesmotd.utils.file.HeadImageManager
+import cn.rtast.yeeeesmotd.utils.file.SkinHeadManager
 import com.google.gson.Gson
 import net.fabricmc.api.ModInitializer
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
@@ -30,9 +30,9 @@ class YeeeesMOTD : ModInitializer {
     companion object {
         val gson = Gson()
 
-        val skinManager = HeadImageManager()
         val iconManager = FaviconManager()
         val descriptionManager = DescriptionManager()
+        val skinHeadManagerV2 = SkinHeadManager()
     }
 
     override fun onInitialize() {
