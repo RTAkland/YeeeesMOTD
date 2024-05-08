@@ -45,6 +45,9 @@ class ReloadCommand : CommandRegistrationCallback {
                     })
                 .then(CommandManager.literal("clear")
                     .executes {
+                        it.source.sendMessage(
+                            Text.translatable("clear.success").styled { style -> style.withColor(Formatting.YELLOW) }
+                        )
                         YeeeesMOTD.skinHeadManagerV2.clear()
                         return@executes 1
                     })

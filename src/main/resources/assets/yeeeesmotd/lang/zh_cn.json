@@ -1,3 +1,4 @@
 {
-  "reload.success": "重载成功"
+  "reload.success": "重载成功",
+  "clear.success": "清除了所有的头像缓存"
 }

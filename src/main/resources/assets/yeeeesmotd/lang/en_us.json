@@ -1,3 +1,4 @@
 {
-  "reload.success": "Successfully reloaded"
+  "reload.success": "Successfully reloaded",
+  "clear.success": "Successfully cleared head cache"
 }
