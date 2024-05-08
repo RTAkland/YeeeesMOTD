@@ -17,7 +17,7 @@
 
 package cn.rtast.yeeeesmotd
 
-import cn.rtast.yeeeesmotd.command.ReloadCommand
+import cn.rtast.yeeeesmotd.command.YesMOTDCommand
 import cn.rtast.yeeeesmotd.utils.file.DescriptionManager
 import cn.rtast.yeeeesmotd.utils.file.FaviconManager
 import cn.rtast.yeeeesmotd.utils.file.SkinHeadManager
@@ -37,6 +37,6 @@ class YeeeesMOTD : ModInitializer {
 
     override fun onInitialize() {
         iconManager.setValidIcons()
-        CommandRegistrationCallback.EVENT.register(ReloadCommand())
+        CommandRegistrationCallback.EVENT.register(YesMOTDCommand())
     }
 }
