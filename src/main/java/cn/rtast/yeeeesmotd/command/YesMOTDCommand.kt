@@ -27,7 +27,7 @@ import net.minecraft.text.Text
 import net.minecraft.util.Formatting
 
 
-class ReloadCommand : CommandRegistrationCallback {
+class YesMOTDCommand : CommandRegistrationCallback {
 
     override fun register(
         dispatcher: CommandDispatcher<ServerCommandSource>,
