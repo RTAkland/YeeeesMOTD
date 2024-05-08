@@ -17,6 +17,7 @@
 
 package cn.rtast.yeeeesmotd.utils.file
 
+import cn.rtast.yeeeesmotd.DEFAULT_DESCRIPTION
 import cn.rtast.yeeeesmotd.YeeeesMOTD
 import cn.rtast.yeeeesmotd.entity.file.Description
 import com.google.gson.reflect.TypeToken
@@ -24,6 +25,11 @@ import kotlin.random.Random
 
 class DescriptionManager : IJsonManager<MutableList<Description>>("description.json", mutableListOf<Description>()) {
 
+    init {
+        if (this.file.readText() == "[]") {
+            this.file.writeText(DEFAULT_DESCRIPTION)
+        }
+    }
 
     private val buildIn = listOf(
         "\$player 是吧? 还不赶紧进来\n不然有你好果汁吃!",
