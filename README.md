@@ -22,8 +22,6 @@
 > 使用本模组需要安装[`fabric api`](https://github.com/FabricMC/fabric/releases/latest)
 > 以及 [`fabric-language-kotlin`](https://github.com/FabricMC/fabric-language-kotlin/releases)
 
-> ***注意*** 请确保下载到的所有jar文件对应的游戏版本是正确的
-
 # 使用展示
 
 > ip指纹可以记录玩家登陆游戏的ip在下次玩家使用这个ip ping服务器的时候就会有如下效果(
@@ -62,6 +60,12 @@
   }
 ]
 ```
+
+# 注意事项
+
+* 你需要确保下载到的jar文件和游戏版本对应
+* 此Mod仅在`Fabric` `服务端`生效。 客户端不生效
+* 仅能在开启了正版验证的服务器使用，离线服务器因玩家UUID计算方式和正版有区别所以无法使用
 
 # 开源
 
