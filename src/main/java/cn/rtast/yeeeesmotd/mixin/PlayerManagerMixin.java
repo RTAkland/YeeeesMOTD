@@ -35,8 +35,8 @@ public class PlayerManagerMixin {
         var ip = connection.getAddress().toString().split(":")[0].replace("/", "");
         var uuid = player.getUuid().toString();
         var name = player.getName().getString();
-        if (!YeeeesMOTD.Companion.getSkinManager().exists(ip)) {
-            YeeeesMOTD.Companion.getSkinManager().addHead(name, uuid, ip);
+        if (!YeeeesMOTD.Companion.getSkinHeadManagerV2().exists(ip)) {
+            YeeeesMOTD.Companion.getSkinHeadManagerV2().addHead(name, uuid, ip);
         }
     }
 }
