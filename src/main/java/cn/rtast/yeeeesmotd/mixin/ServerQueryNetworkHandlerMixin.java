@@ -17,25 +17,18 @@
 
 package cn.rtast.yeeeesmotd.mixin;
 
-import cn.rtast.yeeeesmotd.YeeeesMOTD;
+import cn.rtast.yeeeesmotd.utils.OnQueryListenerKt;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.packet.c2s.query.QueryRequestC2SPacket;
 import net.minecraft.network.packet.s2c.query.QueryResponseS2CPacket;
 import net.minecraft.server.ServerMetadata;
 import net.minecraft.server.network.ServerQueryNetworkHandler;
-import net.minecraft.text.Text;
-import net.minecraft.util.Formatting;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.Optional;
-import java.util.Random;
 
 @Mixin(ServerQueryNetworkHandler.class)
 public class ServerQueryNetworkHandlerMixin {
@@ -51,44 +44,8 @@ public class ServerQueryNetworkHandlerMixin {
     @Inject(method = "onRequest", at = @At("HEAD"), cancellable = true)
     public void onRequest(QueryRequestC2SPacket packet, CallbackInfo ci) {
         var ip = this.connection.getAddress().toString().replace("/", "").split(":")[0];
-        var showHead = new Random().nextBoolean();
-
-        var favicon = this.metadata.favicon();
-
-        var randomDescList = YeeeesMOTD.Companion.getDescriptionManager().randomDescription();
-        var description = Text.empty();
-        if (randomDescList == null) {
-            description = this.metadata.description().copy();
-        } else {
-            description.append(randomDescList.getFirst())
-                    .append("\n")
-                    .append(randomDescList.getLast())
-                    .styled(style -> style.withColor(Formatting.GREEN));
-        }
-
-        if (showHead && YeeeesMOTD.Companion.getSkinManager().exists(ip)) {
-            var userData = YeeeesMOTD.Companion.getSkinManager().getHead(ip);
-            var skin = Base64.getDecoder().decode(userData.get(2));
-            var name = userData.get(0);
-            favicon = Optional.of(new ServerMetadata.Favicon(skin));
-            var randomDesc = YeeeesMOTD.Companion.getDescriptionManager().randomBuildInDesc().replace("$player", name);
-            description = Text.literal(randomDesc).styled(style -> style.withFormatting(Formatting.GREEN));
-        } else {
-            var randomIcon = YeeeesMOTD.Companion.getIconManager().getRandomIcon();
-            if (randomIcon != null) {
-                favicon = Optional.of(new ServerMetadata.Favicon(randomIcon));
-            }
-        }
-
-        var newMetadata = new ServerMetadata(
-                description,
-                Optional.of(new ServerMetadata.Players(-1, -1, new ArrayList<>())),
-                this.metadata.version(),
-                favicon,
-                this.metadata.secureChatEnforced()
-        );
-        this.connection.send(new QueryResponseS2CPacket(newMetadata));
-
+        var response = OnQueryListenerKt.onQuery(this.metadata, ip);
+        this.connection.send(new QueryResponseS2CPacket(response));
         ci.cancel();
     }
 }
