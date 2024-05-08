@@ -19,8 +19,6 @@ package cn.rtast.yeeeesmotd
 
 const val ROOT_PATH = "./config/YeeeesMotd/"
 
-const val SKIN_URL = "https://sessionserver.mojang.com/session/minecraft/profile/"
-
 const val DEFAULT_DESCRIPTION = """[
   {
     "line1": "YeeeesMOTD",

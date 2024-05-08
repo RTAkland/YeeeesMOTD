@@ -71,9 +71,7 @@ object SkinHeadUtil {
     }
 
 
-    fun getSkinFavicon(uuid: String): ByteArray {
-        val uuidUrl = URI(SKIN_URL + uuid).toURL().readText()
-        val skinContent = YeeeesMOTD.gson.fromJson(uuidUrl, SkinEntity::class.java).properties.first().getSkinContent()
+    fun getSkinFavicon(skinContent: String): ByteArray {
         val decodedSkinUrl = YeeeesMOTD.gson.fromJson(skinContent, DecodedSkinEntity::class.java).textures.skin.url
         return getSkinHead(decodedSkinUrl)
     }

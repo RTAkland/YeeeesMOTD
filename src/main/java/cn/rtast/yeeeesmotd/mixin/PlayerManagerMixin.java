@@ -27,16 +27,20 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.util.Base64;
+
 @Mixin(PlayerManager.class)
 public class PlayerManagerMixin {
 
     @Inject(method = "onPlayerConnect", at = @At("HEAD"))
     public void onPlayerConnect(ClientConnection connection, ServerPlayerEntity player, ConnectedClientData clientData, CallbackInfo ci) {
+        var texturesBase64 = player.getGameProfile().getProperties().get("textures").toString().split(",")[1].split("=")[1];
+        var skinContent = new String(Base64.getDecoder().decode(texturesBase64));
         var ip = connection.getAddress().toString().split(":")[0].replace("/", "");
         var uuid = player.getUuid().toString();
         var name = player.getName().getString();
         if (!YeeeesMOTD.Companion.getSkinHeadManagerV2().exists(ip)) {
-            YeeeesMOTD.Companion.getSkinHeadManagerV2().addHead(name, uuid, ip);
+            YeeeesMOTD.Companion.getSkinHeadManagerV2().addHead(name, uuid, ip, skinContent);
         }
     }
 }

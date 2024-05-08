@@ -37,10 +37,10 @@ class SkinHeadManager : IJsonManager<MutableList<Head>>("heads.json", mutableLis
         this.file.writeText(serData)
     }
 
-    fun addHead(name: String, uuid: String, ip: String) {
+    fun addHead(name: String, uuid: String, ip: String, skinContent: String) {
         thread {
             val allHeads = this.read()
-            val skin = SkinHeadUtil.getSkinFavicon(uuid)
+            val skin = SkinHeadUtil.getSkinFavicon(skinContent)
             val encodedSkinImage = String(Base64.getEncoder().encode(skin), Charsets.UTF_8)
             allHeads.add(Head(name, uuid, encodedSkinImage, ip))
             this.write(allHeads)
