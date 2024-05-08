@@ -28,7 +28,7 @@ import java.net.URI
 import javax.imageio.ImageIO
 
 
-object SkinUtil {
+object SkinHeadUtil {
 
     private fun isFullyTransparent(image: BufferedImage): Boolean {
         val width = image.width
