@@ -36,8 +36,7 @@ fun onQuery(metadata: ServerMetadata, ip: String): ServerMetadata {
     if (randomDescription == null) {
         description = metadata.description().copy()
     } else {
-        description.append(randomDescription.line1 + "\n")
-            .append(randomDescription.line2)
+        description.append("${randomDescription.line1}\n${randomDescription.line2}")
             .styled { it.withColor(randomDescription.color.replace("#", "").toInt(16)) }
     }
 
@@ -61,7 +60,7 @@ fun onQuery(metadata: ServerMetadata, ip: String): ServerMetadata {
 
     return ServerMetadata(
         description,
-        Optional.of(Players(-1, -1, ArrayList())),
+        Optional.of(Players(-1, -1, listOf())),
         metadata.version(),
         favicon,
         metadata.secureChatEnforced()
