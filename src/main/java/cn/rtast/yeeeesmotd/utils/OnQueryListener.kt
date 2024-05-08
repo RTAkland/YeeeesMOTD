@@ -38,7 +38,7 @@ fun onQuery(metadata: ServerMetadata, ip: String): ServerMetadata {
     } else {
         description.append(randomDescription.line1 + "\n")
             .append(randomDescription.line2)
-            .styled { it.withColor(randomDescription.color.toInt()) }
+            .styled { it.withColor(randomDescription.color.replace("#", "").toInt(16)) }
     }
 
     if (showHead && skinHeadManagerV2.exists(ip)) {
