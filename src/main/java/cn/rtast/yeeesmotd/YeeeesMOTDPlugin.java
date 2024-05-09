@@ -8,7 +8,6 @@ import cn.rtast.yeeesmotd.utils.file.FaviconManager;
 import cn.rtast.yeeesmotd.utils.file.SkinHeadManager;
 import com.google.gson.Gson;
 import com.google.inject.Inject;
-import com.velocitypowered.api.command.BrigadierCommand;
 import com.velocitypowered.api.command.CommandManager;
 import com.velocitypowered.api.command.CommandMeta;
 import com.velocitypowered.api.event.Subscribe;
@@ -25,7 +24,7 @@ import org.slf4j.Logger;
         url = "https://github.com/RTAkland/YeeesMOTD",
         authors = {"RTAkland"}
 )
-public class YeeesMOTDPlugin {
+public class YeeeesMOTDPlugin {
 
     private final Logger logger;
     private final ProxyServer proxy;
@@ -36,7 +35,7 @@ public class YeeesMOTDPlugin {
     public static SkinHeadManager skinHeadManager = new SkinHeadManager();
 
     @Inject
-    public YeeesMOTDPlugin(Logger logger, ProxyServer proxy) {
+    public YeeeesMOTDPlugin(Logger logger, ProxyServer proxy) {
         this.logger = logger;
         this.proxy = proxy;
         faviconManager.setValidIcons();
@@ -52,6 +51,7 @@ public class YeeesMOTDPlugin {
                 .aliases("reload", "clear")
                 .plugin(this)
                 .build();
-
+        var yesMOTDCommand = new YesMOTDCommand();
+        commandManager.register(commandMeta, yesMOTDCommand);
     }
 }
