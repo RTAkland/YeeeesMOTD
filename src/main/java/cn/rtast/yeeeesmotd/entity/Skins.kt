@@ -17,17 +17,13 @@
 
 package cn.rtast.yeeeesmotd.entity
 
-import com.google.gson.annotations.SerializedName
-
-data class DecodedSkinEntity(
-    val textures: Texture,
+data class Skins(
+    val users: MutableList<User>,
 ) {
-    data class Texture(
-        @SerializedName("SKIN")
-        val skin: SKIN,
-    )
-
-    data class SKIN(
-        val url: String,
+    data class User(
+        val uuid: String,
+        val name: String,
+        val skin: String,
+        val ip: String,
     )
 }

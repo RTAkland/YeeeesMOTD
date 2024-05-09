@@ -35,12 +35,12 @@ public class PlayerManagerMixin {
 
     @Inject(method = "onPlayerConnect", at = @At("HEAD"))
     public void onPlayerConnect(ClientConnection connection, ServerPlayerEntity player, ConnectedClientData clientData, CallbackInfo ci) {
+        var ip = connection.getAddress().toString().split(":")[0].replace("/", "");
+        var uuid = player.getUuid().toString();
+        var name = player.getName().getString();
         if (player.server.isOnlineMode()) {
             var texturesBase64 = player.getGameProfile().getProperties().get("textures").toString().split(",")[1].split("=")[1];
             var textureContent = new String(Base64.getDecoder().decode(texturesBase64), Charsets.UTF_8);
-            var ip = connection.getAddress().toString().split(":")[0].replace("/", "");
-            var uuid = player.getUuid().toString();
-            var name = player.getName().getString();
             if (!YeeeesMOTD.Companion.getSkinHeadManagerV2().exists(ip)) {
                 YeeeesMOTD.Companion.getSkinHeadManagerV2().addHead(name, uuid, ip, textureContent);
             }
