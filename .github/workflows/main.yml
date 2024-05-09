@@ -6,7 +6,7 @@ jobs:
     strategy:
       matrix:
         java:
-          - 21
+          - 17
         os:
           - ubuntu-latest
     runs-on: ${{ matrix.os }}
