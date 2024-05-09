@@ -24,7 +24,7 @@ repositories {
 
 
 dependencies {
-    compileOnly("com.velocitypowered:velocity-api:3.3.0-SNAPSHOT")
+    implementation("com.velocitypowered:velocity-api:3.3.0-SNAPSHOT")
     annotationProcessor("com.velocitypowered:velocity-api:3.3.0-SNAPSHOT")
 
     implementation("com.google.code.gson:gson:$gson_version")
@@ -68,6 +68,7 @@ tasks.jar {
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     val files = configurations.runtimeClasspath.get()
         .exclude("com.google.code.gson")
+        .exclude("com.velocitypowered")
         .filter { it.exists() }
         .map { if (it.isDirectory) it else zipTree(it) }
     from(files)
