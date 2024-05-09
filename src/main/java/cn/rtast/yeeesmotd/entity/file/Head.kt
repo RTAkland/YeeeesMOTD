@@ -17,19 +17,9 @@
 
 package cn.rtast.yeeesmotd.entity.file
 
-import java.awt.image.BufferedImage
-import java.util.*
-import javax.imageio.ImageIO
-
 data class Head(
     val name: String,
     val uuid: String,
     val head: String,
     val ip: String,
-) {
-//    fun getHead(): BufferedImage {
-//        println(head)
-//        val decodedHead = Base64.getDecoder().decode(head)
-//        return ImageIO.read(decodedHead.inputStream())
-//    }
-}
+)
