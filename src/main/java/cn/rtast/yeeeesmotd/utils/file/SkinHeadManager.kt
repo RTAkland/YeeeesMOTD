@@ -47,6 +47,17 @@ class SkinHeadManager : IJsonManager<MutableList<Head>>("heads.json", mutableLis
         }
     }
 
+    fun updateHead(name: String, uuid: String, ip: String, textureContent: String) {
+        thread {
+            val allHeads = this.read()
+            val skin = SkinHeadUtil.getSkinFavicon(textureContent)
+            val encodedSkinImage = String(Base64.getEncoder().encode(skin), Charsets.UTF_8)
+            allHeads.removeAll { it.ip == ip }
+            allHeads.add(Head(name, uuid, encodedSkinImage, ip))
+            this.write(allHeads)
+        }
+    }
+
     fun getHead(ip: String): Head {
         val allHeads = this.read()
         return allHeads.find { it.ip == ip } ?: Head("", "", "", "")

@@ -18,12 +18,14 @@
 package cn.rtast.yeeeesmotd.mixin;
 
 import cn.rtast.yeeeesmotd.YeeeesMOTD;
+import com.mojang.authlib.GameProfile;
 import kotlin.text.Charsets;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.server.PlayerManager;
 import net.minecraft.server.network.ConnectedClientData;
 import net.minecraft.server.network.ServerPlayerEntity;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -33,17 +35,33 @@ import java.util.Base64;
 @Mixin(PlayerManager.class)
 public class PlayerManagerMixin {
 
+    @Unique
+    private String getTextureContent(GameProfile profile) {
+        var texturesBase64 = profile.getProperties().get("textures").toString().split(",")[1].split("=")[1];
+        return new String(Base64.getDecoder().decode(texturesBase64), Charsets.UTF_8);
+    }
+
     @Inject(method = "onPlayerConnect", at = @At("HEAD"))
     public void onPlayerConnect(ClientConnection connection, ServerPlayerEntity player, ConnectedClientData clientData, CallbackInfo ci) {
         var ip = connection.getAddress().toString().split(":")[0].replace("/", "");
         var uuid = player.getUuid().toString();
         var name = player.getName().getString();
         if (player.server.isOnlineMode()) {
-            var texturesBase64 = player.getGameProfile().getProperties().get("textures").toString().split(",")[1].split("=")[1];
-            var textureContent = new String(Base64.getDecoder().decode(texturesBase64), Charsets.UTF_8);
+            var textureContent = this.getTextureContent(player.getGameProfile());
             if (!YeeeesMOTD.Companion.getSkinHeadManagerV2().exists(ip)) {
                 YeeeesMOTD.Companion.getSkinHeadManagerV2().addHead(name, uuid, ip, textureContent);
             }
+        }
+    }
+
+    @Inject(method = "remove", at = @At("HEAD"))
+    public void onRemove(ServerPlayerEntity player, CallbackInfo ci) {
+        var ip = player.networkHandler.getConnectionAddress().toString().split(":")[0].replace("/", "");
+        var uuid = player.getUuid().toString();
+        var name = player.getName().getString();
+        if (player.server.isOnlineMode()) {
+            var textureContent = this.getTextureContent(player.getGameProfile());
+            YeeeesMOTD.Companion.getSkinHeadManagerV2().updateHead(name, uuid, ip, textureContent);
         }
     }
 }
