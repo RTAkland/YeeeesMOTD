@@ -18,7 +18,6 @@
 package cn.rtast.yeeesmotd.utils
 
 import java.awt.image.BufferedImage
-import javax.imageio.ImageIO
 
 fun zoomTo64(image: BufferedImage): BufferedImage {
     val newWidth = 64
