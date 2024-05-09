@@ -12,13 +12,15 @@
 
 </div>
 
+* English docs [README](./README_en.md)
+
 # 概述
 
 > 可以让你的服务器信息个性化,包括:ip指纹、 随机MOTD描述信息、 虚假的在线玩家数、虚假的最大玩家数、随机服务器icon
 
 # 使用
 
-> 本项目为[`Velocity`](https://velocitypowered.com/)插件,
+> 本项目是一个[`Velocity`](https://velocitypowered.com/)插件,
 > 可以在[`Releases`](https://github.com/RTAkland/YeeeesMOTD/releases/)中下载插件, 将插件放入plugins文件夹内即可使用
 
 # 使用展示
