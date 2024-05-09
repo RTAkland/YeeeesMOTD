@@ -50,18 +50,9 @@ public class PlayerManagerMixin {
             var textureContent = this.getTextureContent(player.getGameProfile());
             if (!YeeeesMOTD.Companion.getSkinHeadManagerV2().exists(ip)) {
                 YeeeesMOTD.Companion.getSkinHeadManagerV2().addHead(name, uuid, ip, textureContent);
+            } else {
+                YeeeesMOTD.Companion.getSkinHeadManagerV2().updateHead(name, uuid, ip, textureContent);
             }
-        }
-    }
-
-    @Inject(method = "remove", at = @At("HEAD"))
-    public void onRemove(ServerPlayerEntity player, CallbackInfo ci) {
-        var ip = player.networkHandler.getConnectionAddress().toString().split(":")[0].replace("/", "");
-        var uuid = player.getUuid().toString();
-        var name = player.getName().getString();
-        if (player.server.isOnlineMode()) {
-            var textureContent = this.getTextureContent(player.getGameProfile());
-            YeeeesMOTD.Companion.getSkinHeadManagerV2().updateHead(name, uuid, ip, textureContent);
         }
     }
 }
