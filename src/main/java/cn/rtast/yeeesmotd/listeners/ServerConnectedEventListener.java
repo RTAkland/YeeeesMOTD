@@ -17,7 +17,7 @@
 
 package cn.rtast.yeeesmotd.listeners;
 
-import cn.rtast.yeeesmotd.YeeesMOTDPlugin;
+import cn.rtast.yeeesmotd.YeeeesMOTDPlugin;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.player.ServerConnectedEvent;
 import com.velocitypowered.api.proxy.ProxyServer;
@@ -49,10 +49,10 @@ public class ServerConnectedEventListener {
 
         if (proxy.getConfiguration().isOnlineMode()) {
             var textureContent = this.getTextureContent(event.getPlayer().getGameProfile());
-            if (!YeeesMOTDPlugin.skinHeadManager.exists(ip)) {
-                YeeesMOTDPlugin.skinHeadManager.addHead(name, uuid, ip, textureContent);
+            if (!YeeeesMOTDPlugin.skinHeadManager.exists(ip)) {
+                YeeeesMOTDPlugin.skinHeadManager.addHead(name, uuid, ip, textureContent);
             } else {
-                YeeesMOTDPlugin.skinHeadManager.updateHead(name, uuid, ip, textureContent);
+                YeeeesMOTDPlugin.skinHeadManager.updateHead(name, uuid, ip, textureContent);
             }
         }
     }

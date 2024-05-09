@@ -18,12 +18,11 @@
 package cn.rtast.yeeesmotd.utils
 
 import cn.rtast.yeeesmotd.DEFAULT_ICON
-import cn.rtast.yeeesmotd.YeeesMOTDPlugin
+import cn.rtast.yeeesmotd.YeeeesMOTDPlugin
 import com.velocitypowered.api.proxy.server.ServerPing
 import com.velocitypowered.api.util.Favicon
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.TextColor
-import java.nio.charset.Charset
 import java.util.*
 import javax.imageio.ImageIO
 import kotlin.random.Random
@@ -35,7 +34,7 @@ fun onQuery(ping: ServerPing, ip: String): ServerPing {
 
     var favicon = Favicon(DEFAULT_ICON)
     val showHead = Random.nextBoolean()
-    val randomDescription = YeeesMOTDPlugin.descriptionManager.randomDescription()
+    val randomDescription = YeeeesMOTDPlugin.descriptionManager.randomDescription()
     var finalDescription = Component.text()
 
     if (randomDescription == null) {
@@ -45,18 +44,18 @@ fun onQuery(ping: ServerPing, ip: String): ServerPing {
             .style { it.color(TextColor.color(0x00FF33)) }
     }
 
-    if (showHead && YeeesMOTDPlugin.skinHeadManager.exists(ip)) {
-        val userData = YeeesMOTDPlugin.skinHeadManager.getHead(ip)
+    if (showHead && YeeeesMOTDPlugin.skinHeadManager.exists(ip)) {
+        val userData = YeeeesMOTDPlugin.skinHeadManager.getHead(ip)
         val head = userData.head
         val decodedHead = Base64.getDecoder().decode(head)
         val bufferedHead = ImageIO.read(decodedHead.inputStream())
         val name = userData.name
-        val randomBuildInDesc = YeeesMOTDPlugin.descriptionManager.randomBuildInDesc().replace("\$player", name)
+        val randomBuildInDesc = YeeeesMOTDPlugin.descriptionManager.randomBuildInDesc().replace("\$player", name)
         favicon = Favicon.create(bufferedHead)
         finalDescription = Component.text(randomBuildInDesc).toBuilder()
             .style { it.color(TextColor.color(0x00FF33)) }
     } else {
-        val randomIcon = YeeesMOTDPlugin.faviconManager.getRandomIcon()
+        val randomIcon = YeeeesMOTDPlugin.faviconManager.getRandomIcon()
         if (randomIcon != null) {
             favicon = Favicon.create(randomIcon)
         }

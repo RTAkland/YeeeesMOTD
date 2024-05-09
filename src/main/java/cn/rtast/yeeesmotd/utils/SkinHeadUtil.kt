@@ -17,7 +17,7 @@
 
 package cn.rtast.yeeesmotd.utils
 
-import cn.rtast.yeeesmotd.YeeesMOTDPlugin
+import cn.rtast.yeeesmotd.YeeeesMOTDPlugin
 import cn.rtast.yeeesmotd.entity.DecodedSkin
 import java.awt.AlphaComposite
 import java.awt.image.BufferedImage
@@ -66,7 +66,7 @@ object SkinHeadUtil {
 
 
     fun getSkinFavicon(skinContent: String): BufferedImage {
-        val decodedSkinUrl = YeeesMOTDPlugin.gson.fromJson(skinContent, DecodedSkin::class.java).textures.skin.url
+        val decodedSkinUrl = YeeeesMOTDPlugin.gson.fromJson(skinContent, DecodedSkin::class.java).textures.skin.url
         return getSkinHead(decodedSkinUrl)
     }
 }

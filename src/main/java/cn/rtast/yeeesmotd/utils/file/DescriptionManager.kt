@@ -18,7 +18,7 @@
 package cn.rtast.yeeesmotd.utils.file
 
 import cn.rtast.yeeesmotd.DEFAULT_DESCRIPTION
-import cn.rtast.yeeesmotd.YeeesMOTDPlugin
+import cn.rtast.yeeesmotd.YeeeesMOTDPlugin
 import cn.rtast.yeeesmotd.entity.file.Description
 import com.google.gson.reflect.TypeToken
 import kotlin.random.Random
@@ -40,11 +40,11 @@ class DescriptionManager : IJsonManager<MutableList<Description>>("description.j
     private fun read(): MutableList<Description> {
         val str = this.file.readText()
         val type = object : TypeToken<MutableList<Description>>() {}.type
-        return YeeesMOTDPlugin.gson.fromJson(str, type)
+        return YeeeesMOTDPlugin.gson.fromJson(str, type)
     }
 
     private fun write(data: MutableList<Description>) {
-        val serData = YeeesMOTDPlugin.gson.toJson(data)
+        val serData = YeeeesMOTDPlugin.gson.toJson(data)
         this.file.writeText(serData)
     }
 

@@ -17,7 +17,7 @@
 
 package cn.rtast.yeeesmotd.utils.file
 
-import cn.rtast.yeeesmotd.YeeesMOTDPlugin
+import cn.rtast.yeeesmotd.YeeeesMOTDPlugin
 import cn.rtast.yeeesmotd.entity.file.Head
 import cn.rtast.yeeesmotd.utils.SkinHeadUtil
 import com.google.gson.reflect.TypeToken
@@ -33,11 +33,11 @@ class SkinHeadManager : IJsonManager<MutableList<Head>>("heads.json", mutableLis
     private fun read(): MutableList<Head> {
         val str = this.file.readText()
         val type = object : TypeToken<MutableList<Head>>() {}.type
-        return YeeesMOTDPlugin.gson.fromJson(str, type)
+        return YeeeesMOTDPlugin.gson.fromJson(str, type)
     }
 
     private fun write(data: MutableList<Head>) {
-        val serData = YeeesMOTDPlugin.gson.toJson(data)
+        val serData = YeeeesMOTDPlugin.gson.toJson(data)
         this.file.writeText(serData)
     }
 
