@@ -1,0 +1,85 @@
+plugins {
+    id 'java'
+    id 'eclipse'
+    id "org.jetbrains.gradle.plugin.idea-ext" version "1.0.1"
+    id "org.jetbrains.kotlin.jvm" version "1.9.24"
+    id "xyz.jpenilla.run-velocity" version "2.3.0"
+}
+
+group = 'cn.rtast'
+version = project.plugin_version
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "papermc-repo"
+        url = "https://repo.papermc.io/repository/maven-public/"
+    }
+}
+
+configurations {
+    embed
+    compile.extendsFrom(embed)
+}
+
+dependencies {
+    compileOnly "com.velocitypowered:velocity-api:3.3.0-SNAPSHOT"
+    annotationProcessor "com.velocitypowered:velocity-api:3.3.0-SNAPSHOT"
+
+    implementation "com.google.code.gson:gson:${project.gson_version}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:${project.kotlin_version}"
+
+    embed(api("org.jetbrains.kotlin:kotlin-stdlib:${project.kotlin_version}"))
+}
+
+def targetJavaVersion = 17
+java {
+    def javaVersion = JavaVersion.toVersion(targetJavaVersion)
+    sourceCompatibility = javaVersion
+    targetCompatibility = javaVersion
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+
+    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible()) {
+        options.release.set(targetJavaVersion)
+    }
+}
+
+def templateSource = file('src/main/templates')
+def templateDest = layout.buildDirectory.dir('generated/sources/templates')
+def generateTemplates = tasks.register('generateTemplates', Copy) { task ->
+    def props = [
+        'version': project.version
+    ]
+    task.inputs.properties props
+
+            task.from templateSource
+            task.into templateDest
+            task.expand props
+}
+
+sourceSets.main.java.srcDir(generateTemplates.map { it.outputs })
+
+rootProject.idea.project.settings.taskTriggers.afterSync generateTemplates
+        project.eclipse.synchronizationTasks(generateTemplates)
+
+jar {
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from configurations.embed.collect {
+        it.isDirectory() ? it : zipTree(it)
+    }
+}
+
+compileKotlin {
+    kotlinOptions.jvmTarget = "17"
+}
+
+
+runVelocity {
+    velocityVersion("3.3.0-SNAPSHOT")
+}
