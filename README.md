@@ -18,9 +18,7 @@
 
 # 使用
 
-> 本项目为`fabric`模组, 仅在服务端生效, 可以在releases中找到对应的游戏版本,
-> 使用本模组需要安装[`fabric api`](https://github.com/FabricMC/fabric/releases/latest)
-> 以及 [`fabric-language-kotlin`](https://github.com/FabricMC/fabric-language-kotlin/releases)
+> 本项目为`velocity`插件, 可以在releases中找到对应的游戏版本, 将插件放入plugins文件夹内即可使用
 
 # 使用展示
 
@@ -29,15 +27,15 @@
 
 <img src="./images/description.png" alt="showcase">
 
-> 随机服务器的icon需要提前准备好多张`64x64`像素大小的图片放入服务器`config/yeeeesMotd/icons`
+> 随机服务器的icon需要提前准备好多张`64x64`像素大小的图片放入服务器`plugins/YeeeesMotd/icons`
 > 文件夹内且图片格式必须为`png`
 
 > 使用`yesmotd reload`可以热重载服务器随机icon列表
 
 ## 随机MOTD信息
 
-> 你需要先启动一次mod初始化所需的文件, 在`config/yeeeesMotd/`文件夹内你可以找到
-> `descriptions.json`文件, 用任意一个文本编辑器(比如: Windows自带的记事本)
+> 你需要先启动一次反向代理初始化所需的文件, 在`plugins/YeeeesMotd/`文件夹内你可以找到
+> `descriptions.json`文件, 用任意一个文本编辑器(比如: Windows自带的记事本, vi, vim等)
 > 需要实现以下效果：
 
 <img src="./images/description.png" alt="description">
@@ -63,10 +61,9 @@
 
 # 注意事项
 
-* 你需要确保下载到的jar文件和游戏版本对应
-* 此Mod仅在`Fabric` `服务端`生效。 客户端不生效
+* 此插件仅在`Velocity` 反向代理生效。 客户端不生效
 * 仅能在开启了正版验证的服务器使用，离线服务器因玩家UUID计算方式和正版有区别所以无法使用
-* 此Mod仅在有公网IP的服务器生效, 如果使用的是FRP映射技术则无法使用
+* 此插件仅在有公网IP的服务器生效, 如果使用的是FRP映射技术则无法使用
 
 # 开源
 
