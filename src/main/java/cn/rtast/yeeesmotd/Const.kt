@@ -21,14 +21,12 @@ const val ROOT_PATH = "./plugins/YeeeesMotd/"
 
 const val DEFAULT_DESCRIPTION = """[
   {
-    "line1": "YeeeesMOTD",
-    "line2": "powered by RTAkland: https://github.com/RTAkland",
-    "color": "#00FFCC"
+    "line1": "<yellow><bold>YeeeesMOTD",
+    "line2": "<light_purple><bold>Powered by RTAkland: https://github.com/RTAkland"
   },
   {
-    "line1": "DangoTown 团子小镇 生电服务器欢迎你",
-    "line2": "https://dgtmc.top",
-    "color": "#F7F709"
+    "line1": "<green><bold>DangoTown 团子小镇 生电服务器欢迎你",
+    "line2": "<yellow><bold>https://dgtmc.top"
   }
 ]"""
 
