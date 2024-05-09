@@ -52,8 +52,6 @@ public class YeeesMOTDPlugin {
                 .aliases("reload", "clear")
                 .plugin(this)
                 .build();
-        BrigadierCommand commandToRegister = YesMOTDCommand.INSTANCE.createCommand(proxy);
-        commandManager.register(commandMeta, commandToRegister);
 
     }
 }

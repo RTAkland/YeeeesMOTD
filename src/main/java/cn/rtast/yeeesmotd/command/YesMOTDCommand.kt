@@ -17,7 +17,9 @@
 
 package cn.rtast.yeeesmotd.command
 
+import cn.rtast.yeeesmotd.YeeeesMOTDPlugin
 import com.velocitypowered.api.command.SimpleCommand
+import net.kyori.adventure.text.Component
 
 class YesMOTDCommand : SimpleCommand {
 
@@ -27,7 +29,30 @@ class YesMOTDCommand : SimpleCommand {
         val args = invocation.arguments()
 
         if (args.isEmpty()) {
+            source.sendMessage(
+                Component.text(
+                    "No valid args were found. Do /yesmotd reload to reload config or /yesmotd clear to clear player's head cache"
+                )
+            )
+            return
         }
 
+        if (args.first() == "reload") {
+            YeeeesMOTDPlugin.faviconManager.setValidIcons()
+            source.sendMessage(Component.text("Successfully reloaded"))
+            return
+        }
+
+        if (args.first() == "clear") {
+            YeeeesMOTDPlugin.skinHeadManager.clear()
+            source.sendMessage(Component.text("Successfully cleared"))
+            return
+        }
+
+        source.sendMessage(
+            Component.text(
+                "No valid args were found. Do /yesmotd reload to reload config or /yesmotd clear to clear player's head cache"
+            )
+        )
     }
 }
