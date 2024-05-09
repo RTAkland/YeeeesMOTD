@@ -18,7 +18,8 @@
 
 # 使用
 
-> 本项目为`velocity`插件, 可以在releases中找到对应的游戏版本, 将插件放入plugins文件夹内即可使用
+> 本项目为[`Velocity`](https://velocitypowered.com/)插件,
+> 可以在[`Releases`](https://github.com/RTAkland/YeeeesMOTD/releases/)中下载插件, 将插件放入plugins文件夹内即可使用
 
 # 使用展示
 
