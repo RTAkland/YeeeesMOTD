@@ -20,5 +20,4 @@ package cn.rtast.yeeesmotd.entity.file
 data class Description(
     val line1: String,
     val line2: String,
-    val color: String,
 )

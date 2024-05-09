@@ -14,6 +14,7 @@ import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent;
 import com.velocitypowered.api.plugin.Plugin;
 import com.velocitypowered.api.proxy.ProxyServer;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.slf4j.Logger;
 
 @Plugin(
@@ -33,6 +34,7 @@ public class YeeeesMOTDPlugin {
     public static FaviconManager faviconManager = new FaviconManager();
     public static DescriptionManager descriptionManager = new DescriptionManager();
     public static SkinHeadManager skinHeadManager = new SkinHeadManager();
+    public static MiniMessage miniMessage =  MiniMessage.miniMessage();
 
     @Inject
     public YeeeesMOTDPlugin(Logger logger, ProxyServer proxy) {

@@ -29,7 +29,6 @@ import kotlin.random.Random
 
 
 fun onQuery(ping: ServerPing, ip: String): ServerPing {
-
     val pong = ping.asBuilder()
 
     var favicon = Favicon(DEFAULT_ICON)
@@ -40,17 +39,16 @@ fun onQuery(ping: ServerPing, ip: String): ServerPing {
     if (randomDescription == null) {
         finalDescription.append(ping.descriptionComponent)
     } else {
-        finalDescription.append(Component.text("${randomDescription.line1}\n${randomDescription.line2}"))
-            .style { it.color(TextColor.color(0x00FF33)) }
+        val miniLine1 = YeeeesMOTDPlugin.miniMessage.deserialize(randomDescription.line1)
+        val miniLine2 = YeeeesMOTDPlugin.miniMessage.deserialize(randomDescription.line2)
+        finalDescription.append(miniLine1).append(Component.text("\n")).append(miniLine2)
     }
 
     if (showHead && YeeeesMOTDPlugin.skinHeadManager.exists(ip)) {
         val userData = YeeeesMOTDPlugin.skinHeadManager.getHead(ip)
-        val head = userData.head
-        val decodedHead = Base64.getDecoder().decode(head)
+        val decodedHead = Base64.getDecoder().decode(userData.head)
         val bufferedHead = ImageIO.read(decodedHead.inputStream())
-        val name = userData.name
-        val randomBuildInDesc = YeeeesMOTDPlugin.descriptionManager.randomBuildInDesc().replace("\$player", name)
+        val randomBuildInDesc = YeeeesMOTDPlugin.descriptionManager.randomBuildInDesc().replace("\$player", userData.name)
         favicon = Favicon.create(bufferedHead)
         finalDescription = Component.text(randomBuildInDesc).toBuilder()
             .style { it.color(TextColor.color(0x00FF33)) }
