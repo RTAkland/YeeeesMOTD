@@ -42,28 +42,45 @@
 <img src="./images/description.png" alt="description">
 
 > 你需要打开`description.json`, 打开后你可以看到以下内容, 可以修改或者添加,更多MOTD信息  
-> 其中`line1`表示第一行， `line2`表示第二行， `color`表示文字颜色， 你可以填写任意一个RGB颜色
-> RGB颜色可以在[RGB取色器](https://www.bchrt.com/tools/rgbcolor/)找到
+> 其中`line1`表示第一行, `line2`表示第二行, 语法支持[MiniMessage](https://github.com/KyoriPowered/adventure)
+> 以下为默认的描述文件
 
 ```json
 [
   {
-    "line1": "YeeeesMOTD",
-    "line2": "powered by RTAkland: https://github.com/RTAkland",
-    "color": "#00FFCC"
+    "line1": "<yellow><bold>YeeeesMOTD",
+    "line2": "<light_purple><bold>Powered by RTAkland: https://github.com/RTAkland"
   },
   {
-    "line1": "DangoTown 团子小镇 生电服务器欢迎你",
-    "line2": "https://dgtmc.top",
-    "color": "#F7F709"
+    "line1": "<green><bold>DangoTown 团子小镇 生电服务器欢迎你",
+    "line2": "<yellow><bold>https://dgtmc.top"
   }
 ]
 ```
 
+## MiniMessage
+
+> 这里会展示一些MiniMessage格式的用法
+
+```json
+[
+  {
+    "line1": "<yellow><bold>YeeeesMOTD",  // 这里表示黄色和加粗
+    "line2": "<light_purple>test</light_purple>"  // 你也可以用成对的标签来精确的控制哪些需要颜色
+  },
+  {
+    "line1": "<#00ff00><italic>DangoTown 团子小镇 生电服务器欢迎你",  // 你也可以直接使用RGB16进制表示方法来表示颜色
+    "line2": "<yellow><bold>https://dgtmc.top" 
+  }
+]
+```
+
+> 更多用法请前往[MiniMessage Docs](https://docs.advntr.dev/minimessage/format.html#standard-tags)
+
 # 注意事项
 
-* 此插件仅在`Velocity` 反向代理生效。 客户端不生效
-* 仅能在开启了正版验证的服务器使用，离线服务器因玩家UUID计算方式和正版有区别所以无法使用
+* 此插件仅在`Velocity`可以正常工作.
+* 仅能在开启了正版验证的服务器使用,离线服务器因玩家UUID计算方式和正版有区别所以无法使用
 * 此插件仅在有公网IP的服务器生效, 如果使用的是FRP映射技术则无法使用
 
 # 开源
