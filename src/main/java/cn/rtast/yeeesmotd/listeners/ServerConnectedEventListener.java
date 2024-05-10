@@ -45,7 +45,6 @@ public class ServerConnectedEventListener {
         var ip = event.getPlayer().getRemoteAddress().getHostName();
         var name = event.getPlayer().getUsername();
         var uuid = event.getPlayer().getUniqueId().toString();
-        this.getTextureContent(event.getPlayer().getGameProfile());
 
         if (proxy.getConfiguration().isOnlineMode()) {
             var textureContent = this.getTextureContent(event.getPlayer().getGameProfile());
