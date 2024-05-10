@@ -48,8 +48,9 @@ fun onQuery(ping: ServerPing, ip: String): ServerPing {
         val userData = YeeeesMOTDPlugin.skinHeadManager.getHead(ip)
         val decodedHead = Base64.getDecoder().decode(userData.head)
         val bufferedHead = ImageIO.read(decodedHead.inputStream())
-        val randomBuildInDesc = YeeeesMOTDPlugin.descriptionManager.randomBuildInDesc().split("\$player")
         favicon = Favicon.create(bufferedHead)
+
+        val randomBuildInDesc = YeeeesMOTDPlugin.descriptionManager.randomBuildInDesc().split("\$player")
         finalDescription = Component.text()
             .append(YeeeesMOTDPlugin.miniMessage.deserialize(randomBuildInDesc.first()))
             .append(Component.text(userData.name).style { it.color(TextColor.color(0xEE82EE)) })
