@@ -9,6 +9,10 @@ plugins {
 group = 'cn.rtast'
 version = project.plugin_version
 
+base {
+    archivesName = project.name + ".velocity"
+}
+
 repositories {
     mavenCentral()
     maven {
