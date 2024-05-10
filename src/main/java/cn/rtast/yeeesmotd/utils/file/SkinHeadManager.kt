@@ -43,7 +43,7 @@ class SkinHeadManager : IJsonManager<MutableList<Head>>("heads.json", mutableLis
 
     private fun bufferedImageToByteArray(image: BufferedImage?): ByteArray {
         val baos = ByteArrayOutputStream()
-        ImageIO.write(image, "png", baos) // 这里选择 PNG 格式，你可以根据需要选择其他格式
+        ImageIO.write(image, "png", baos)
         val byteArray = baos.toByteArray()
         baos.close()
         return byteArray
