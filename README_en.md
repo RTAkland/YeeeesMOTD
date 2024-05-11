@@ -108,6 +108,6 @@
 
 <img src="https://static.rtast.cn/static/other/jetbrains.png" alt="JetBrainsIcon" width="128">
 
-<a href="https://www.jetbrains.com/opensource/">Thanks to the powerful IDE support by the<code>JetBrains Open Source</code></a> project
+Thanks to the powerful IDE support by the <a href="https://www.jetbrains.com/opensource/"><code>JetBrains Open Source</code></a> project
 
 </div>
