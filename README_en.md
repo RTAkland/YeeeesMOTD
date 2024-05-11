@@ -12,7 +12,7 @@
 
 </div>
 
-* English docs [README](./README_en.md)
+* 中文文档 [README](./README.md)
 
 # Overview
 
@@ -108,7 +108,6 @@
 
 <img src="https://static.rtast.cn/static/other/jetbrains.png" alt="JetBrainsIcon" width="128">
 
-<a href="https://www.jetbrains.com/opensource/">Thanks to the powerful IDE support by the<code>JetBrains Open
-Source</code></a> project
+<a href="https://www.jetbrains.com/opensource/">Thanks to the powerful IDE support by the<code>JetBrains Open Source</code></a> project
 
 </div>
