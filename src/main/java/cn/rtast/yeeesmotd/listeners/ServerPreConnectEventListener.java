@@ -27,7 +27,7 @@ import java.time.Instant;
 public class ServerPreConnectEventListener {
 
     public static String PING_FIRST_TEXT  = YeeeesMOTDPlugin.configManager.pingFirst().getPingFirstText();
-    public static String RE_PING_TEXT = YeeeesMOTDPlugin.configManager.pingFirst().getRePingText();
+    public static String RE_PING_TEXT = YeeeesMOTDPlugin.configManager.pingFirst().getPingAgainText();
 
     @Subscribe
     public void onServerPreConnect(ServerPreConnectEvent event) {

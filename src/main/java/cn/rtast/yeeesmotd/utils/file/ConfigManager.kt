@@ -20,13 +20,13 @@ package cn.rtast.yeeesmotd.utils.file
 import cn.rtast.yeeesmotd.*
 import cn.rtast.yeeesmotd.entity.file.Config
 import cn.rtast.yeeesmotd.entity.file.Description
-import cn.rtast.yeeesmotd.entity.file.PingFirst
+import cn.rtast.yeeesmotd.entity.file.PingPass
 
 class ConfigManager :
     IJsonManager<Config>(
         "config.json",
         Config(
-            PingFirst(false, PING_FIRST_TEXT, RE_PING_TEXT, DEFAULT_PING_INTERVAL),
+            PingPass(false, PING_FIRST_TEXT, RE_PING_TEXT, DEFAULT_PING_INTERVAL),
             mutableListOf(),
             -1,
             -1,
@@ -65,7 +65,7 @@ class ConfigManager :
         return BUILD_IN_DESCRIPTIONS.random()
     }
 
-    fun pingFirst(): PingFirst {
+    fun pingFirst(): PingPass {
         return this.read().pingFirst
     }
 

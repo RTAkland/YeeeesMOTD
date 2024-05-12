@@ -21,7 +21,7 @@ import com.google.gson.annotations.SerializedName
 
 data class Config(
     @SerializedName("ping_first")
-    val pingFirst: PingFirst,
+    val pingFirst: PingPass,
     val descriptions: MutableList<Description>,
     val maximumPlayer: Int,
     val onlinePlayer: Int,

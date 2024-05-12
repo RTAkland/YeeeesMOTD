@@ -42,7 +42,7 @@ class YesMOTDCommand : SimpleCommand {
             YeeeesMOTDPlugin.faviconManager.setValidIcons()
             val config = YeeeesMOTDPlugin.configManager.pingFirst()
             ServerPreConnectEventListener.PING_FIRST_TEXT = config.pingFirstText
-            ServerPreConnectEventListener.RE_PING_TEXT = config.rePingText
+            ServerPreConnectEventListener.RE_PING_TEXT = config.pingAgainText
             source.sendMessage(Component.text("Successfully reloaded"))
             return
         }

@@ -17,9 +17,9 @@
 
 package cn.rtast.yeeesmotd.entity.file
 
-data class PingFirst(
+data class PingPass(
     val enabled: Boolean,
     val pingFirstText: String,
-    val rePingText: String,
+    val pingAgainText: String,
     val interval: Int,
 )
