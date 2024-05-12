@@ -25,7 +25,13 @@ import cn.rtast.yeeesmotd.entity.file.PingFirst
 class ConfigManager :
     IJsonManager<Config>(
         "config.json",
-        Config(PingFirst(false, PING_FIRST_TEXT, RE_PING_TEXT, DEFAULT_PING_INTERVAL), mutableListOf())
+        Config(
+            PingFirst(false, PING_FIRST_TEXT, RE_PING_TEXT, DEFAULT_PING_INTERVAL),
+            mutableListOf(),
+            -1,
+            -1,
+            true
+        )
     ) {
 
     init {
@@ -61,5 +67,9 @@ class ConfigManager :
 
     fun pingFirst(): PingFirst {
         return this.read().pingFirst
+    }
+
+    fun getConfig(): Config {
+        return this.read()
     }
 }

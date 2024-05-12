@@ -23,4 +23,7 @@ data class Config(
     @SerializedName("ping_first")
     val pingFirst: PingFirst,
     val descriptions: MutableList<Description>,
+    val maximumPlayer: Int,
+    val onlinePlayer: Int,
+    val clearSamplePlayer: Boolean
 )

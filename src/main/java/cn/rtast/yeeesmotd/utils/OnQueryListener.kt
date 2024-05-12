@@ -64,7 +64,16 @@ fun onQuery(ping: ServerPing, ip: String): ServerPing {
         }
     }
 
-    pong.description(finalDescription.build()).favicon(favicon).onlinePlayers(-1).maximumPlayers(-1)
+    val playerConfig = YeeeesMOTDPlugin.configManager.getConfig()
+
+    pong.description(finalDescription.build())
+        .favicon(favicon)
+        .onlinePlayers(playerConfig.onlinePlayer)
+        .maximumPlayers(playerConfig.maximumPlayer)
+
+    if (playerConfig.clearSamplePlayer) {
+        pong.clearSamplePlayers()
+    }
     return pong.build()
 
 }
