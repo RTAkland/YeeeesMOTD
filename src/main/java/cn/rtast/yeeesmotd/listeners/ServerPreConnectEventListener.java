@@ -37,6 +37,8 @@ public class ServerPreConnectEventListener {
                 var record = YeeeesMOTDPlugin.pingRecordManager.getRecord(ip);
                 var currentTimestamp = Instant.now().getEpochSecond();
                 var interval = YeeeesMOTDPlugin.configManager.pingFirst().getInterval();
+                System.out.println(currentTimestamp- record.getTimestamp());
+                System.out.println(interval);
                 if (currentTimestamp - record.getTimestamp() > interval) {
                     event.getPlayer().disconnect(Component.text(RE_PING_TEXT));
                     YeeeesMOTDPlugin.pingRecordManager.removeRecord(ip);
