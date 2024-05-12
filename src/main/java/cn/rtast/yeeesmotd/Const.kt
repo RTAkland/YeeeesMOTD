@@ -27,6 +27,8 @@ const val PING_FIRST_TEXT = "Please ping the server first! / 请先在服务器�
 
 const val RE_PING_TEXT = "Please ping the server again! / 请重新Ping一次服务器"
 
+const val DEFAULT_PING_INTERVAL = 120
+
 val BUILD_IN_DESCRIPTIONS = listOf(
     "\$player <#A020F0>是吧? 还不赶快进来\n<#A020F0>不然有你好果子吃的!",
     "<bold><#EE82EE>这是 \$player <bold><#EE82EE>的专属服务器呀~",

@@ -21,4 +21,5 @@ data class PingFirst(
     val enabled: Boolean,
     val pingFirstText: String,
     val rePingText: String,
+    val interval: Int,
 )

@@ -25,13 +25,15 @@ import cn.rtast.yeeesmotd.entity.file.PingFirst
 class ConfigManager :
     IJsonManager<Config>(
         "config.json",
-        Config(PingFirst(false, PING_FIRST_TEXT, RE_PING_TEXT), mutableListOf())
+        Config(PingFirst(false, PING_FIRST_TEXT, RE_PING_TEXT, DEFAULT_PING_INTERVAL), mutableListOf())
     ) {
 
     init {
         val config = this.read()
-        config.descriptions.addAll(DEFAULT_DESCRIPTIONS)
-        this.write(config)
+        if (config.descriptions.isEmpty()) {
+            config.descriptions.addAll(DEFAULT_DESCRIPTIONS)
+            this.write(config)
+        }
     }
 
     private fun read(): Config {
