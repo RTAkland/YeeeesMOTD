@@ -53,5 +53,11 @@ public class ServerConnectedEventListener {
                 YeeeesMOTDPlugin.skinHeadManager.updateHead(name, uuid, ip, textureContent);
             }
         }
+
+        if (YeeeesMOTDPlugin.configManager.pingFirst().getEnabled()) {
+            if (YeeeesMOTDPlugin.pingRecordManager.exists(ip)) {
+                YeeeesMOTDPlugin.pingRecordManager.removeRecord(ip);
+            }
+        }
     }
 }
