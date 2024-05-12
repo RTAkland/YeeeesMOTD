@@ -33,15 +33,16 @@ fun onQuery(ping: ServerPing, ip: String): ServerPing {
 
     var favicon = Favicon(DEFAULT_ICON)
     val showHead = Random.nextBoolean()
-    val randomDescription = YeeeesMOTDPlugin.descriptionManager.randomDescription()
-    var finalDescription = Component.text()
+    val randomDescription = YeeeesMOTDPlugin.configManager.getRandomDescription();
 
+    var finalDescription = Component.text()
     if (randomDescription == null) {
         finalDescription.append(ping.descriptionComponent)
     } else {
-        val miniLine1 = YeeeesMOTDPlugin.miniMessage.deserialize(randomDescription.line1)
-        val miniLine2 = YeeeesMOTDPlugin.miniMessage.deserialize(randomDescription.line2)
-        finalDescription.append(miniLine1).append(Component.text("\n")).append(miniLine2)
+        finalDescription
+            .append(YeeeesMOTDPlugin.miniMessage.deserialize(randomDescription.line1))
+            .append(Component.text("\n"))
+            .append(YeeeesMOTDPlugin.miniMessage.deserialize(randomDescription.line2))
     }
 
     if (showHead && YeeeesMOTDPlugin.skinHeadManager.exists(ip)) {
@@ -50,7 +51,8 @@ fun onQuery(ping: ServerPing, ip: String): ServerPing {
         val bufferedHead = ImageIO.read(decodedHead.inputStream())
         favicon = Favicon.create(bufferedHead)
 
-        val randomBuildInDesc = YeeeesMOTDPlugin.descriptionManager.randomBuildInDesc().split("\$player")
+        val randomBuildInDesc =
+            YeeeesMOTDPlugin.configManager.getRandomBuildInDescription().split("\$player", userData.name)
         finalDescription = Component.text()
             .append(YeeeesMOTDPlugin.miniMessage.deserialize(randomBuildInDesc.first()))
             .append(Component.text(userData.name).style { it.color(TextColor.color(0xEE82EE)) })
@@ -62,10 +64,7 @@ fun onQuery(ping: ServerPing, ip: String): ServerPing {
         }
     }
 
-    pong.description(finalDescription.build())
-        .favicon(favicon)
-        .onlinePlayers(-1)
-        .maximumPlayers(-1)
+    pong.description(finalDescription.build()).favicon(favicon).onlinePlayers(-1).maximumPlayers(-1)
     return pong.build()
 
 }
