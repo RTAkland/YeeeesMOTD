@@ -16,42 +16,45 @@
 
 # Overview
 
-> You can personalize your server information, including: IP fingerprint, random MOTD description information, false
-> number of online players, false maximum number of players, random server icon
+> It can personalize your server information, including: 'IP fingerprint', 'random MOTD description information', 'false
+> number of online players',' false maximum number of players', 'random server icon', * anti pressure testing*
+
+> This project is a [` Velocity `]（ https://velocitypowered.com/ ）Plugins,
+> Can be found in [` Releases `]（ https://github.com/RTAkland/YeeeesMOTD/releases/ ）Download the plugin and put it in
+> the plugins folder to use it
 
 # Usage
 
-> This project is a [`Velocity`](https://velocitypowered.com/) plug-in,
-> You can download the plug-in in [`Releases`](https://github.com/RTAkland/YeeeesMOTD/releases/), and put the plug-in
-> into the plugins folder to use it
+## IP fingerprint
 
-# Showcase
+> This feature requires the server to enable online mode and have a public IP address`
+> The IP fingerprint can record the player's login IP address in the game. The next time a player uses this IP to ping
+> the server, the following effects will occur:（
+> Display the head of the player's skin as the server icon to the player:
 
-> IP fingerprint can record the IP of the player logging into the game. The next time the player uses this IP to ping
-> the server, it will have the following effect (
-> Display the player skin's head as the server's icon to the player):
+! [showcase] (./images/description. png)
 
-<img src="./images/description.png" alt="showcase">
+## Random server icon
 
-> The icon of the random server needs to prepare multiple `64x64` pixel size pictures in advance and put them into the
-> server `plugins/YeeeesMotd/icons`
-> In the folder and the image format must be `png`
+> Random server icons need to be prepared in advance with a few 64x64 pixel sized images to be placed on the server's
+> plugins/YeeeesMotd/icons`
+> Within the folder and the image format must be ` png '`
 
-> Use `yesmotd reload` to hot reload the server's random icon list
+> Using 'yesmotd reload' allows for hot reloading of server random icon lists
 
-## Random MOTD
+## MOTD information
 
-> You need to start the files required for velocity initialization first, which you can find in
-> the `plugins/YeeeesMotd/` folder
-> `descriptions.json` file, use any text editor (for example: Notepad that comes with Windows, vi, vim, etc.)
+> You need to start the files required for reverse proxy initialization first, which can be found in the '
+> plugins/YeeeesMotd/' folder
+> The 'descriptions. json' file, using any text editor (such as Windows built-in Notepad, vi, vim, etc.)
 > The following effects need to be achieved:
 
-<img src="./images/description.png" alt="description">
+! [description] (./images/description. png)
 
-> You need to open `description.json`. After opening, you can see the following content, which can be modified or added
-> for more MOTD information.
-> Among them, `line1` represents the first line, `line2` represents the second line, and the syntax
-> supports [MiniMessage](https://github.com/KyoriPowered/adventure)
+> You need to open 'config. json' and find the root of 'descriptions'. You can see the following content and modify the
+> content of the corresponding line
+> Among them, 'line1' represents the first line, and 'line2' represents the second line. The syntax
+> supports [MiniMessage]（ https://github.com/KyoriPowered/adventure ）
 > The following is the default description file
 
 ```json
@@ -67,7 +70,44 @@
 ]
 ```
 
-## MiniMessage
+### Online player list
+
+> You need to open 'config. json' and find the words' maximumPlayer ',' onlinePlayer ', and' clearSamplePlayer '
+> These three attributes represent: maximum number of players, number of online players, and whether to not display the
+> online player list
+> The default values for the three attributes are 'maximumPlayer': '-1' | 'onlinePlayer': '-1' | 'clearSamplePlayer': '
+> false'`
+> You can refer to the following figure:
+
+! [playerlist] (./images/playerlist. png)
+
+## Anti pressure testing
+
+> This feature prevents malicious pressure on the server, so players need to ping the server once before entering,
+> If the event of pinging the server and the entry time to the server are too long, it is necessary to ping the server
+> again,
+> The following is the configuration file
+
+```json
+{
+  "ping_first": {
+    "enabled": false,
+    "pingFirstText": "Please ping the server first! / 请先在服务器列表Ping一次服务器",
+    "rePingText": "Please ping the server again! / 请重新Ping一次服务器",
+    "interval": 120
+  }
+  // ...
+}
+```
+
+> Among them, 'enabled' indicates whether to enable anti pressure testing, and the default is' false '
+> 'pingFirstText' indicates the message prompted when the player enters the server without pinging it first, and
+> disconnects the player
+> The 'rePingText' indicates a prompt message indicating that the time interval between the player ping the server and
+> entering the server is too long
+> 'interval' represents the maximum interval time between ping the server and entering the server, in seconds`
+
+### MiniMessage
 
 > Here we will show some usage of MiniMessage format
 
@@ -75,32 +115,32 @@
 [
   {
     "line1": "<yellow><bold>YeeeesMOTD",
-    // Here it means yellow and bold
     "line2": "<light_purple>test</light_purple>"
-    // You can also use pairs of tags to control exactly which ones require color
   },
   {
+    // or use rgb color
     "line1": "<#00ff00><italic>DangoTown 团子小镇 生电服务器欢迎你",
-    // You can also directly use RGB hexadecimal numbers to represent colors
     "line2": "<yellow><bold>https://dgtmc.top"
   }
 ]
 ```
 
-> For more usage, please go to [MiniMessage Docs](https://docs.advntr.dev/minimessage/format.html#standard-tags)
+##
+
+> For more usage of MiniMessage, please go
+> to [MiniMessage Documents]（ https://docs.advntr.dev/minimessage/format.html#standard -Tags)
 
 # Precautions
 
-* This plugin only works properly with `Velocity`.
-* Can only be used on servers with online mode turned on. Offline servers cannot be used.
-* This plugin only takes effect on servers with public IP addresses.
+* This plugin only works properly in 'Velocity'
+* Can only be used on servers with genuine verification enabled. Offline servers cannot be used due to differences in player UUID calculation methods compared to genuine ones
+*This plugin only works on servers with public IP addresses, and cannot be used if using FRP mapping technology
 
-# Open Source
+# Open source
 
-- This project is open source under the [Apache-2.0](./LICENSE) license, that is:
-    - You can directly use the functions provided by the project without any authorization
-    - You can distribute, modify and derive the source code at will provided that you indicate the source copyright
-      information**
+- This project is open source under the license of [Apache-2.0] (./LICENSE), which means:
+- You can directly use the features provided by this project without any authorization
+- You can distribute, modify, and derive the source code at will without specifying the source copyright information
 
 # Thanks
 
@@ -108,6 +148,7 @@
 
 <img src="https://static.rtast.cn/static/other/jetbrains.png" alt="JetBrainsIcon" width="128">
 
-Thanks to the powerful IDE support by the <a href="https://www.jetbrains.com/opensource/"><code>JetBrains Open Source</code></a> project
+<a href="https://www.jetbrains.com/opensource/"><code>JetBrains Open Source</code></a> 提供的强大IDE支持
 
 </div>
+
