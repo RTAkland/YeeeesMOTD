@@ -90,7 +90,7 @@
 
 ```json
 {
-  "ping_first": {
+  "pingPass": {
     "enabled": false,
     "pingFirstText": "Please ping the server first! / 请先在服务器列表Ping一次服务器",
     "rePingText": "Please ping the server again! / 请重新Ping一次服务器",

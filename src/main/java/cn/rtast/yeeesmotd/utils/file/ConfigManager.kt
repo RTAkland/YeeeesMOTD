@@ -66,7 +66,7 @@ class ConfigManager :
     }
 
     fun pingFirst(): PingPass {
-        return this.read().pingFirst
+        return this.read().pingPass
     }
 
     fun getConfig(): Config {

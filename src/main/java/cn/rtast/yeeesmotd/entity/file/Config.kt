@@ -20,8 +20,7 @@ package cn.rtast.yeeesmotd.entity.file
 import com.google.gson.annotations.SerializedName
 
 data class Config(
-    @SerializedName("ping_first")
-    val pingFirst: PingPass,
+    val pingPass: PingPass,
     val maximumPlayer: Int,
     val onlinePlayer: Int,
     val clearSamplePlayer: Boolean,
