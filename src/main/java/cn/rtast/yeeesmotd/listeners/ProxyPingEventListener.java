@@ -17,6 +17,7 @@
 
 package cn.rtast.yeeesmotd.listeners;
 
+import cn.rtast.yeeesmotd.YeeeesMOTDPlugin;
 import cn.rtast.yeeesmotd.utils.OnQueryListenerKt;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.proxy.ProxyPingEvent;
@@ -25,7 +26,16 @@ public class ProxyPingEventListener {
 
     @Subscribe
     public void onProxyPingEvent(ProxyPingEvent event) {
-        var pong = OnQueryListenerKt.onQuery(event.getPing(), event.getConnection().getRemoteAddress().getHostString());
+        var ip = event.getConnection().getRemoteAddress().getHostName();
+
+        var pong = OnQueryListenerKt.onQuery(event.getPing(), ip);
         event.setPing(pong);
+
+        if (YeeeesMOTDPlugin.configManager.pingFirst().getEnabled()) {
+            if (YeeeesMOTDPlugin.pingRecordManager.exists(ip)) {
+                YeeeesMOTDPlugin.pingRecordManager.removeRecord(ip);
+            }
+            YeeeesMOTDPlugin.pingRecordManager.addRecord(ip);
+        }
     }
 }

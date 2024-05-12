@@ -39,7 +39,6 @@ public class ServerConnectedEventListener {
         return new String(Base64.getDecoder().decode(texturesBase64), Charsets.UTF_8);
     }
 
-
     @Subscribe
     public void onServerConnected(ServerConnectedEvent event) {
         var ip = event.getPlayer().getRemoteAddress().getHostName();

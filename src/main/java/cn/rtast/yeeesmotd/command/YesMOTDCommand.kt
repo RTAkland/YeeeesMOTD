@@ -18,6 +18,7 @@
 package cn.rtast.yeeesmotd.command
 
 import cn.rtast.yeeesmotd.YeeeesMOTDPlugin
+import cn.rtast.yeeesmotd.listeners.ServerPreConnectEventListener
 import com.velocitypowered.api.command.SimpleCommand
 import net.kyori.adventure.text.Component
 
@@ -39,6 +40,9 @@ class YesMOTDCommand : SimpleCommand {
 
         if (args.first() == "reload") {
             YeeeesMOTDPlugin.faviconManager.setValidIcons()
+            val config = YeeeesMOTDPlugin.configManager.pingFirst()
+            ServerPreConnectEventListener.PING_FIRST_TEXT = config.pingFirstText
+            ServerPreConnectEventListener.RE_PING_TEXT = config.rePingText
             source.sendMessage(Component.text("Successfully reloaded"))
             return
         }
