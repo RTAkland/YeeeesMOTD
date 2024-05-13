@@ -19,6 +19,20 @@ package cn.rtast.yeeesmotd.utils
 
 import java.awt.image.BufferedImage
 
+fun isFullyTransparent(image: BufferedImage): Boolean {
+    val width = image.width
+    val height = image.height
+    for (y in 0 until height) {
+        for (x in 0 until width) {
+            val pixel = image.getRGB(x, y)
+            if ((pixel shr 24) != 0x00) {
+                return false
+            }
+        }
+    }
+    return true
+}
+
 fun zoomTo64(image: BufferedImage): BufferedImage {
     val newWidth = 64
     val newHeight = 64
