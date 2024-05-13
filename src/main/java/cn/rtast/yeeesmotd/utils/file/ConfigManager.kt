@@ -27,10 +27,10 @@ class ConfigManager :
         "config.json",
         Config(
             PingPass(false, PING_FIRST_TEXT, RE_PING_TEXT, DEFAULT_PING_INTERVAL),
-            mutableListOf(),
             -1,
             -1,
-            true
+            true,
+            mutableListOf()
         )
     ) {
 
