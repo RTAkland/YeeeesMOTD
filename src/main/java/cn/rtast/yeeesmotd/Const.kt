@@ -37,6 +37,7 @@ val BUILD_IN_DESCRIPTIONS = listOf(
 
 val DEFAULT_DESCRIPTIONS = mutableListOf(
     Config.Description("<yellow><bold>YeeeesMOTD", "<light_purple><bold>Powered by RTAkland: https://github.com/RTAkland"),
-    Config.Description("<#00ff00><bold>DangoTown 团子小镇 生电服务器欢迎你", "<yellow><bold>https://dgtmc.top")
+    Config.Description("<#00ff00><bold>DangoTown 团子小镇 生电服务器欢迎你", "<yellow><bold>https://dgtmc.top"),
+    Config.Description("<#00FFFF><bold>团子小镇是一个历史悠久的服务器", "<#00FFFF><bold>服务器于2016年开服至今")
 )
 
