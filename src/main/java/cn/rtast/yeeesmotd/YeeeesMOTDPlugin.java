@@ -40,7 +40,7 @@ import org.slf4j.Logger;
         name = "YeeesMOTD",
         version = BuildConstants.VERSION,
         description = "返回个性化的MOTD",
-        url = "https://github.com/RTAkland/YeeesMOTD",
+        url = "https://github.com/RTAkland/YeeeesMOTD",
         authors = {"RTAkland"}
 )
 public class YeeeesMOTDPlugin {
