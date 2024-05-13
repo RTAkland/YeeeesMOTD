@@ -28,18 +28,9 @@ class ConfigManager :
             -1,
             -1,
             true,
-            mutableListOf()
+            DEFAULT_DESCRIPTIONS
         )
     ) {
-
-    init {
-        val config = this.read()
-        if (config.descriptions.isEmpty()) {
-            config.descriptions.addAll(DEFAULT_DESCRIPTIONS)
-            this.write(config)
-        }
-    }
-
     private fun read(): Config {
         val str = this.file.readText()
         return YeeeesMOTDPlugin.gson.fromJson(str, Config::class.java)
