@@ -19,14 +19,12 @@ package cn.rtast.yeeesmotd.utils.file
 
 import cn.rtast.yeeesmotd.*
 import cn.rtast.yeeesmotd.entity.Config
-import cn.rtast.yeeesmotd.entity.Description
-import cn.rtast.yeeesmotd.entity.PingPass
 
 class ConfigManager :
     IJsonManager<Config>(
         "config.json",
         Config(
-            PingPass(false, PING_FIRST_TEXT, RE_PING_TEXT, DEFAULT_PING_INTERVAL),
+            Config.PingPass(false, PING_FIRST_TEXT, RE_PING_TEXT, DEFAULT_PING_INTERVAL),
             -1,
             -1,
             true,
@@ -52,7 +50,11 @@ class ConfigManager :
         this.file.writeText(serData)
     }
 
-    fun getRandomDescription(): Description? {
+    fun getConfig(): Config {
+        return this.read()
+    }
+
+    fun getRandomDescription(): Config.Description? {
         val config = this.read()
         val descriptions = config.descriptions
         if (descriptions.isEmpty()) {
@@ -65,11 +67,7 @@ class ConfigManager :
         return BUILD_IN_DESCRIPTIONS.random()
     }
 
-    fun pingPass(): PingPass {
+    fun pingPass(): Config.PingPass {
         return this.read().pingPass
-    }
-
-    fun getConfig(): Config {
-        return this.read()
     }
 }

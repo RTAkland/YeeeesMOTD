@@ -23,4 +23,16 @@ data class Config(
     val onlinePlayer: Int,
     val clearSamplePlayer: Boolean,
     val descriptions: MutableList<Description>,
-)
+) {
+    data class PingPass(
+        val enabled: Boolean,
+        val pingFirstText: String,
+        val pingAgainText: String,
+        val interval: Int,
+    )
+
+    data class Description(
+        val line1: String,
+        val line2: String,
+    )
+}
