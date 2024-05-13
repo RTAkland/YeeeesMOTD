@@ -65,7 +65,7 @@ class ConfigManager :
         return BUILD_IN_DESCRIPTIONS.random()
     }
 
-    fun pingFirst(): PingPass {
+    fun pingPass(): PingPass {
         return this.read().pingPass
     }
 

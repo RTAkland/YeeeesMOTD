@@ -17,31 +17,31 @@
 
 package cn.rtast.yeeesmotd.listeners;
 
-import cn.rtast.yeeesmotd.YeeeesMOTDPlugin;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.player.ServerPreConnectEvent;
 import net.kyori.adventure.text.Component;
 
 import java.time.Instant;
 
+import static cn.rtast.yeeesmotd.YeeeesMOTDPlugin.configManager;
+import static cn.rtast.yeeesmotd.YeeeesMOTDPlugin.pingRecordManager;
+
 public class ServerPreConnectEventListener {
 
-    public static String PING_FIRST_TEXT  = YeeeesMOTDPlugin.configManager.pingFirst().getPingFirstText();
-    public static String RE_PING_TEXT = YeeeesMOTDPlugin.configManager.pingFirst().getPingAgainText();
+    public static String PING_FIRST_TEXT = configManager.pingPass().getPingFirstText();
+    public static String RE_PING_TEXT = configManager.pingPass().getPingAgainText();
 
     @Subscribe
     public void onServerPreConnect(ServerPreConnectEvent event) {
-        if (YeeeesMOTDPlugin.configManager.pingFirst().getEnabled()) {
+        if (configManager.pingPass().getEnabled()) {
             var ip = event.getPlayer().getRemoteAddress().getHostName();
-            if (YeeeesMOTDPlugin.pingRecordManager.exists(ip)) {
-                var record = YeeeesMOTDPlugin.pingRecordManager.getRecord(ip);
+            if (pingRecordManager.exists(ip)) {
+                var record = pingRecordManager.getRecord(ip);
                 var currentTimestamp = Instant.now().getEpochSecond();
-                var interval = YeeeesMOTDPlugin.configManager.pingFirst().getInterval();
-                System.out.println(currentTimestamp- record.getTimestamp());
-                System.out.println(interval);
+                var interval = configManager.pingPass().getInterval();
                 if (currentTimestamp - record.getTimestamp() > interval) {
                     event.getPlayer().disconnect(Component.text(RE_PING_TEXT));
-                    YeeeesMOTDPlugin.pingRecordManager.removeRecord(ip);
+                    pingRecordManager.removeRecord(ip);
                 }
             } else {
                 event.getPlayer().disconnect(Component.text(PING_FIRST_TEXT));

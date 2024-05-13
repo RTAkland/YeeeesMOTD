@@ -17,7 +17,6 @@
 
 package cn.rtast.yeeesmotd.listeners;
 
-import cn.rtast.yeeesmotd.YeeeesMOTDPlugin;
 import com.velocitypowered.api.event.Subscribe;
 import com.velocitypowered.api.event.player.ServerConnectedEvent;
 import com.velocitypowered.api.proxy.ProxyServer;
@@ -25,6 +24,8 @@ import com.velocitypowered.api.util.GameProfile;
 import kotlin.text.Charsets;
 
 import java.util.Base64;
+
+import static cn.rtast.yeeesmotd.YeeeesMOTDPlugin.*;
 
 public class ServerConnectedEventListener {
 
@@ -47,16 +48,16 @@ public class ServerConnectedEventListener {
 
         if (proxy.getConfiguration().isOnlineMode()) {
             var textureContent = this.getTextureContent(event.getPlayer().getGameProfile());
-            if (!YeeeesMOTDPlugin.skinHeadManager.exists(ip)) {
-                YeeeesMOTDPlugin.skinHeadManager.addHead(name, uuid, ip, textureContent);
+            if (!skinHeadManager.exists(ip)) {
+                skinHeadManager.addHead(name, uuid, ip, textureContent);
             } else {
-                YeeeesMOTDPlugin.skinHeadManager.updateHead(name, uuid, ip, textureContent);
+                skinHeadManager.updateHead(name, uuid, ip, textureContent);
             }
         }
 
-        if (YeeeesMOTDPlugin.configManager.pingFirst().getEnabled()) {
-            if (YeeeesMOTDPlugin.pingRecordManager.exists(ip)) {
-                YeeeesMOTDPlugin.pingRecordManager.removeRecord(ip);
+        if (configManager.getConfig().getPingPass().getEnabled()) {
+            if (pingRecordManager.exists(ip)) {
+                pingRecordManager.removeRecord(ip);
             }
         }
     }
