@@ -18,9 +18,7 @@
 package cn.rtast.yeeesmotd;
 
 import cn.rtast.yeeesmotd.command.YesMOTDCommand;
-import cn.rtast.yeeesmotd.listeners.ProxyPingEventListener;
-import cn.rtast.yeeesmotd.listeners.ServerConnectedEventListener;
-import cn.rtast.yeeesmotd.listeners.ServerPreConnectEventListener;
+import cn.rtast.yeeesmotd.listeners.*;
 import cn.rtast.yeeesmotd.utils.file.ConfigManager;
 import cn.rtast.yeeesmotd.utils.file.FaviconManager;
 import cn.rtast.yeeesmotd.utils.file.PingRecordManager;
@@ -70,7 +68,8 @@ public class YeeeesMOTDPlugin {
     public void onProxyInitialization(ProxyInitializeEvent event) {
         proxy.getEventManager().register(this, new ProxyPingEventListener());
         proxy.getEventManager().register(this, new ServerConnectedEventListener(proxy));
-        proxy.getEventManager().register(this, new ServerPreConnectEventListener());
+        proxy.getEventManager().register(this, new LoginEventListener());
+
 
         CommandManager commandManager = proxy.getCommandManager();
         CommandMeta commandMeta = commandManager.metaBuilder("yesmotd")

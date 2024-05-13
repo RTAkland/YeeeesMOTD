@@ -42,6 +42,7 @@ public class ServerConnectedEventListener {
 
     @Subscribe
     public void onServerConnected(ServerConnectedEvent event) {
+        System.out.println("connected");
         var ip = event.getPlayer().getRemoteAddress().getHostName();
         var name = event.getPlayer().getUsername();
         var uuid = event.getPlayer().getUniqueId().toString();

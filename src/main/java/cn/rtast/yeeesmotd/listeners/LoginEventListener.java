@@ -18,7 +18,7 @@
 package cn.rtast.yeeesmotd.listeners;
 
 import com.velocitypowered.api.event.Subscribe;
-import com.velocitypowered.api.event.player.ServerPreConnectEvent;
+import com.velocitypowered.api.event.connection.LoginEvent;
 import net.kyori.adventure.text.Component;
 
 import java.time.Instant;
@@ -26,13 +26,13 @@ import java.time.Instant;
 import static cn.rtast.yeeesmotd.YeeeesMOTDPlugin.configManager;
 import static cn.rtast.yeeesmotd.YeeeesMOTDPlugin.pingRecordManager;
 
-public class ServerPreConnectEventListener {
+public class LoginEventListener {
 
     public static String PING_FIRST_TEXT = configManager.pingPass().getPingFirstText();
-    public static String RE_PING_TEXT = configManager.pingPass().getPingAgainText();
+    public static String PING_AGAIN_TEXT = configManager.pingPass().getPingAgainText();
 
     @Subscribe
-    public void onServerPreConnect(ServerPreConnectEvent event) {
+    public void onLogin(LoginEvent event) {
         if (configManager.pingPass().getEnabled()) {
             var ip = event.getPlayer().getRemoteAddress().getHostName();
             if (pingRecordManager.exists(ip)) {
@@ -40,7 +40,7 @@ public class ServerPreConnectEventListener {
                 var currentTimestamp = Instant.now().getEpochSecond();
                 var interval = configManager.pingPass().getInterval();
                 if (currentTimestamp - record.getTimestamp() > interval) {
-                    event.getPlayer().disconnect(Component.text(RE_PING_TEXT));
+                    event.getPlayer().disconnect(Component.text(PING_AGAIN_TEXT));
                     pingRecordManager.removeRecord(ip);
                 }
             } else {
