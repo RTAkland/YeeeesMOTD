@@ -15,9 +15,12 @@
  */
 
 
-package cn.rtast.yeeesmotd.entity.file
+package cn.rtast.yeeesmotd.entity
 
-data class Description(
-    val line1: String,
-    val line2: String,
+data class Config(
+    val pingPass: PingPass,
+    val maximumPlayer: Int,
+    val onlinePlayer: Int,
+    val clearSamplePlayer: Boolean,
+    val descriptions: MutableList<Description>,
 )

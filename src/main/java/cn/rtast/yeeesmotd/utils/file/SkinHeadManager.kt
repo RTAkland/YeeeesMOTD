@@ -18,7 +18,7 @@
 package cn.rtast.yeeesmotd.utils.file
 
 import cn.rtast.yeeesmotd.YeeeesMOTDPlugin
-import cn.rtast.yeeesmotd.entity.file.Head
+import cn.rtast.yeeesmotd.entity.Head
 import cn.rtast.yeeesmotd.utils.SkinHeadUtil
 import com.google.gson.reflect.TypeToken
 import java.awt.image.BufferedImage

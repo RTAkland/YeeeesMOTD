@@ -17,7 +17,7 @@
 
 package cn.rtast.yeeesmotd
 
-import cn.rtast.yeeesmotd.entity.file.Description
+import cn.rtast.yeeesmotd.entity.Description
 
 const val ROOT_PATH = "./plugins/YeeeesMotd/"
 

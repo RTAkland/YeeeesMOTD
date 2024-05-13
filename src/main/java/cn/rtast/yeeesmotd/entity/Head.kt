@@ -15,7 +15,7 @@
  */
 
 
-package cn.rtast.yeeesmotd.entity.file
+package cn.rtast.yeeesmotd.entity
 
 data class Head(
     val name: String,

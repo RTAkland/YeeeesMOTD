@@ -18,9 +18,9 @@
 package cn.rtast.yeeesmotd.utils.file
 
 import cn.rtast.yeeesmotd.*
-import cn.rtast.yeeesmotd.entity.file.Config
-import cn.rtast.yeeesmotd.entity.file.Description
-import cn.rtast.yeeesmotd.entity.file.PingPass
+import cn.rtast.yeeesmotd.entity.Config
+import cn.rtast.yeeesmotd.entity.Description
+import cn.rtast.yeeesmotd.entity.PingPass
 
 class ConfigManager :
     IJsonManager<Config>(

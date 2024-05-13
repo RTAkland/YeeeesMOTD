@@ -18,7 +18,7 @@
 package cn.rtast.yeeesmotd.utils.file
 
 import cn.rtast.yeeesmotd.YeeeesMOTDPlugin
-import cn.rtast.yeeesmotd.entity.file.PingRecord
+import cn.rtast.yeeesmotd.entity.PingRecord
 import com.google.gson.reflect.TypeToken
 import java.time.Instant
 

@@ -15,14 +15,9 @@
  */
 
 
-package cn.rtast.yeeesmotd.entity.file
+package cn.rtast.yeeesmotd.entity
 
-import com.google.gson.annotations.SerializedName
-
-data class Config(
-    val pingPass: PingPass,
-    val maximumPlayer: Int,
-    val onlinePlayer: Int,
-    val clearSamplePlayer: Boolean,
-    val descriptions: MutableList<Description>,
+data class Description(
+    val line1: String,
+    val line2: String,
 )

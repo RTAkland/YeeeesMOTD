@@ -15,11 +15,9 @@
  */
 
 
-package cn.rtast.yeeesmotd.entity.file
+package cn.rtast.yeeesmotd.entity
 
-data class PingPass(
-    val enabled: Boolean,
-    val pingFirstText: String,
-    val pingAgainText: String,
-    val interval: Int,
+data class PingRecord(
+    val ip: String,
+    val timestamp: Long,
 )
