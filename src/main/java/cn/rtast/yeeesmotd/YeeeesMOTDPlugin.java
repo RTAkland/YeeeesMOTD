@@ -63,6 +63,7 @@ public class YeeeesMOTDPlugin {
         this.logger = logger;
         this.proxy = proxy;
         faviconManager.setValidIcons();
+        this.logger.debug("YeeeesMOTD初始化完成");
     }
 
     @Subscribe
