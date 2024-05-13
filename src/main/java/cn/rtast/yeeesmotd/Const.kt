@@ -40,15 +40,3 @@ val DEFAULT_DESCRIPTIONS = mutableListOf(
     Config.Description("<#00ff00><bold>DangoTown 团子小镇 生电服务器欢迎你", "<yellow><bold>https://dgtmc.top")
 )
 
-//const val DEFAULT_DESCRIPTION = """[
-//  {
-//    "line1": "<yellow><bold>YeeeesMOTD",
-//    "line2": "<light_purple><bold>Powered by RTAkland: https://github.com/RTAkland"
-//  },
-//  {
-//    "line1": "<#00ff00><bold>DangoTown 团子小镇 生电服务器欢迎你",
-//    "line2": "<yellow><bold>https://dgtmc.top"
-//  }
-//]"""
-
-
