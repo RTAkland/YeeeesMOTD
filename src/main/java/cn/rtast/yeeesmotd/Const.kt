@@ -17,7 +17,7 @@
 
 package cn.rtast.yeeesmotd
 
-import cn.rtast.yeeesmotd.entity.Description
+import cn.rtast.yeeesmotd.entity.Config
 
 const val ROOT_PATH = "./plugins/YeeeesMotd/"
 
@@ -36,8 +36,8 @@ val BUILD_IN_DESCRIPTIONS = listOf(
 )
 
 val DEFAULT_DESCRIPTIONS = mutableListOf(
-    Description("<yellow><bold>YeeeesMOTD", "<light_purple><bold>Powered by RTAkland: https://github.com/RTAkland"),
-    Description("<#00ff00><bold>DangoTown 团子小镇 生电服务器欢迎你", "<yellow><bold>https://dgtmc.top")
+    Config.Description("<yellow><bold>YeeeesMOTD", "<light_purple><bold>Powered by RTAkland: https://github.com/RTAkland"),
+    Config.Description("<#00ff00><bold>DangoTown 团子小镇 生电服务器欢迎你", "<yellow><bold>https://dgtmc.top")
 )
 
 //const val DEFAULT_DESCRIPTION = """[
