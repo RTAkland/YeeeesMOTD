@@ -97,6 +97,31 @@
 > `rePingText`表示玩家ping服务器的时间和进入服务器的时间间隔过长的提示信息.  
 > `interval`表示ping服务器和进入服务器的最大间隔时间单位为 `秒`
 
+## Hitokoto一言
+
+> 此功能可以随机一言里的句子当作服务器描述信息, 你可以修改一言出现的`概率`(范围0 ~ 100)
+> 可以设置一言句子的`种类` 和 `字体颜色`, 下面是详细的配置文件:
+
+```json
+  // ...
+  "hitokoto": {
+    "enabled": false,
+    "color": "#00E5EE",
+    "type": "a",
+    "probability": 30
+  }
+  // ...
+```
+
+> 在上面的json文本中`hitokoto`根下的`enabled`表示是否开启此功能,默认关闭.
+> `color` 表示字体的颜色可以用RGB 16进制表示 ***请务必带上前面的 `#`***
+> `probability`表示一言当作MOTD概率默认为30%， 范围0 ~ 100 如果不在这个闭区间内则概率为0
+> `type` 表示一言的种类可选的种类具体见下图:
+
+![hitokototype.png](images%2Fhitokototype.png)
+
+> ***此图截取自: hitokoto[开发文档](https://developer.hitokoto.cn/sentence/)***
+
 ### MiniMessage
 
 > 这里会展示一些MiniMessage格式的用法
