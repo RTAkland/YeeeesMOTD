@@ -19,6 +19,8 @@ package cn.rtast.yeeesmotd
 
 import cn.rtast.yeeesmotd.entity.Config
 
+const val SCHEMA_VERSION = 1.0
+
 const val ROOT_PATH = "./plugins/YeeeesMotd/"
 
 const val DEFAULT_ICON = ""
@@ -29,6 +31,8 @@ const val RE_PING_TEXT = "Please ping the server again! / 请重新Ping一次服
 
 const val DEFAULT_PING_INTERVAL = 120
 
+const val HITOKOTO_SENTENCE_URL = "https://static.rtast.cn/hitokoto"
+
 val BUILD_IN_DESCRIPTIONS = listOf(
     "\$player <#A020F0>是吧? 还不赶快进来\n<#A020F0>不然有你好果子吃的!",
     "<bold><#EE82EE>这是 \$player <bold><#EE82EE>的专属服务器呀~",
@@ -36,8 +40,10 @@ val BUILD_IN_DESCRIPTIONS = listOf(
 )
 
 val DEFAULT_DESCRIPTIONS = mutableListOf(
-    Config.Description("<yellow><bold>YeeeesMOTD", "<light_purple><bold>Powered by RTAkland: https://github.com/RTAkland"),
+    Config.Description(
+        "<yellow><bold>YeeeesMOTD",
+        "<light_purple><bold>Powered by RTAkland: https://github.com/RTAkland"
+    ),
     Config.Description("<#00ff00><bold>DangoTown 团子小镇 生电服务器欢迎你", "<yellow><bold>https://dgtmc.top"),
     Config.Description("<#00FFFF><bold>团子小镇是一个历史悠久的服务器", "<#00FFFF><bold>服务器于2016年开服至今")
 )
-

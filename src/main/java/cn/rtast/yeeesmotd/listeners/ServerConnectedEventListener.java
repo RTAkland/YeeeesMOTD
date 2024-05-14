@@ -56,7 +56,7 @@ public class ServerConnectedEventListener {
             }
         }
 
-        if (configManager.getConfig().getPingPass().getEnabled()) {
+        if (configManager.pingPass().getEnabled()) {
             if (pingRecordManager.exists(ip)) {
                 pingRecordManager.removeRecord(ip);
             }

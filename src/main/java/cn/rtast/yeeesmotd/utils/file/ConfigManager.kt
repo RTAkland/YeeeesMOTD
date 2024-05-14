@@ -19,12 +19,16 @@ package cn.rtast.yeeesmotd.utils.file
 
 import cn.rtast.yeeesmotd.*
 import cn.rtast.yeeesmotd.entity.Config
+import cn.rtast.yeeesmotd.utils.nextBoolean
+import kotlin.random.Random
 
 class ConfigManager :
     IJsonManager<Config>(
         "config.json",
         Config(
+            SCHEMA_VERSION,
             Config.PingPass(false, PING_FIRST_TEXT, RE_PING_TEXT, DEFAULT_PING_INTERVAL),
+            Config.Hitokoto(false, "#00E5EE", "a", 30),  // Turquoise2
             -1,
             -1,
             true,
@@ -51,6 +55,13 @@ class ConfigManager :
         if (descriptions.isEmpty()) {
             return null
         }
+
+        val probability = this.hitokoto().probability
+        val showHitokoto = Random.nextBoolean(probability)
+        if (this.hitokoto().enabled && showHitokoto) {
+            val type = this.hitokoto().type
+            return YeeeesMOTDPlugin.hitokotoUtil.getSentence(type)
+        }
         return descriptions.random()
     }
 
@@ -60,5 +71,9 @@ class ConfigManager :
 
     fun pingPass(): Config.PingPass {
         return this.read().pingPass
+    }
+
+    fun hitokoto(): Config.Hitokoto {
+        return this.read().hitokoto
     }
 }

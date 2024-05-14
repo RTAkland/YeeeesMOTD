@@ -18,7 +18,10 @@
 package cn.rtast.yeeesmotd;
 
 import cn.rtast.yeeesmotd.command.YesMOTDCommand;
-import cn.rtast.yeeesmotd.listeners.*;
+import cn.rtast.yeeesmotd.listeners.LoginEventListener;
+import cn.rtast.yeeesmotd.listeners.ProxyPingEventListener;
+import cn.rtast.yeeesmotd.listeners.ServerConnectedEventListener;
+import cn.rtast.yeeesmotd.utils.HitokotoUtil;
 import cn.rtast.yeeesmotd.utils.file.ConfigManager;
 import cn.rtast.yeeesmotd.utils.file.FaviconManager;
 import cn.rtast.yeeesmotd.utils.file.PingRecordManager;
@@ -55,6 +58,7 @@ public class YeeeesMOTDPlugin {
     public static SkinHeadManager skinHeadManager = new SkinHeadManager();
     public static PingRecordManager pingRecordManager = new PingRecordManager();
     public static ConfigManager configManager = new ConfigManager();
+    public static HitokotoUtil hitokotoUtil = new HitokotoUtil();
 
     @Inject
     public YeeeesMOTDPlugin(Logger logger, ProxyServer proxy) {
