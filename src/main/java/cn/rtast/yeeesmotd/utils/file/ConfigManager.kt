@@ -59,8 +59,7 @@ class ConfigManager :
         val probability = this.hitokoto().probability
         val showHitokoto = Random.nextBoolean(probability)
         if (this.hitokoto().enabled && showHitokoto) {
-            val type = this.hitokoto().type
-            return YeeeesMOTDPlugin.hitokotoUtil.getSentence(type)
+            return YeeeesMOTDPlugin.hitokotoUtil.getSentence()
         }
         return descriptions.random()
     }

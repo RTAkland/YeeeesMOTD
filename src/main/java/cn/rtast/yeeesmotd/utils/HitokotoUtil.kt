@@ -27,7 +27,7 @@ import java.net.URI
 
 class HitokotoUtil {
 
-    private lateinit var files: MutableList<File>
+    private var sentenceFile: File
 
     private val hitokotoConfig = YeeeesMOTDPlugin.configManager.hitokoto()
 
@@ -40,6 +40,8 @@ class HitokotoUtil {
         if (!file.exists()) {
             this.downloadSentence(sentenceType, file)
         }
+
+        sentenceFile = file
     }
 
     private fun downloadSentence(type: String, file: File) {
@@ -48,11 +50,9 @@ class HitokotoUtil {
         println("Hitokoto语句下载完成")
     }
 
-    fun getSentence(type: String): Config.Description {
-        val sentenceType = SentenceType.entries.find { it.type == type }?.let { it } ?: SentenceType.ANIMATION
-        val sentenceFile = this.files[sentenceType.index]
+    fun getSentence(): Config.Description {
         val sentences =
-            YeeeesMOTDPlugin.gson.fromJson(sentenceFile.readText(), object : TypeToken<List<Config.Sentence>>() {})
+            YeeeesMOTDPlugin.gson.fromJson(this.sentenceFile.readText(), object : TypeToken<List<Config.Sentence>>() {})
         var randomSentence = sentences.random()
         while (true) {
             if (randomSentence.hitokoto.length > 25) {
