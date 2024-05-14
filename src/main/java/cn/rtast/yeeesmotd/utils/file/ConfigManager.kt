@@ -51,15 +51,16 @@ class ConfigManager :
 
     fun getRandomDescription(): Config.Description? {
         val config = this.read()
-        val descriptions = config.descriptions
-        if (descriptions.isEmpty()) {
-            return null
-        }
 
         val probability = this.hitokoto().probability
         val showHitokoto = Random.nextBoolean(probability)
         if (this.hitokoto().enabled && showHitokoto) {
             return YeeeesMOTDPlugin.hitokotoUtil.getSentence()
+        }
+
+        val descriptions = config.descriptions
+        if (descriptions.isEmpty()) {
+            return null
         }
         return descriptions.random()
     }
