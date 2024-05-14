@@ -113,9 +113,9 @@
   // ...
 ```
 
-> 在上面的json文本中`hitokoto`根下的`enabled`表示是否开启此功能,默认关闭.
-> `color` 表示字体的颜色可以用RGB 16进制表示 ***请务必带上前面的 `#`***
-> `probability`表示一言当作MOTD概率默认为30%， 范围0 ~ 100 如果不在这个闭区间内则概率为0
+> 在上面的json文本中`hitokoto`根下的`enabled`表示是否开启此功能,默认关闭.  
+> `color` 表示字体的颜色可以用RGB 16进制表示 ***请务必带上前面的 `#`***  
+> `probability`表示一言当作MOTD概率默认为30%， 范围0 ~ 100 如果不在这个闭区间内则概率为0  
 > `type` 表示一言的种类可选的种类具体见下图:
 
 ![hitokototype.png](images%2Fhitokototype.png)
