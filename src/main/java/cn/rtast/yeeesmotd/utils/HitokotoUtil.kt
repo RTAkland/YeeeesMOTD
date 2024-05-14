@@ -24,23 +24,10 @@ import cn.rtast.yeeesmotd.entity.Config
 import com.google.gson.reflect.TypeToken
 import java.io.File
 import java.net.URI
-import java.net.URL
-import java.util.logging.Level
-import java.util.logging.Logger
 
 class HitokotoUtil {
 
-    private val urls = mutableListOf<Map<Char, URL>>().also {
-        for (c in 'a'..'l') {
-            it.add(mapOf(c to URI("$HITOKOTO_SENTENCE_URL/$c.json").toURL()))
-        }
-    }
-
-    private val files = File(ROOT_PATH, "hitokoto").listFiles()
-
-    private val logger = Logger.getLogger(HitokotoUtil::class.java.name).also {
-        it.level = Level.FINE
-    }
+    private lateinit var files: MutableList<File>
 
     private val hitokotoConfig = YeeeesMOTDPlugin.configManager.hitokoto()
 
@@ -48,26 +35,22 @@ class HitokotoUtil {
         val hitokotoDir = File(ROOT_PATH, "hitokoto")
         hitokotoDir.mkdirs()
 
-        if (this.files == null || this.files.asList().isEmpty()) {
-            println("Hitokoto语句文件不存在或文件损毁, 正在重新下载文件")
-            this.downloadHitokotoSentence()
+        val sentenceType = YeeeesMOTDPlugin.configManager.hitokoto().type
+        val file = File(ROOT_PATH, "hitokoto/$sentenceType.json")
+        if (!file.exists()) {
+            this.downloadSentence(sentenceType, file)
         }
     }
 
-    private fun downloadHitokotoSentence() {
-        urls.forEach { url ->
-            url.forEach { (filename, fileUrl) ->
-                val file = File(ROOT_PATH, "hitokoto/$filename.json")
-                file.writeText(fileUrl.readText())
-                println("$filename.json 下载完成")
-            }
-        }
+    private fun downloadSentence(type: String, file: File) {
+        val content = URI("$HITOKOTO_SENTENCE_URL/$type.json").toURL().readText()
+        file.writeText(content)
         println("Hitokoto语句下载完成")
     }
 
     fun getSentence(type: String): Config.Description {
         val sentenceType = SentenceType.entries.find { it.type == type }?.let { it } ?: SentenceType.ANIMATION
-        val sentenceFile = this.files?.get(sentenceType.index)!!
+        val sentenceFile = this.files[sentenceType.index]
         val sentences =
             YeeeesMOTDPlugin.gson.fromJson(sentenceFile.readText(), object : TypeToken<List<Config.Sentence>>() {})
         var randomSentence = sentences.random()
