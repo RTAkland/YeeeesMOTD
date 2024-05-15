@@ -15,7 +15,6 @@
  */
 package cn.rtast.yeeesmotd
 
-import cn.rtast.yeeesmotd.command.YesMOTDCommand
 import cn.rtast.yeeesmotd.command.YesMOTDCommand.createCommand
 import cn.rtast.yeeesmotd.listeners.LoginEventListener
 import cn.rtast.yeeesmotd.listeners.ProxyPingEventListener
