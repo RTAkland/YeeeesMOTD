@@ -21,10 +21,10 @@ import cn.rtast.yeeesmotd.HITOKOTO_SENTENCE_URL
 import cn.rtast.yeeesmotd.ROOT_PATH
 import cn.rtast.yeeesmotd.YeeeesMOTDPlugin
 import cn.rtast.yeeesmotd.entity.Config
+import cn.rtast.yeeesmotd.entity.Sentence
 import com.google.gson.reflect.TypeToken
 import java.io.File
 import java.net.URI
-import javax.accessibility.AccessibleText.SENTENCE
 
 class HitokotoUtil {
 
@@ -55,7 +55,7 @@ class HitokotoUtil {
 
     fun getSentence(): Config.Description {
         val sentences =
-            YeeeesMOTDPlugin.gson.fromJson(this.sentenceFile.readText(), object : TypeToken<List<Config.Sentence>>() {})
+            YeeeesMOTDPlugin.gson.fromJson(this.sentenceFile.readText(), object : TypeToken<List<Sentence>>() {})
         val randomSentence = sentences.random()
         val spaces = " ".repeat(40)
         val description = Config.Description(

@@ -17,31 +17,7 @@
 
 package cn.rtast.yeeesmotd.entity
 
-data class Config(
-    val schemaVersion: Double,
-    val pingPass: PingPass,
-    val hitokoto: Hitokoto,
-    val maximumPlayer: Int,
-    val onlinePlayer: Int,
-    val clearSamplePlayer: Boolean,
-    val descriptions: MutableList<Description>,
-) {
-    data class PingPass(
-        val enabled: Boolean,
-        val pingFirstText: String,
-        val pingAgainText: String,
-        val interval: Int,
-    )
-
-    data class Description(
-        val line1: String,
-        val line2: String,
-    )
-
-    data class Hitokoto(
-        val enabled: Boolean,
-        val color: String,
-        val type: String,
-        val probability: Int,
-    )
-}
+data class Sentence(
+    val hitokoto: String,
+    val from: String,
+)
