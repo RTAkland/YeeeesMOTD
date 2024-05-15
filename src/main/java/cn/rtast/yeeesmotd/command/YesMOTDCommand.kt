@@ -19,44 +19,37 @@ package cn.rtast.yeeesmotd.command
 
 import cn.rtast.yeeesmotd.YeeeesMOTDPlugin
 import cn.rtast.yeeesmotd.listeners.LoginEventListener
-import com.velocitypowered.api.command.SimpleCommand
+import com.velocitypowered.api.command.BrigadierCommand
 import net.kyori.adventure.text.Component
 
-class YesMOTDCommand : SimpleCommand {
+object YesMOTDCommand {
 
-    override fun execute(invocation: SimpleCommand.Invocation) {
-        val source = invocation.source()
-
-        val args = invocation.arguments()
-
-        if (args.isEmpty()) {
-            source.sendMessage(
-                Component.text(
-                    "No valid args were found. Do /yesmotd reload to reload config or /yesmotd clear to clear player's head cache"
-                )
+    fun createCommand(): BrigadierCommand {
+        val node = BrigadierCommand.literalArgumentBuilder("yesmotd")
+            .requires { it.hasPermission("yesmotd.player") }
+            .then(
+                BrigadierCommand.literalArgumentBuilder("reload")
+                    .executes {
+                        YeeeesMOTDPlugin.faviconManager.setValidIcons()
+                        val config = YeeeesMOTDPlugin.configManager.getConfig()
+                        LoginEventListener.PING_FIRST_TEXT = config.pingPass.pingFirstText
+                        LoginEventListener.PING_AGAIN_TEXT = config.pingPass.pingAgainText
+                        it.source.sendMessage(Component.text("Successfully reloaded"))
+                        return@executes 1
+                    }
             )
-            return
-        }
-
-        if (args.first() == "reload") {
-            YeeeesMOTDPlugin.faviconManager.setValidIcons()
-            val config = YeeeesMOTDPlugin.configManager.getConfig()
-            LoginEventListener.PING_FIRST_TEXT = config.pingPass.pingFirstText
-            LoginEventListener.PING_AGAIN_TEXT = config.pingPass.pingAgainText
-            source.sendMessage(Component.text("Successfully reloaded"))
-            return
-        }
-
-        if (args.first() == "clear") {
-            YeeeesMOTDPlugin.skinHeadManager.clear()
-            source.sendMessage(Component.text("Successfully cleared"))
-            return
-        }
-
-        source.sendMessage(
-            Component.text(
-                "No valid args were found. Do /yesmotd reload to reload config or /yesmotd clear to clear player's head cache"
+            .then(
+                BrigadierCommand.literalArgumentBuilder("clear")
+                    .executes {
+                        YeeeesMOTDPlugin.skinHeadManager.clear()
+                        it.source.sendMessage(Component.text("Successfully cleared"))
+                        return@executes 1
+                    }
             )
-        )
+            .executes {
+                it.source.sendMessage(Component.text("No valid args found. Do /yesmotd clear or /yesmotd reload"))
+                return@executes 1
+            }
+        return BrigadierCommand(node.build())
     }
 }

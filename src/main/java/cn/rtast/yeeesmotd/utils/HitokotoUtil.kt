@@ -48,6 +48,7 @@ class HitokotoUtil {
 
     private fun downloadSentence(type: String, file: File) {
         println("正在下载Hitokoto语句: $type.json")
+        println("如果下载缓慢或者卡死, 你可以点击$HITOKOTO_SENTENCE_URL/$type.json 来手动下载,并将其放入hitokoto文件夹内")
         val content = URI("$HITOKOTO_SENTENCE_URL/$type.json").toURL().readText()
         file.writeText(content)
         println("Hitokoto语句下载完成")

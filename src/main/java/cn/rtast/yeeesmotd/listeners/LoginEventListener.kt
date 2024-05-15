@@ -22,6 +22,12 @@ import net.kyori.adventure.text.Component
 import java.time.Instant
 
 class LoginEventListener {
+
+    companion object {
+        var PING_FIRST_TEXT = YeeeesMOTDPlugin.configManager.pingPass().pingFirstText
+        var PING_AGAIN_TEXT = YeeeesMOTDPlugin.configManager.pingPass().pingAgainText
+    }
+
     @Subscribe
     fun onLogin(event: LoginEvent) {
         if (YeeeesMOTDPlugin.configManager.pingPass().enabled) {
@@ -38,10 +44,5 @@ class LoginEventListener {
                 event.player.disconnect(Component.text(PING_FIRST_TEXT))
             }
         }
-    }
-
-    companion object {
-        var PING_FIRST_TEXT: String = YeeeesMOTDPlugin.configManager.pingPass().pingFirstText
-        var PING_AGAIN_TEXT: String = YeeeesMOTDPlugin.configManager.pingPass().pingAgainText
     }
 }

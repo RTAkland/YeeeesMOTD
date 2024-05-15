@@ -23,15 +23,14 @@ import com.velocitypowered.api.util.GameProfile
 import java.util.*
 
 class ServerConnectedEventListener(private val proxy: ProxyServer) {
+
     private fun getTextureContent(profile: GameProfile): String {
-        val texturesBase64 = profile.properties.toString().split(",".toRegex()).dropLastWhile { it.isEmpty() }
-            .toTypedArray()[1].split("=".toRegex()).dropLastWhile { it.isEmpty() }.toTypedArray()[1].replace("'", "")
-        return String(Base64.getDecoder().decode(texturesBase64), UTF_8)
+        val texturesBase64 = profile.properties.toString().split(",")[1].split("=")[1].replace("'", "")
+        return String(Base64.getDecoder().decode(texturesBase64), Charsets.UTF_8)
     }
 
     @Subscribe
     fun onServerConnected(event: ServerConnectedEvent) {
-        println("connected")
         val ip = event.player.remoteAddress.hostName
         val name = event.player.username
         val uuid = event.player.uniqueId.toString()

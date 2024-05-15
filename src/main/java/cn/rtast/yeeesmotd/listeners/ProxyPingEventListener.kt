@@ -15,7 +15,12 @@
  */
 package cn.rtast.yeeesmotd.listeners
 
-import cn.rtast.yeeesmotd.YeeeesMOTDPlugin
+import cn.rtast.yeeesmotd.DEFAULT_ICON
+import cn.rtast.yeeesmotd.YeeeesMOTDPlugin.Companion.configManager
+import cn.rtast.yeeesmotd.YeeeesMOTDPlugin.Companion.faviconManager
+import cn.rtast.yeeesmotd.YeeeesMOTDPlugin.Companion.miniMessage
+import cn.rtast.yeeesmotd.YeeeesMOTDPlugin.Companion.pingRecordManager
+import cn.rtast.yeeesmotd.YeeeesMOTDPlugin.Companion.skinHeadManager
 import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.proxy.ProxyPingEvent
 import com.velocitypowered.api.util.Favicon
@@ -23,48 +28,45 @@ import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.Style
 import net.kyori.adventure.text.format.TextColor
 import java.io.ByteArrayInputStream
-import java.io.IOException
 import java.util.*
 import javax.imageio.ImageIO
 
 class ProxyPingEventListener {
+
     @Subscribe
-    @Throws(IOException::class)
     fun onProxyPingEvent(event: ProxyPingEvent) {
         val ip = event.connection.remoteAddress.hostName
 
-        var favicon: Favicon? = Favicon(DEFAULT_ICON)
+        var favicon = Favicon(DEFAULT_ICON)
         val showHead = Random().nextBoolean()
 
-        val randomDescription = YeeeesMOTDPlugin.configManager.getRandomDescription()
+        val randomDescription = configManager.getRandomDescription()
         var finalDescription = Component.text()
         if (randomDescription == null) {
             finalDescription.append(event.ping.descriptionComponent)
         } else {
             finalDescription
-                .append(YeeeesMOTDPlugin.miniMessage.deserialize(randomDescription.line1))
+                .append(miniMessage.deserialize(randomDescription.line1))
                 .append(Component.text("\n"))
-                .append(YeeeesMOTDPlugin.miniMessage.deserialize(randomDescription.line2))
+                .append(miniMessage.deserialize(randomDescription.line2))
         }
 
-        if (showHead && YeeeesMOTDPlugin.skinHeadManager.exists(ip)) {
-            val userData = YeeeesMOTDPlugin.skinHeadManager.getHead(ip)
+        if (showHead && skinHeadManager.exists(ip)) {
+            val userData = skinHeadManager.getHead(ip)
             val decodedHead = Base64.getDecoder().decode(userData.head)
             val bufferedHead = ImageIO.read(ByteArrayInputStream(decodedHead))
             favicon = Favicon.create(bufferedHead)
 
             val randomBuildInDesc =
-                YeeeesMOTDPlugin.configManager.getRandomBuildInDescription().split("\\\$player".toRegex())
-                    .dropLastWhile { it.isEmpty() }
-                    .toTypedArray()
+                configManager.getRandomBuildInDescription().split("\$player")
             finalDescription = Component.text()
-                .append(YeeeesMOTDPlugin.miniMessage.deserialize(randomBuildInDesc[0]))
+                .append(miniMessage.deserialize(randomBuildInDesc[0]))
                 .append(
                     Component.text(userData.name)
                         .style { style: Style.Builder -> style.color(TextColor.color(0xEE82EE)) })
-                .append(YeeeesMOTDPlugin.miniMessage.deserialize(randomBuildInDesc[randomBuildInDesc.size - 1]))
+                .append(miniMessage.deserialize(randomBuildInDesc[randomBuildInDesc.size - 1]))
         } else {
-            val randomIcon = YeeeesMOTDPlugin.faviconManager.getRandomIcon()
+            val randomIcon = faviconManager.getRandomIcon()
             if (randomIcon != null) {
                 favicon = Favicon.create(randomIcon)
             }
@@ -73,20 +75,20 @@ class ProxyPingEventListener {
         val pong = event.ping.asBuilder()
         pong.description(finalDescription.build())
             .favicon(favicon)
-            .onlinePlayers(YeeeesMOTDPlugin.configManager.getConfig().onlinePlayer)
-            .maximumPlayers(YeeeesMOTDPlugin.configManager.getConfig().maximumPlayer)
+            .onlinePlayers(configManager.getConfig().onlinePlayer)
+            .maximumPlayers(configManager.getConfig().maximumPlayer)
 
-        if (YeeeesMOTDPlugin.configManager.getConfig().clearSamplePlayer) {
+        if (configManager.getConfig().clearSamplePlayer) {
             pong.clearSamplePlayers()
         }
 
         event.ping = pong.build()
 
-        if (YeeeesMOTDPlugin.configManager.pingPass().enabled) {
-            if (YeeeesMOTDPlugin.pingRecordManager.exists(ip)) {
-                YeeeesMOTDPlugin.pingRecordManager.removeRecord(ip)
+        if (configManager.pingPass().enabled) {
+            if (pingRecordManager.exists(ip)) {
+                pingRecordManager.removeRecord(ip)
             }
-            YeeeesMOTDPlugin.pingRecordManager.addRecord(ip)
+            pingRecordManager.addRecord(ip)
         }
     }
 }

@@ -15,6 +15,7 @@
  */
 package cn.rtast.yeeesmotd
 
+import cn.rtast.yeeesmotd.command.YesMOTDCommand
 import cn.rtast.yeeesmotd.command.YesMOTDCommand.createCommand
 import cn.rtast.yeeesmotd.listeners.LoginEventListener
 import cn.rtast.yeeesmotd.listeners.ProxyPingEventListener
@@ -34,34 +35,34 @@ import net.kyori.adventure.text.minimessage.MiniMessage
 import org.slf4j.Logger
 
 class YeeeesMOTDPlugin @Inject constructor(private val logger: Logger, private val proxy: ProxyServer) {
+
+    companion object {
+        val gson: Gson = GsonBuilder().disableHtmlEscaping().create()
+        val miniMessage: MiniMessage = MiniMessage.miniMessage()
+
+        val faviconManager: FaviconManager = FaviconManager()
+        val skinHeadManager: SkinHeadManager = SkinHeadManager()
+        val pingRecordManager: PingRecordManager = PingRecordManager()
+        val configManager: ConfigManager = ConfigManager()
+        val hitokotoUtil: HitokotoUtil = HitokotoUtil()
+    }
+
     init {
         faviconManager.setValidIcons()
         logger.debug("YeeeesMOTD初始化完成")
     }
 
     @Subscribe
-    fun onProxyInitialization(event: ProxyInitializeEvent?) {
+    fun onProxyInitialization(event: ProxyInitializeEvent) {
         proxy.eventManager.register(this, ProxyPingEventListener())
         proxy.eventManager.register(this, ServerConnectedEventListener(proxy))
         proxy.eventManager.register(this, LoginEventListener())
 
         val commandManager = proxy.commandManager
         val commandMeta = commandManager.metaBuilder("yesmotd")
-            .aliases("reload", "clear")
             .plugin(this)
             .build()
         val yesMOTDCommand = createCommand()
         commandManager.register(commandMeta, yesMOTDCommand)
-    }
-
-    companion object {
-        var gson: Gson = GsonBuilder().disableHtmlEscaping().create()
-        var miniMessage: MiniMessage = MiniMessage.miniMessage()
-
-        var faviconManager: FaviconManager = FaviconManager()
-        var skinHeadManager: SkinHeadManager = SkinHeadManager()
-        var pingRecordManager: PingRecordManager = PingRecordManager()
-        var configManager: ConfigManager = ConfigManager()
-        var hitokotoUtil: HitokotoUtil = HitokotoUtil()
     }
 }

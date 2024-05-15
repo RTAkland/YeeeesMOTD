@@ -1,0 +1,12 @@
+{
+  "id": "yeeeesmotd",
+  "name": "YeeeesMOTD",
+  "version": "$version",
+  "description": "返回个性化的MOTD",
+  "url": "https://github.com/RTAkland/YeeeesMOTD",
+  "authors": [
+    "RTAkland"
+  ],
+  "dependencies": [],
+  "main": "cn.rtast.yeeesmotd.YeeeesMOTDPlugin"
+}
