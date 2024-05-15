@@ -25,7 +25,7 @@ dependencies {
 }
 
 base {
-    archivesName = project.name + ".velocity"
+    archivesName = project.name + ".velocity-" + pluginVersion
 }
 
 tasks.processResources {
