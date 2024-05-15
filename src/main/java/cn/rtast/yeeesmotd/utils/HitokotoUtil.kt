@@ -54,15 +54,7 @@ class HitokotoUtil {
     fun getSentence(): Config.Description {
         val sentences =
             YeeeesMOTDPlugin.gson.fromJson(this.sentenceFile.readText(), object : TypeToken<List<Config.Sentence>>() {})
-        var randomSentence = sentences.random()
-        while (true) {
-            if (randomSentence.hitokoto.length > 25) {
-                randomSentence = sentences.random()
-                continue
-            } else {
-                break
-            }
-        }
+        val randomSentence = sentences.random()
         val spaces = " ".repeat(40)
         val description = Config.Description(
             "<${hitokotoConfig.color}>${randomSentence.hitokoto}",
