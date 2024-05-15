@@ -24,6 +24,7 @@ import cn.rtast.yeeesmotd.entity.Config
 import com.google.gson.reflect.TypeToken
 import java.io.File
 import java.net.URI
+import javax.accessibility.AccessibleText.SENTENCE
 
 class HitokotoUtil {
 
@@ -35,7 +36,8 @@ class HitokotoUtil {
         val hitokotoDir = File(ROOT_PATH, "hitokoto")
         hitokotoDir.mkdirs()
 
-        val sentenceType = YeeeesMOTDPlugin.configManager.hitokoto().type
+        val type = YeeeesMOTDPlugin.configManager.hitokoto().type
+        val sentenceType = SentenceType.getType(type)?.type ?: "all"
         val file = File(ROOT_PATH, "hitokoto/$sentenceType.json")
         if (!file.exists()) {
             this.downloadSentence(sentenceType, file)
@@ -63,18 +65,30 @@ class HitokotoUtil {
         return description
     }
 
-    enum class SentenceType(val type: String, val index: Int) {
-        ANIMATION("a", 0),
-        COMICS("b", 1),
-        GAMES("c", 2),
-        LITERATURE("d", 3),
-        ORIGINAL("e", 4),
-        FROM_NETWORK("f", 5),
-        OTHER("g", 6),
-        FILM_AND_TELEVISION("h", 7),
-        POETRY("i", 8),
-        NETEASE_CLOUD_MUSIC("j", 9),
-        PHILOSOPHY("k", 10),
-        HUMOR("l", 11);
+    enum class SentenceType(val type: String) {
+        ALL("all"),
+        ANIMATION("a"),
+        COMICS("b"),
+        GAMES("c"),
+        LITERATURE("d"),
+        ORIGINAL("e"),
+        FROM_NETWORK("f"),
+        OTHER("g"),
+        FILM_AND_TELEVISION("h"),
+        POETRY("i"),
+        NETEASE_CLOUD_MUSIC("j"),
+        PHILOSOPHY("k"),
+        HUMOR("l");
+
+        companion object {
+            fun getType(value: String): SentenceType? {
+                for (i in entries) {
+                    if (i.type == value) {
+                        return i
+                    }
+                }
+                return null
+            }
+        }
     }
 }
