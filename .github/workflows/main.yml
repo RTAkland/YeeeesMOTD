@@ -9,7 +9,7 @@ jobs:
           - 17
         os:
           - ubuntu-latest
-        modules: [ 'platforms/velocity' ]
+        modules: [ 'velocity' ]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
