@@ -22,8 +22,6 @@ import cn.rtast.yeeeesmotd.listeners.ProxyPingEventListener
 import cn.rtast.yeeeesmotd.listeners.ServerConnectedEventListener
 import cn.rtast.yeeeesmotd.utils.file.*
 import cn.rtast.yeeeesmotd.command.YesMOTDCommand.createCommand
-import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import com.google.inject.Inject
 import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent
@@ -34,7 +32,6 @@ import org.slf4j.Logger
 class YeeeesMOTDPlugin @Inject constructor(private val logger: Logger, private val proxy: ProxyServer) {
 
     companion object {
-        val gson: Gson = GsonBuilder().disableHtmlEscaping().create()
         val miniMessage: MiniMessage = MiniMessage.miniMessage()
 
         val faviconManager: FaviconManager = FaviconManager()
