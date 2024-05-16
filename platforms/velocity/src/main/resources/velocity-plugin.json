@@ -8,5 +8,5 @@
     "RTAkland"
   ],
   "dependencies": [],
-  "main": "cn.rtast.yeeeesmotd.YeeeesMOTDPlugin"
+  "main": "cn.rtast.yeeeesmotd.velocity.YeeeesMOTDVelocityPlugin"
 }

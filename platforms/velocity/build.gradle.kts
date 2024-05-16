@@ -1,10 +1,13 @@
 plugins {
-    kotlin("jvm") version("1.9.24")
     id("xyz.jpenilla.run-velocity") version ("2.3.0")
 }
 
 val pluginVersion: String by project
 val velocityVersion: String by project
+
+base {
+    archivesName = rootProject.name + ".velocity"
+}
 
 repositories {
     maven {
@@ -20,10 +23,6 @@ dependencies {
 
     implementation(kotlin("stdlib"))
 
-}
-
-base {
-    archivesName = rootProject.name + ".velocity"
 }
 
 tasks.processResources {
