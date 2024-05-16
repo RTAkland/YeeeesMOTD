@@ -38,7 +38,7 @@ class YeeeesMOTDPlugin @Inject constructor(private val logger: Logger, private v
         val skinHeadManager: SkinHeadManager = SkinHeadManager()
         val pingRecordManager: PingRecordManager = PingRecordManager()
         val configManager: ConfigManager = ConfigManager()
-        val hitokotoUtil: HitokotoManager = HitokotoManager(configManager.hitokoto().type)
+        val hitokotoManager = HitokotoManager(configManager.hitokoto().type)
     }
 
     init {

@@ -18,8 +18,10 @@
 package cn.rtast.yeeeesmotd.velocity.listeners
 
 import cn.rtast.yeeeesmotd.DEFAULT_ICON
+import cn.rtast.yeeeesmotd.utils.nextBoolean
 import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.configManager
 import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.faviconManager
+import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.hitokotoManager
 import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.miniMessage
 import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.pingRecordManager
 import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.skinHeadManager
@@ -32,6 +34,7 @@ import net.kyori.adventure.text.format.TextColor
 import java.io.ByteArrayInputStream
 import java.util.*
 import javax.imageio.ImageIO
+import kotlin.random.Random
 
 class ProxyPingEventListener {
 
@@ -40,10 +43,11 @@ class ProxyPingEventListener {
         val ip = event.connection.remoteAddress.hostName
 
         var favicon = Favicon(DEFAULT_ICON)
-        val showHead = Random().nextBoolean()
+        val showHead = Random.nextBoolean()
 
         val randomDescription = configManager.getRandomDescription()
         var finalDescription = Component.text()
+
         if (randomDescription == null) {
             finalDescription.append(event.ping.descriptionComponent)
         } else {
@@ -52,6 +56,18 @@ class ProxyPingEventListener {
                 .append(Component.text("\n"))
                 .append(miniMessage.deserialize(randomDescription.line2))
         }
+
+        val p = configManager.hitokoto().probability
+        val showHitokoto = Random.nextBoolean(p)
+        if (configManager.hitokoto().enabled && showHitokoto) {
+            val color = configManager.hitokoto().color
+            val hitokoto = hitokotoManager.getSentence()
+            finalDescription = Component.text()
+                .append(miniMessage.deserialize("<$color>${hitokoto.line1}"))
+                .append(Component.text("\n"))
+                .append(miniMessage.deserialize("<$color>${hitokoto.line2}"))
+        }
+
 
         if (showHead && skinHeadManager.exists(ip)) {
             val userData = skinHeadManager.getHead(ip)

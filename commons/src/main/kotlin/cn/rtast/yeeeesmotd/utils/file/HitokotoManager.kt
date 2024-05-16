@@ -51,14 +51,14 @@ class HitokotoManager(type: String) {
         println("Hitokoto语句下载完成")
     }
 
-    fun getSentence(color: String): Config.Description {
+    fun getSentence(): Config.Description {
         val sentences =
             gson.fromJson(this.sentenceFile.readText(), object : TypeToken<List<Sentence>>() {})
         val randomSentence = sentences.random()
         val spaces = " ".repeat(40)
         val description = Config.Description(
-            "<${color}>${randomSentence.hitokoto}",
-            "<${color}>$spaces--《${randomSentence.from}》"
+            randomSentence.hitokoto,
+            "$spaces--《${randomSentence.from}》"
         )
         return description
     }
