@@ -18,6 +18,10 @@
 package cn.rtast.yeeeesmotd
 
 import cn.rtast.yeeeesmotd.entity.Config
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
+
+val gson: Gson = GsonBuilder().disableHtmlEscaping().create()
 
 const val SCHEMA_VERSION = 1.0
 

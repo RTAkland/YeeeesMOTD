@@ -19,8 +19,6 @@ package cn.rtast.yeeeesmotd.utils.file
 
 import cn.rtast.yeeeesmotd.*
 import cn.rtast.yeeeesmotd.entity.Config
-import cn.rtast.yeeeesmotd.utils.nextBoolean
-import kotlin.random.Random
 
 class ConfigManager :
     IJsonManager<Config>(
@@ -35,13 +33,14 @@ class ConfigManager :
             DEFAULT_DESCRIPTIONS
         )
     ) {
+
     private fun read(): Config {
         val str = this.file.readText()
-        return YeeeesMOTDPlugin.gson.fromJson(str, Config::class.java)
+        return gson.fromJson(str, Config::class.java)
     }
 
     private fun write(config: Config) {
-        val serData = YeeeesMOTDPlugin.gson.toJson(config)
+        val serData = gson.toJson(config)
         this.file.writeText(serData)
     }
 
@@ -51,12 +50,6 @@ class ConfigManager :
 
     fun getRandomDescription(): Config.Description? {
         val config = this.read()
-
-        val probability = this.hitokoto().probability
-        val showHitokoto = Random.nextBoolean(probability)
-        if (this.hitokoto().enabled && showHitokoto) {
-            return YeeeesMOTDPlugin.hitokotoUtil.getSentence()
-        }
 
         val descriptions = config.descriptions
         if (descriptions.isEmpty()) {

@@ -17,8 +17,8 @@
 
 package cn.rtast.yeeeesmotd.utils.file
 
-import cn.rtast.yeeeesmotd.YeeeesMOTDPlugin
 import cn.rtast.yeeeesmotd.entity.PingRecord
+import cn.rtast.yeeeesmotd.gson
 import com.google.gson.reflect.TypeToken
 import java.time.Instant
 
@@ -33,11 +33,11 @@ class PingRecordManager : IJsonManager<MutableList<PingRecord>>("pingRecord.json
     private fun read(): MutableList<PingRecord> {
         val str = this.file.readText()
         val type = object : TypeToken<MutableList<PingRecord>>() {}.type
-        return YeeeesMOTDPlugin.gson.fromJson(str, type)
+        return gson.fromJson(str, type)
     }
 
     private fun write(data: MutableList<PingRecord>) {
-        val serData = YeeeesMOTDPlugin.gson.toJson(data)
+        val serData = gson.toJson(data)
         this.file.writeText(serData)
     }
 

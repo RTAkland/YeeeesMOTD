@@ -18,7 +18,7 @@
 package cn.rtast.yeeeesmotd.utils.file
 
 import cn.rtast.yeeeesmotd.ROOT_PATH
-import cn.rtast.yeeeesmotd.YeeeesMOTDPlugin
+import cn.rtast.yeeeesmotd.gson
 import java.io.File
 
 open class IJsonManager<T>(filename: String, default: T) {
@@ -29,7 +29,7 @@ open class IJsonManager<T>(filename: String, default: T) {
         val configPath = File(ROOT_PATH)
         configPath.mkdirs()
         if (this.file.createNewFile()) {
-            val serDefault = YeeeesMOTDPlugin.gson.toJson(default)
+            val serDefault = gson.toJson(default)
             this.file.writeText(serDefault)
         }
     }

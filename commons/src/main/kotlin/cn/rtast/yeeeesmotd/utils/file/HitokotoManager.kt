@@ -15,28 +15,25 @@
  */
 
 
-package cn.rtast.yeeeesmotd.utils
+package cn.rtast.yeeeesmotd.utils.file
 
 import cn.rtast.yeeeesmotd.HITOKOTO_SENTENCE_URL
 import cn.rtast.yeeeesmotd.ROOT_PATH
-import cn.rtast.yeeeesmotd.YeeeesMOTDPlugin
 import cn.rtast.yeeeesmotd.entity.Config
 import cn.rtast.yeeeesmotd.entity.Sentence
+import cn.rtast.yeeeesmotd.gson
 import com.google.gson.reflect.TypeToken
 import java.io.File
 import java.net.URI
 
-class HitokotoUtil {
+class HitokotoManager(type: String) {
 
     private var sentenceFile: File
-
-    private val hitokotoConfig = YeeeesMOTDPlugin.configManager.hitokoto()
 
     init {
         val hitokotoDir = File(ROOT_PATH, "hitokoto")
         hitokotoDir.mkdirs()
 
-        val type = YeeeesMOTDPlugin.configManager.hitokoto().type
         val sentenceType = SentenceType.getType(type)?.type ?: "all"
         val file = File(ROOT_PATH, "hitokoto/$sentenceType.json")
         if (!file.exists()) {
@@ -54,14 +51,14 @@ class HitokotoUtil {
         println("Hitokoto语句下载完成")
     }
 
-    fun getSentence(): Config.Description {
+    fun getSentence(color: String): Config.Description {
         val sentences =
-            YeeeesMOTDPlugin.gson.fromJson(this.sentenceFile.readText(), object : TypeToken<List<Sentence>>() {})
+            gson.fromJson(this.sentenceFile.readText(), object : TypeToken<List<Sentence>>() {})
         val randomSentence = sentences.random()
         val spaces = " ".repeat(40)
         val description = Config.Description(
-            "<${hitokotoConfig.color}>${randomSentence.hitokoto}",
-            "<${hitokotoConfig.color}>$spaces--《${randomSentence.from}》"
+            "<${color}>${randomSentence.hitokoto}",
+            "<${color}>$spaces--《${randomSentence.from}》"
         )
         return description
     }

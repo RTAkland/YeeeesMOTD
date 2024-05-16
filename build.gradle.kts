@@ -1,66 +1,53 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 plugins {
+    id("java")
     kotlin("jvm") version ("1.9.24")
-    id("xyz.jpenilla.run-velocity") version ("2.3.0")
+    id("com.github.johnrengelman.shadow") version ("8.1.1")
 }
 
-val gsonVersion: String by project
-val kotlinVersion: String by project
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
 val pluginVersion: String by project
-val velocityVersion: String by project
 
-repositories {
-    mavenCentral()
-    maven {
-        name = "papermc"
-        url = uri("https://repo.papermc.io/repository/maven-public/")
+val subProjectWithoutKotlinRuntime = listOf(":velocity")
+
+subprojects {
+    group = "cn.rtast"
+    version = pluginVersion
+
+    apply {
+        plugin("java")
+        plugin("org.jetbrains.kotlin.jvm")
+        plugin("com.github.johnrengelman.shadow")
     }
-}
 
-dependencies {
-    compileOnly("com.velocitypowered:velocity-api:3.3.0-SNAPSHOT")
-    annotationProcessor("com.velocitypowered:velocity-api:3.3.0-SNAPSHOT")
-
-    implementation("com.google.code.gson:gson:${gsonVersion}")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:${kotlinVersion}")
-}
-
-base {
-    archivesName = project.name + ".velocity-" + pluginVersion
-}
-
-tasks.processResources {
-    val properties = mapOf(
-        "version" to pluginVersion,
-    )
-    inputs.properties(properties)
-    filesMatching("velocity-plugin.json") {
-        expand(properties)
+    tasks.build {
+        dependsOn(tasks.shadowJar)
     }
-}
 
-tasks.compileKotlin {
-    kotlinOptions.jvmTarget = "17"
-}
+    tasks.shadowJar {
+        exclude("com/velocitypowered/**")
+        exclude("com/google/gson/**")
+        exclude("org/jetbrains/**")
+        exclude("org/intellij/**")
+    }
 
-tasks.compileJava {
-    targetCompatibility = "17"
-    sourceCompatibility = "17"
-    options.encoding = "UTF-8"
-}
+    tasks.withType<KotlinCompile> {
+        kotlinOptions.jvmTarget = "17"
+    }
 
-tasks.runVelocity {
-    velocityVersion(velocityVersion)
+    tasks.withType<JavaCompile> {
+        options.encoding = "UTF-8"
+        sourceCompatibility = "17"
+        targetCompatibility = "17"
+    }
 }
 
 tasks.jar {
-    from("LICENSE")
-    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
-    val files = configurations.runtimeClasspath.get()
-        .exclude("com.velocitypowered")
-        .exclude("com.google.code.gson")
-        .filter { it.exists() }
-        .map { if (it.isDirectory) it else zipTree(it) }
-    from(files)
+    enabled = false
 }
-
-tasks.create("generateTemplates") {}

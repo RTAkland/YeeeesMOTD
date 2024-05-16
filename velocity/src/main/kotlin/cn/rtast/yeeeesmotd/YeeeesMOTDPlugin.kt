@@ -15,15 +15,11 @@
  */
 package cn.rtast.yeeeesmotd
 
-import cn.rtast.yeeeesmotd.command.YesMOTDCommand.createCommand
 import cn.rtast.yeeeesmotd.listeners.LoginEventListener
 import cn.rtast.yeeeesmotd.listeners.ProxyPingEventListener
 import cn.rtast.yeeeesmotd.listeners.ServerConnectedEventListener
-import cn.rtast.yeeeesmotd.utils.HitokotoUtil
-import cn.rtast.yeeeesmotd.utils.file.ConfigManager
-import cn.rtast.yeeeesmotd.utils.file.FaviconManager
-import cn.rtast.yeeeesmotd.utils.file.PingRecordManager
-import cn.rtast.yeeeesmotd.utils.file.SkinHeadManager
+import cn.rtast.yeeeesmotd.utils.file.*
+import cn.rtast.yeeeesmotd.command.YesMOTDCommand.createCommand
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.inject.Inject
@@ -43,7 +39,7 @@ class YeeeesMOTDPlugin @Inject constructor(private val logger: Logger, private v
         val skinHeadManager: SkinHeadManager = SkinHeadManager()
         val pingRecordManager: PingRecordManager = PingRecordManager()
         val configManager: ConfigManager = ConfigManager()
-        val hitokotoUtil: HitokotoUtil = HitokotoUtil()
+        val hitokotoUtil: HitokotoManager = HitokotoManager(configManager.hitokoto().type)
     }
 
     init {
