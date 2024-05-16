@@ -1,4 +1,4 @@
 rootProject.name = "YeeeesMOTD"
 
-include(":commons")
+include(":core")
 include(":platforms:velocity")
