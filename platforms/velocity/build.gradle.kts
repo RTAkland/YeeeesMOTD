@@ -1,7 +1,3 @@
-plugins {
-    id("xyz.jpenilla.run-velocity") version ("2.3.0")
-}
-
 val pluginVersion: String by project
 val velocityVersion: String by project
 
