@@ -1,3 +1,3 @@
 rootProject.name = "YeeeesMOTD"
 
-include("commons", "velocity")
+include(":commons", ":platforms:velocity")
