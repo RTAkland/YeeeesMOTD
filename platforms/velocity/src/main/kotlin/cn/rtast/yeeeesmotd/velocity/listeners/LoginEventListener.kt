@@ -15,9 +15,9 @@
  */
 
 
-package cn.rtast.yeeeesmotd.listeners
+package cn.rtast.yeeeesmotd.velocity.listeners
 
-import cn.rtast.yeeeesmotd.YeeeesMOTDPlugin
+import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin
 import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.connection.LoginEvent
 import net.kyori.adventure.text.Component
