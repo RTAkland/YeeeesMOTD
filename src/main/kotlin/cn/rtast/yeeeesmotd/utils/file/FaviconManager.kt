@@ -15,9 +15,9 @@
  */
 
 
-package cn.rtast.yeeesmotd.utils.file
+package cn.rtast.yeeeesmotd.utils.file
 
-import cn.rtast.yeeesmotd.ROOT_PATH
+import cn.rtast.yeeeesmotd.ROOT_PATH
 import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO

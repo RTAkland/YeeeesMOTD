@@ -13,14 +13,14 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package cn.rtast.yeeesmotd.listeners
+package cn.rtast.yeeeesmotd.listeners
 
-import cn.rtast.yeeesmotd.DEFAULT_ICON
-import cn.rtast.yeeesmotd.YeeeesMOTDPlugin.Companion.configManager
-import cn.rtast.yeeesmotd.YeeeesMOTDPlugin.Companion.faviconManager
-import cn.rtast.yeeesmotd.YeeeesMOTDPlugin.Companion.miniMessage
-import cn.rtast.yeeesmotd.YeeeesMOTDPlugin.Companion.pingRecordManager
-import cn.rtast.yeeesmotd.YeeeesMOTDPlugin.Companion.skinHeadManager
+import cn.rtast.yeeeesmotd.DEFAULT_ICON
+import cn.rtast.yeeeesmotd.YeeeesMOTDPlugin.Companion.configManager
+import cn.rtast.yeeeesmotd.YeeeesMOTDPlugin.Companion.faviconManager
+import cn.rtast.yeeeesmotd.YeeeesMOTDPlugin.Companion.miniMessage
+import cn.rtast.yeeeesmotd.YeeeesMOTDPlugin.Companion.pingRecordManager
+import cn.rtast.yeeeesmotd.YeeeesMOTDPlugin.Companion.skinHeadManager
 import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.proxy.ProxyPingEvent
 import com.velocitypowered.api.util.Favicon

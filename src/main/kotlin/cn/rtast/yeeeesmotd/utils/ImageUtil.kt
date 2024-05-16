@@ -15,7 +15,7 @@
  */
 
 
-package cn.rtast.yeeesmotd.utils
+package cn.rtast.yeeeesmotd.utils
 
 import java.awt.image.BufferedImage
 

@@ -15,13 +15,13 @@
  */
 
 
-package cn.rtast.yeeesmotd.utils
+package cn.rtast.yeeeesmotd.utils
 
-import cn.rtast.yeeesmotd.HITOKOTO_SENTENCE_URL
-import cn.rtast.yeeesmotd.ROOT_PATH
-import cn.rtast.yeeesmotd.YeeeesMOTDPlugin
-import cn.rtast.yeeesmotd.entity.Config
-import cn.rtast.yeeesmotd.entity.Sentence
+import cn.rtast.yeeeesmotd.HITOKOTO_SENTENCE_URL
+import cn.rtast.yeeeesmotd.ROOT_PATH
+import cn.rtast.yeeeesmotd.YeeeesMOTDPlugin
+import cn.rtast.yeeeesmotd.entity.Config
+import cn.rtast.yeeeesmotd.entity.Sentence
 import com.google.gson.reflect.TypeToken
 import java.io.File
 import java.net.URI

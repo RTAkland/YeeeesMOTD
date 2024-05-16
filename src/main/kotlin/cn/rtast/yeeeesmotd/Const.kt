@@ -15,9 +15,9 @@
  */
 
 
-package cn.rtast.yeeesmotd
+package cn.rtast.yeeeesmotd
 
-import cn.rtast.yeeesmotd.entity.Config
+import cn.rtast.yeeeesmotd.entity.Config
 
 const val SCHEMA_VERSION = 1.0
 

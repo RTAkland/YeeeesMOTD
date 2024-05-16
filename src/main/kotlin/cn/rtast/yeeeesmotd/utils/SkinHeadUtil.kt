@@ -15,10 +15,10 @@
  */
 
 
-package cn.rtast.yeeesmotd.utils
+package cn.rtast.yeeeesmotd.utils
 
-import cn.rtast.yeeesmotd.YeeeesMOTDPlugin
-import cn.rtast.yeeesmotd.entity.DecodedSkin
+import cn.rtast.yeeeesmotd.YeeeesMOTDPlugin
+import cn.rtast.yeeeesmotd.entity.DecodedSkin
 import java.awt.AlphaComposite
 import java.awt.image.BufferedImage
 import java.net.URI

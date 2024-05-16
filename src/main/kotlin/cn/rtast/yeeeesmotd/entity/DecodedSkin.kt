@@ -15,15 +15,19 @@
  */
 
 
-package cn.rtast.yeeesmotd.utils
+package cn.rtast.yeeeesmotd.entity
 
-import kotlin.random.Random
+import com.google.gson.annotations.SerializedName
 
+data class DecodedSkin(
+    val textures: Texture,
+) {
+    data class Texture(
+        @SerializedName("SKIN")
+        val skin: SKIN,
+    )
 
-fun Random.nextBoolean(p: Int): Boolean {
-    if (p !in 0..100) {
-        return false
-    }
-    val rnd = Random.nextInt(0, 100) < p
-    return rnd
+    data class SKIN(
+        val url: String,
+    )
 }

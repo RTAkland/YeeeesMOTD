@@ -15,10 +15,10 @@
  */
 
 
-package cn.rtast.yeeesmotd.command
+package cn.rtast.yeeeesmotd.command
 
-import cn.rtast.yeeesmotd.YeeeesMOTDPlugin
-import cn.rtast.yeeesmotd.listeners.LoginEventListener
+import cn.rtast.yeeeesmotd.YeeeesMOTDPlugin
+import cn.rtast.yeeeesmotd.listeners.LoginEventListener
 import com.velocitypowered.api.command.BrigadierCommand
 import net.kyori.adventure.text.Component
 

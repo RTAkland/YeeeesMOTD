@@ -15,22 +15,9 @@
  */
 
 
-package cn.rtast.yeeesmotd.utils.file
+package cn.rtast.yeeeesmotd.entity
 
-import cn.rtast.yeeesmotd.ROOT_PATH
-import cn.rtast.yeeesmotd.YeeeesMOTDPlugin
-import java.io.File
-
-open class IJsonManager<T>(filename: String, default: T) {
-
-    protected val file = File(ROOT_PATH, filename)
-
-    init {
-        val configPath = File(ROOT_PATH)
-        configPath.mkdirs()
-        if (this.file.createNewFile()) {
-            val serDefault = YeeeesMOTDPlugin.gson.toJson(default)
-            this.file.writeText(serDefault)
-        }
-    }
-}
+data class Sentence(
+    val hitokoto: String,
+    val from: String,
+)

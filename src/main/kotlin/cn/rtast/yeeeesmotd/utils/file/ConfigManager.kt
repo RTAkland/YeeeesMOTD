@@ -15,11 +15,11 @@
  */
 
 
-package cn.rtast.yeeesmotd.utils.file
+package cn.rtast.yeeeesmotd.utils.file
 
-import cn.rtast.yeeesmotd.*
-import cn.rtast.yeeesmotd.entity.Config
-import cn.rtast.yeeesmotd.utils.nextBoolean
+import cn.rtast.yeeeesmotd.*
+import cn.rtast.yeeeesmotd.entity.Config
+import cn.rtast.yeeeesmotd.utils.nextBoolean
 import kotlin.random.Random
 
 class ConfigManager :

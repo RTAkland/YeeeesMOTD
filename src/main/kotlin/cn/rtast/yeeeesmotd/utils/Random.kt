@@ -15,9 +15,15 @@
  */
 
 
-package cn.rtast.yeeesmotd.entity
+package cn.rtast.yeeeesmotd.utils
 
-data class PingRecord(
-    val ip: String,
-    val timestamp: Long,
-)
+import kotlin.random.Random
+
+
+fun Random.nextBoolean(p: Int): Boolean {
+    if (p !in 0..100) {
+        return false
+    }
+    val rnd = Random.nextInt(0, 100) < p
+    return rnd
+}

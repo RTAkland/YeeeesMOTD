@@ -13,9 +13,9 @@
  *    See the License for the specific language governing permissions and
  *    limitations under the License.
  */
-package cn.rtast.yeeesmotd.listeners
+package cn.rtast.yeeeesmotd.listeners
 
-import cn.rtast.yeeesmotd.YeeeesMOTDPlugin
+import cn.rtast.yeeeesmotd.YeeeesMOTDPlugin
 import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.connection.LoginEvent
 import net.kyori.adventure.text.Component

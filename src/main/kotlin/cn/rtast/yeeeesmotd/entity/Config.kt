@@ -15,7 +15,7 @@
  */
 
 
-package cn.rtast.yeeesmotd.entity
+package cn.rtast.yeeeesmotd.entity
 
 data class Config(
     val schemaVersion: Double,

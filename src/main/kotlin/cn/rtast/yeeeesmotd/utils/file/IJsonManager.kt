@@ -15,19 +15,22 @@
  */
 
 
-package cn.rtast.yeeesmotd.entity
+package cn.rtast.yeeeesmotd.utils.file
 
-import com.google.gson.annotations.SerializedName
+import cn.rtast.yeeeesmotd.ROOT_PATH
+import cn.rtast.yeeeesmotd.YeeeesMOTDPlugin
+import java.io.File
 
-data class DecodedSkin(
-    val textures: Texture,
-) {
-    data class Texture(
-        @SerializedName("SKIN")
-        val skin: SKIN,
-    )
+open class IJsonManager<T>(filename: String, default: T) {
 
-    data class SKIN(
-        val url: String,
-    )
+    protected val file = File(ROOT_PATH, filename)
+
+    init {
+        val configPath = File(ROOT_PATH)
+        configPath.mkdirs()
+        if (this.file.createNewFile()) {
+            val serDefault = YeeeesMOTDPlugin.gson.toJson(default)
+            this.file.writeText(serDefault)
+        }
+    }
 }

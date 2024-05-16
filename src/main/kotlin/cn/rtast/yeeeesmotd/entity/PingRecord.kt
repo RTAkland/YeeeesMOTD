@@ -15,9 +15,9 @@
  */
 
 
-package cn.rtast.yeeesmotd.entity
+package cn.rtast.yeeeesmotd.entity
 
-data class Sentence(
-    val hitokoto: String,
-    val from: String,
+data class PingRecord(
+    val ip: String,
+    val timestamp: Long,
 )
