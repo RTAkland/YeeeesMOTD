@@ -9,6 +9,7 @@ jobs:
           - 17
         os:
           - ubuntu-latest
+        modules: [ 'platforms/velocity' ]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
@@ -23,8 +24,14 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build
         run: ./gradlew build
+      - name: Collect JARs
+        run: |
+          mkdir -p dist/jars
+          for module in ${{ matrix.module }}; do
+              cp platforms/$module/build/libs/*.jar dist/jars/
+          done
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
           name: YeeeesMOTD
-          path: build/libs/*.jar
+          path: dist/jars/*-all.jar
