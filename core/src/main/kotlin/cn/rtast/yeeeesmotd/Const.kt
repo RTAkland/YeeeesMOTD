@@ -27,8 +27,6 @@ const val SCHEMA_VERSION = 1.0
 
 const val ROOT_PATH = "./plugins/YeeeesMotd/"
 
-const val DEFAULT_ICON = ""
-
 const val PING_FIRST_TEXT = "Please ping the server first! / 请先在服务器列表Ping一次服务器"
 
 const val RE_PING_TEXT = "Please ping the server again! / 请重新Ping一次服务器"

@@ -17,8 +17,8 @@
 
 package cn.rtast.yeeeesmotd.velocity.listeners
 
-import cn.rtast.yeeeesmotd.DEFAULT_ICON
 import cn.rtast.yeeeesmotd.utils.nextBoolean
+import cn.rtast.yeeeesmotd.velocity.DEFAULT_ICON
 import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.configManager
 import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.faviconManager
 import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.hitokotoManager

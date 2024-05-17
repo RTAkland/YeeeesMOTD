@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
     id("java")
     kotlin("jvm") version ("1.9.24")
@@ -13,6 +11,7 @@ allprojects {
 }
 
 val pluginVersion: String by project
+val javaVersion: String by project
 
 val subProjectWithoutKotlinRuntime = listOf(":velocity")
 
@@ -37,14 +36,18 @@ subprojects {
         exclude("org/intellij/**")
     }
 
-    tasks.withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = "17"
+    tasks.compileKotlin {
+        kotlinOptions.jvmTarget = javaVersion
     }
 
-    tasks.withType<JavaCompile> {
+    tasks.compileJava {
         options.encoding = "UTF-8"
-        sourceCompatibility = "17"
-        targetCompatibility = "17"
+        sourceCompatibility = javaVersion
+        targetCompatibility = javaVersion
+    }
+
+    java {
+        toolchain.languageVersion.set(JavaLanguageVersion.of(javaVersion))
     }
 }
 

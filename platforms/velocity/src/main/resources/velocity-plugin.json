@@ -2,7 +2,7 @@
   "id": "yeeeesmotd",
   "name": "YeeeesMOTD",
   "version": "$version",
-  "description": "返回个性化的MOTD",
+  "description": "$description",
   "url": "https://github.com/RTAkland/YeeeesMOTD",
   "authors": [
     "RTAkland"
