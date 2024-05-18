@@ -19,7 +19,6 @@
 > It can personalize your server information, including: 'IP fingerprint', 'random MOTD description information', 'false
 > number of online players',' false maximum number of players', 'random server icon', * anti pressure testing*
 
-> This project is a [` Velocity `]（ https://velocitypowered.com/ ）Plugins,
 > Can be found in [` Releases `]（ https://github.com/RTAkland/YeeeesMOTD/releases/ ）Download the plugin and put it in
 > the plugins folder to use it
 
@@ -132,9 +131,8 @@
 
 # Precautions
 
-* This plugin only works properly in 'Velocity'
 * Can only be used on servers with genuine verification enabled. Offline servers cannot be used due to differences in player UUID calculation methods compared to genuine ones
-*This plugin only works on servers with public IP addresses, and cannot be used if using FRP mapping technology
+* This plugin only works on servers with public IP addresses, and cannot be used if using FRP mapping technology
 
 # Open source
 

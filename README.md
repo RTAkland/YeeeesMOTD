@@ -20,8 +20,7 @@
 
 # 使用
 
-> 本项目是一个[`Velocity`](https://velocitypowered.com/)插件,
-> 可以在[`Releases`](https://github.com/RTAkland/YeeeesMOTD/releases/)中下载插件, 将插件放入plugins文件夹内即可使用
+> 在[`Releases`](https://github.com/RTAkland/YeeeesMOTD/releases/)中下载插件, 将插件放入plugins文件夹内即可使用
 
 # 使用
 
@@ -159,7 +158,6 @@
 
 # 注意事项
 
-* 此插件仅在`Velocity`可以正常工作.
 * 仅能在开启了正版验证的服务器使用,离线服务器因玩家UUID计算方式和正版有区别所以无法使用
 * 此插件仅在有公网IP的服务器生效, 如果使用的是FRP映射技术则无法使用
 
