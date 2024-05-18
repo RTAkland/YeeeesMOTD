@@ -6,6 +6,10 @@ val pluginVersion: String by project
 val paperVersion: String by project
 val minecraftVersion: String by project
 
+base {
+    archivesName = rootProject.name + ".bukkit+$minecraftVersion"
+}
+
 group = "cn.rtast"
 version = pluginVersion
 
