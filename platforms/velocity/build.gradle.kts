@@ -4,7 +4,6 @@ plugins {
 
 val pluginVersion: String by project
 val velocityVersion: String by project
-val description: String by project
 
 base {
     archivesName = rootProject.name + ".velocity"
@@ -29,7 +28,7 @@ dependencies {
 tasks.processResources {
     val properties = mapOf(
         "version" to pluginVersion,
-        "description" to description
+        "description" to "返回个性化的MOTD"
     )
     inputs.properties(properties)
     filesMatching("velocity-plugin.json") {
@@ -42,4 +41,3 @@ tasks.runVelocity {
 }
 
 tasks.create("generateTemplates") {}
-

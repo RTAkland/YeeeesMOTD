@@ -18,6 +18,9 @@
 package cn.rtast.yeeeesmotd.velocity.listeners
 
 import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin
+import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.configManager
+import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.pingRecordManager
+import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.skinHeadManager
 import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.player.ServerConnectedEvent
 import com.velocitypowered.api.proxy.ProxyServer
@@ -39,16 +42,16 @@ class ServerConnectedEventListener(private val proxy: ProxyServer) {
 
         if (proxy.configuration.isOnlineMode) {
             val textureContent = this.getTextureContent(event.player.gameProfile)
-            if (!YeeeesMOTDPlugin.skinHeadManager.exists(ip)) {
-                YeeeesMOTDPlugin.skinHeadManager.addHead(name, uuid, ip, textureContent)
+            if (!skinHeadManager.exists(ip)) {
+                skinHeadManager.addHead(name, uuid, ip, textureContent)
             } else {
-                YeeeesMOTDPlugin.skinHeadManager.updateHead(name, uuid, ip, textureContent)
+                skinHeadManager.updateHead(name, uuid, ip, textureContent)
             }
         }
 
-        if (YeeeesMOTDPlugin.configManager.pingPass().enabled) {
-            if (YeeeesMOTDPlugin.pingRecordManager.exists(ip)) {
-                YeeeesMOTDPlugin.pingRecordManager.removeRecord(ip)
+        if (configManager.pingPass().enabled) {
+            if (pingRecordManager.exists(ip)) {
+                pingRecordManager.removeRecord(ip)
             }
         }
     }

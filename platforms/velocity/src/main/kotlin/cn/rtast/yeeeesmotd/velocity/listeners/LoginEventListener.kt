@@ -17,7 +17,8 @@
 
 package cn.rtast.yeeeesmotd.velocity.listeners
 
-import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin
+import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.configManager
+import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.pingRecordManager
 import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.connection.LoginEvent
 import net.kyori.adventure.text.Component
@@ -26,21 +27,21 @@ import java.time.Instant
 class LoginEventListener {
 
     companion object {
-        var PING_FIRST_TEXT = YeeeesMOTDPlugin.configManager.pingPass().pingFirstText
-        var PING_AGAIN_TEXT = YeeeesMOTDPlugin.configManager.pingPass().pingAgainText
+        var PING_FIRST_TEXT = configManager.pingPass().pingFirstText
+        var PING_AGAIN_TEXT = configManager.pingPass().pingAgainText
     }
 
     @Subscribe
     fun onLogin(event: LoginEvent) {
-        if (YeeeesMOTDPlugin.configManager.pingPass().enabled) {
+        if (configManager.pingPass().enabled) {
             val ip = event.player.remoteAddress.hostName
-            if (YeeeesMOTDPlugin.pingRecordManager.exists(ip)) {
-                val record = YeeeesMOTDPlugin.pingRecordManager.getRecord(ip)
+            if (pingRecordManager.exists(ip)) {
+                val record = pingRecordManager.getRecord(ip)
                 val currentTimestamp = Instant.now().epochSecond
-                val interval = YeeeesMOTDPlugin.configManager.pingPass().interval
+                val interval = configManager.pingPass().interval
                 if (currentTimestamp - record.timestamp > interval) {
                     event.player.disconnect(Component.text(PING_AGAIN_TEXT))
-                    YeeeesMOTDPlugin.pingRecordManager.removeRecord(ip)
+                    pingRecordManager.removeRecord(ip)
                 }
             } else {
                 event.player.disconnect(Component.text(PING_FIRST_TEXT))

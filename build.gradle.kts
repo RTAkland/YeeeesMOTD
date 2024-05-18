@@ -11,9 +11,6 @@ allprojects {
 }
 
 val pluginVersion: String by project
-val javaVersion: String by project
-
-val subProjectWithoutKotlinRuntime = listOf(":velocity")
 
 subprojects {
     group = "cn.rtast"
@@ -36,18 +33,8 @@ subprojects {
         exclude("org/intellij/**")
     }
 
-    tasks.compileKotlin {
-        kotlinOptions.jvmTarget = javaVersion
-    }
-
-    tasks.compileJava {
-        options.encoding = "UTF-8"
-        sourceCompatibility = javaVersion
-        targetCompatibility = javaVersion
-    }
-
-    java {
-        toolchain.languageVersion.set(JavaLanguageVersion.of(javaVersion))
+    tasks.build {
+        dependsOn(tasks.shadowJar)
     }
 }
 

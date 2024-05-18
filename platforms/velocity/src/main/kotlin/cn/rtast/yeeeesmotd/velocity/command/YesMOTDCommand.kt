@@ -17,7 +17,9 @@
 
 package cn.rtast.yeeeesmotd.velocity.command
 
-import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin
+import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.configManager
+import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.faviconManager
+import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.skinHeadManager
 import cn.rtast.yeeeesmotd.velocity.listeners.LoginEventListener
 import com.velocitypowered.api.command.BrigadierCommand
 import net.kyori.adventure.text.Component
@@ -30,8 +32,8 @@ object YesMOTDCommand {
             .then(
                 BrigadierCommand.literalArgumentBuilder("reload")
                     .executes {
-                        YeeeesMOTDPlugin.faviconManager.setValidIcons()
-                        val config = YeeeesMOTDPlugin.configManager.getConfig()
+                        faviconManager.setValidIcons()
+                        val config = configManager.getConfig()
                         LoginEventListener.PING_FIRST_TEXT = config.pingPass.pingFirstText
                         LoginEventListener.PING_AGAIN_TEXT = config.pingPass.pingAgainText
                         it.source.sendMessage(Component.text("Successfully reloaded"))
@@ -41,7 +43,7 @@ object YesMOTDCommand {
             .then(
                 BrigadierCommand.literalArgumentBuilder("clear")
                     .executes {
-                        YeeeesMOTDPlugin.skinHeadManager.clear()
+                        skinHeadManager.clear()
                         it.source.sendMessage(Component.text("Successfully cleared"))
                         return@executes 1
                     }
