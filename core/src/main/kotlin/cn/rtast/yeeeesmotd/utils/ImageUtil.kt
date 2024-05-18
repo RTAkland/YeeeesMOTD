@@ -18,6 +18,8 @@
 package cn.rtast.yeeeesmotd.utils
 
 import java.awt.image.BufferedImage
+import java.io.ByteArrayInputStream
+import javax.imageio.ImageIO
 
 fun isFullyTransparent(image: BufferedImage): Boolean {
     val width = image.width
@@ -41,4 +43,10 @@ fun zoomTo64(image: BufferedImage): BufferedImage {
     graphics2d.drawImage(image, 0, 0, newWidth, newHeight, null)
     graphics2d.dispose()
     return scaledImage
+}
+
+fun byteArrayToBufferedImage(byteArray: ByteArray): BufferedImage {
+    ByteArrayInputStream(byteArray).use { inputStream ->
+        return ImageIO.read(inputStream)
+    }
 }
