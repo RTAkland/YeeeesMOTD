@@ -9,20 +9,10 @@ base {
     archivesName = rootProject.name + ".velocity"
 }
 
-repositories {
-    maven {
-        name = "PaperMc"
-        setUrl("https://repo.papermc.io/repository/maven-public/")
-    }
-}
-
 dependencies {
     api(project(":core"))
     compileOnly("com.velocitypowered:velocity-api:3.3.0-SNAPSHOT")
     annotationProcessor("com.velocitypowered:velocity-api:3.3.0-SNAPSHOT")
-
-    implementation(kotlin("stdlib"))
-
 }
 
 tasks.processResources {
