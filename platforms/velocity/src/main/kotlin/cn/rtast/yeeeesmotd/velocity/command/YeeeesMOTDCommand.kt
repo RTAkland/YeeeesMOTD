@@ -17,10 +17,10 @@
 
 package cn.rtast.yeeeesmotd.velocity.command
 
-import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.configManager
-import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.faviconManager
-import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.skinHeadManager
-import cn.rtast.yeeeesmotd.velocity.listeners.LoginEventListener
+import cn.rtast.yeeeesmotd.IYeeeesMOTD
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.configManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.faviconManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import com.velocitypowered.api.command.BrigadierCommand
 import net.kyori.adventure.text.Component
 
@@ -34,8 +34,8 @@ object YeeeesMOTDCommand {
                     .executes {
                         faviconManager.setValidIcons()
                         val config = configManager.getConfig()
-                        LoginEventListener.PING_FIRST_TEXT = config.pingPass.pingFirstText
-                        LoginEventListener.PING_AGAIN_TEXT = config.pingPass.pingAgainText
+                        IYeeeesMOTD.PING_FIRST_TEXT = config.pingPass.pingFirstText
+                        IYeeeesMOTD.PING_AGAIN_TEXT = config.pingPass.pingAgainText
                         it.source.sendMessage(Component.text("Successfully reloaded"))
                         return@executes 1
                     }

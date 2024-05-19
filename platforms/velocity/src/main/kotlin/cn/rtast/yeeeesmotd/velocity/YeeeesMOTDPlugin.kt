@@ -17,10 +17,11 @@
 
 package cn.rtast.yeeeesmotd.velocity
 
+import cn.rtast.yeeeesmotd.IYeeeesMOTD
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.faviconManager
+import cn.rtast.yeeeesmotd.velocity.command.YeeeesMOTDCommand.createCommand
 import cn.rtast.yeeeesmotd.velocity.listeners.LoginEventListener
 import cn.rtast.yeeeesmotd.velocity.listeners.ProxyPingEventListener
-import cn.rtast.yeeeesmotd.utils.file.*
-import cn.rtast.yeeeesmotd.velocity.command.YeeeesMOTDCommand.createCommand
 import com.google.inject.Inject
 import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent
@@ -28,16 +29,10 @@ import com.velocitypowered.api.proxy.ProxyServer
 import net.kyori.adventure.text.minimessage.MiniMessage
 import org.slf4j.Logger
 
-class YeeeesMOTDPlugin @Inject constructor(logger: Logger, private val proxy: ProxyServer) {
+class YeeeesMOTDPlugin @Inject constructor(logger: Logger, private val proxy: ProxyServer) : IYeeeesMOTD {
 
     companion object {
         val miniMessage: MiniMessage = MiniMessage.miniMessage()
-
-        val faviconManager: FaviconManager = FaviconManager()
-        val skinHeadManager: SkinHeadManager = SkinHeadManager()
-        val pingRecordManager: PingRecordManager = PingRecordManager()
-        val configManager: ConfigManager = ConfigManager()
-        val hitokotoManager = HitokotoManager(configManager.hitokoto().type)
     }
 
     init {

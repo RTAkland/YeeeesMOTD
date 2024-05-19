@@ -17,25 +17,19 @@
 
 package cn.rtast.yeeeesmotd.spigot
 
+import cn.rtast.yeeeesmotd.IYeeeesMOTD
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.faviconManager
 import cn.rtast.yeeeesmotd.spigot.command.YeeeesMOTDCommand
 import cn.rtast.yeeeesmotd.spigot.listeners.PlayerJoinEventListener
 import cn.rtast.yeeeesmotd.spigot.listeners.ServerListPingEventListener
-import cn.rtast.yeeeesmotd.utils.file.*
 import org.bukkit.plugin.java.JavaPlugin
 
-class YeeeesMOTDPlugin : JavaPlugin() {
-
-    companion object {
-        val faviconManager: FaviconManager = FaviconManager()
-        val skinHeadManager: SkinHeadManager = SkinHeadManager()
-        val pingRecordManager: PingRecordManager = PingRecordManager()
-        val configManager: ConfigManager = ConfigManager()
-        val hitokotoManager = HitokotoManager(configManager.hitokoto().type)
-    }
+class YeeeesMOTDPlugin : JavaPlugin(), IYeeeesMOTD {
 
     init {
         faviconManager.setValidIcons()
     }
+
 
     override fun onEnable() {
         logger.info("YeeeesMOTD Plugin Enabled")

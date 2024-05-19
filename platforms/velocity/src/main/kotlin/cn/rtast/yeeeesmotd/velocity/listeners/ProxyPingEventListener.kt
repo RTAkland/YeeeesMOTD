@@ -17,14 +17,14 @@
 
 package cn.rtast.yeeeesmotd.velocity.listeners
 
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.configManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.faviconManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.hitokotoManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.pingRecordManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import cn.rtast.yeeeesmotd.utils.nextBoolean
 import cn.rtast.yeeeesmotd.velocity.DEFAULT_ICON
-import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.configManager
-import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.faviconManager
-import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.hitokotoManager
 import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.miniMessage
-import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.pingRecordManager
-import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.skinHeadManager
 import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.proxy.ProxyPingEvent
 import com.velocitypowered.api.util.Favicon

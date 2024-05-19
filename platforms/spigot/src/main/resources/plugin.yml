@@ -13,7 +13,7 @@ commands:
     description: YeeeesMOTD Command
     permission: yeeeesmotd.admin
     usage: /yeeeesmotd [reload clear]
-    aliases: [reload, clear]
+    aliases: [ reload, clear ]
     permission-message: You do not have permission to use this command
 
 permissions:

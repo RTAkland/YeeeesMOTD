@@ -15,15 +15,15 @@
  */
 
 
-package cn.rtast.yeeeesmotd.bukkit.events
+package cn.rtast.yeeeesmotd.bukkit.listeners
 
 import cn.rtast.yeeeesmotd.DEFAULT_ICON
-import cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin.Companion.configManager
-import cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin.Companion.faviconManager
-import cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin.Companion.hitokotoManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.configManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.faviconManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.hitokotoManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.pingRecordManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin.Companion.miniMessage
-import cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin.Companion.pingRecordManager
-import cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin.Companion.skinHeadManager
 import cn.rtast.yeeeesmotd.utils.byteArrayToBufferedImage
 import cn.rtast.yeeeesmotd.utils.nextBoolean
 import net.kyori.adventure.text.Component

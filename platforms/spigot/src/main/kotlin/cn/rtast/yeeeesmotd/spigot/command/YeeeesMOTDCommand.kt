@@ -17,15 +17,15 @@
 
 package cn.rtast.yeeeesmotd.spigot.command
 
-import cn.rtast.yeeeesmotd.spigot.YeeeesMOTDPlugin.Companion.configManager
-import cn.rtast.yeeeesmotd.spigot.YeeeesMOTDPlugin.Companion.faviconManager
-import cn.rtast.yeeeesmotd.spigot.YeeeesMOTDPlugin.Companion.skinHeadManager
-import cn.rtast.yeeeesmotd.spigot.listeners.PlayerJoinEventListener
+import cn.rtast.yeeeesmotd.IYeeeesMOTD
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.configManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.faviconManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 
-class YeeeesMOTDCommand: CommandExecutor {
+class YeeeesMOTDCommand : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (!sender.hasPermission("yeeeesmotd.admin")) {
@@ -35,8 +35,8 @@ class YeeeesMOTDCommand: CommandExecutor {
         if (command.label == "yesmotd:reload" || (args.firstOrNull() ?: "null") == "reload") {
             faviconManager.setValidIcons()
             val config = configManager.getConfig()
-            PlayerJoinEventListener.PING_FIRST_TEXT = config.pingPass.pingFirstText
-            PlayerJoinEventListener.PING_AGAIN_TEXT = config.pingPass.pingAgainText
+            IYeeeesMOTD.PING_FIRST_TEXT = config.pingPass.pingFirstText
+            IYeeeesMOTD.PING_AGAIN_TEXT = config.pingPass.pingAgainText
             sender.sendMessage("Successfully reload")
         }
 

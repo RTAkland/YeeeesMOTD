@@ -17,10 +17,10 @@
 
 package cn.rtast.yeeeesmotd.bukkit.command
 
-import cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin.Companion.configManager
-import cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin.Companion.faviconManager
-import cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin.Companion.skinHeadManager
-import cn.rtast.yeeeesmotd.bukkit.events.PlayerJoinEventListener
+import cn.rtast.yeeeesmotd.IYeeeesMOTD
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.configManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.faviconManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
@@ -35,8 +35,8 @@ class YeeeesMOTDCommand : CommandExecutor {
         if (command.label == "yesmotd:reload" || (args.firstOrNull() ?: "null") == "reload") {
             faviconManager.setValidIcons()
             val config = configManager.getConfig()
-            PlayerJoinEventListener.PING_FIRST_TEXT = config.pingPass.pingFirstText
-            PlayerJoinEventListener.PING_AGAIN_TEXT = config.pingPass.pingAgainText
+            IYeeeesMOTD.PING_FIRST_TEXT = config.pingPass.pingFirstText
+            IYeeeesMOTD.PING_AGAIN_TEXT = config.pingPass.pingAgainText
             sender.sendMessage("Successfully reload")
         }
 

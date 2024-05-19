@@ -17,12 +17,12 @@
 
 package cn.rtast.yeeeesmotd.spigot.listeners
 
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.configManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.faviconManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.hitokotoManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.pingRecordManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import cn.rtast.yeeeesmotd.entity.Config
-import cn.rtast.yeeeesmotd.spigot.YeeeesMOTDPlugin.Companion.configManager
-import cn.rtast.yeeeesmotd.spigot.YeeeesMOTDPlugin.Companion.faviconManager
-import cn.rtast.yeeeesmotd.spigot.YeeeesMOTDPlugin.Companion.hitokotoManager
-import cn.rtast.yeeeesmotd.spigot.YeeeesMOTDPlugin.Companion.pingRecordManager
-import cn.rtast.yeeeesmotd.spigot.YeeeesMOTDPlugin.Companion.skinHeadManager
 import cn.rtast.yeeeesmotd.spigot.utils.ColorUtil
 import cn.rtast.yeeeesmotd.utils.Favicon
 import cn.rtast.yeeeesmotd.utils.nextBoolean

@@ -17,9 +17,11 @@
 
 package cn.rtast.yeeeesmotd.velocity.listeners
 
-import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.configManager
-import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.pingRecordManager
-import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.skinHeadManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.PING_AGAIN_TEXT
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.PING_FIRST_TEXT
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.configManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.pingRecordManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.connection.LoginEvent
 import com.velocitypowered.api.event.player.ServerConnectedEvent
@@ -30,11 +32,6 @@ import java.time.Instant
 import java.util.*
 
 class LoginEventListener(private val proxy: ProxyServer) {
-
-    companion object {
-        var PING_FIRST_TEXT = configManager.pingPass().pingFirstText
-        var PING_AGAIN_TEXT = configManager.pingPass().pingAgainText
-    }
 
     private fun getTextureContent(profile: GameProfile): String {
         val texturesBase64 = profile.properties.toString().split(",")[1].split("=")[1].replace("'", "")

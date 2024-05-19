@@ -15,11 +15,13 @@
  */
 
 
-package cn.rtast.yeeeesmotd.bukkit.events
+package cn.rtast.yeeeesmotd.bukkit.listeners
 
-import cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin.Companion.configManager
-import cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin.Companion.pingRecordManager
-import cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin.Companion.skinHeadManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.PING_AGAIN_TEXT
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.PING_FIRST_TEXT
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.configManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.pingRecordManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import com.destroystokyo.paper.profile.ProfileProperty
 import net.kyori.adventure.text.Component
 import org.bukkit.Server
@@ -30,11 +32,6 @@ import java.time.Instant
 import java.util.*
 
 class PlayerJoinEventListener(private val server: Server) : Listener {
-
-    companion object {
-        var PING_FIRST_TEXT = configManager.pingPass().pingFirstText
-        var PING_AGAIN_TEXT = configManager.pingPass().pingAgainText
-    }
 
     private fun getTextureContent(profiles: Set<ProfileProperty>): String {
         val value = StringBuilder()
@@ -69,7 +66,6 @@ class PlayerJoinEventListener(private val server: Server) : Listener {
                     pingRecordManager.removeRecord(ip)
                 }
             } else {
-                println("not exists")
                 event.player.kick(Component.text(PING_FIRST_TEXT))
             }
         }
