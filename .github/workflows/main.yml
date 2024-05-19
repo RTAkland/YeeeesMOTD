@@ -24,15 +24,9 @@ jobs:
         run: chmod +x ./gradlew
       - name: Build
         run: ./gradlew build
-      - name: Collect JARs
-        run: |
-          pwd
-          mkdir -p dist/jars
-          for module in ${{ matrix.module }}; do
-              cp platforms/$module/build/libs/*.jar dist/jars/
-          done
       - name: Upload build artifacts
         uses: actions/upload-artifact@v2
         with:
           name: YeeeesMOTD
-          path: ./dist/jars/*.jar
+          path: |
+            **/build/libs/*-all.jar
