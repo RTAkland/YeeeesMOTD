@@ -28,24 +28,6 @@ dependencies {
     implementation(kotlin("stdlib"))
 }
 
-//val targetJavaVersion = 21
-//java {
-//    val javaVersion = JavaVersion.toVersion(targetJavaVersion)
-//    sourceCompatibility = javaVersion
-//    targetCompatibility = javaVersion
-//    if (JavaVersion.current() < javaVersion) {
-//        toolchain.languageVersion = JavaLanguageVersion.of(targetJavaVersion)
-//    }
-//}
-//
-//tasks.compileJava {
-//    options.encoding = "UTF-8"
-//
-//    if (targetJavaVersion >= 10 || JavaVersion.current().isJava10Compatible) {
-//        options.release.set(targetJavaVersion)
-//    }
-//}
-
 tasks.processResources {
     val properties = mapOf(
         "version" to pluginVersion
