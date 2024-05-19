@@ -19,7 +19,6 @@ package cn.rtast.yeeeesmotd.velocity
 
 import cn.rtast.yeeeesmotd.velocity.listeners.LoginEventListener
 import cn.rtast.yeeeesmotd.velocity.listeners.ProxyPingEventListener
-import cn.rtast.yeeeesmotd.velocity.listeners.ServerConnectedEventListener
 import cn.rtast.yeeeesmotd.utils.file.*
 import cn.rtast.yeeeesmotd.velocity.command.YesMOTDCommand.createCommand
 import com.google.inject.Inject
@@ -43,17 +42,16 @@ class YeeeesMOTDPlugin @Inject constructor(logger: Logger, private val proxy: Pr
 
     init {
         faviconManager.setValidIcons()
-        logger.debug("YeeeesMOTD初始化完成")
     }
 
     @Subscribe
+    @Suppress("UNUSED_PARAMETER")
     fun onProxyInitialization(event: ProxyInitializeEvent) {
-        proxy.eventManager.register(this, ProxyPingEventListener())
-        proxy.eventManager.register(this, ServerConnectedEventListener(proxy))
-        proxy.eventManager.register(this, LoginEventListener())
+        this.proxy.eventManager.register(this, ProxyPingEventListener())
+        this.proxy.eventManager.register(this, LoginEventListener(this.proxy))
 
         val commandManager = proxy.commandManager
-        val commandMeta = commandManager.metaBuilder("yesmotd")
+        val commandMeta = commandManager.metaBuilder("yeeeesmotd")
             .plugin(this)
             .build()
         val yesMOTDCommand = createCommand()
