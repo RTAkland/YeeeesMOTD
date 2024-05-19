@@ -15,6 +15,10 @@ allprojects {
             name = "papermc-repo"
             url = uri("https://repo.papermc.io/repository/maven-public/")
         }
+        maven {
+            name = "spigotmc-repo"
+            url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
+        }
     }
 }
 
@@ -44,7 +48,13 @@ subprojects {
     }
 
     tasks.compileJava {
+        sourceCompatibility = "21"
+        targetCompatibility = "21"
         options.encoding = "UTF-8"
+    }
+
+    tasks.compileKotlin {
+        kotlinOptions.jvmTarget = "21"
     }
 
     dependencies {
