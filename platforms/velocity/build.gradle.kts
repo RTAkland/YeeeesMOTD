@@ -21,6 +21,7 @@ tasks.processResources {
         "description" to "返回个性化的MOTD"
     )
     inputs.properties(properties)
+    filteringCharset = "UTF-8"
     filesMatching("velocity-plugin.json") {
         expand(properties)
     }
