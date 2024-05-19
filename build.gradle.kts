@@ -7,6 +7,14 @@ plugins {
 allprojects {
     repositories {
         mavenCentral()
+        maven {
+            name = "sonatype"
+            url = uri("https://oss.sonatype.org/content/groups/public/")
+        }
+        maven {
+            name = "papermc-repo"
+            url = uri("https://repo.papermc.io/repository/maven-public/")
+        }
     }
 }
 
@@ -33,6 +41,14 @@ subprojects {
         exclude("org/intellij/**")
 
         from("$rootDir/LICENSE")
+    }
+
+    tasks.compileJava {
+        options.encoding = "UTF-8"
+    }
+
+    dependencies {
+        implementation(kotlin("stdlib"))
     }
 }
 

@@ -29,7 +29,7 @@ import org.bukkit.event.player.PlayerJoinEvent
 import java.time.Instant
 import java.util.*
 
-class PlayerJoinEventListener(val server: Server) : Listener {
+class PlayerJoinEventListener(private val server: Server) : Listener {
 
     companion object {
         var PING_FIRST_TEXT = configManager.pingPass().pingFirstText
