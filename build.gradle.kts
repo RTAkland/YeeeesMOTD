@@ -31,10 +31,8 @@ subprojects {
         exclude("com/google/gson/**")
         exclude("org/jetbrains/**")
         exclude("org/intellij/**")
-    }
 
-    tasks.build {
-        dependsOn(tasks.shadowJar)
+        from("$rootDir/LICENSE")
     }
 }
 
