@@ -32,7 +32,7 @@ class YeeeesMOTDCommand: CommandExecutor {
             sender.sendMessage("You don't have permission to use this command!")
         }
 
-        if (command.label == "yesmotd:reload" || args.first() == "reload") {
+        if (command.label == "yesmotd:reload" || (args.firstOrNull() ?: "null") == "reload") {
             faviconManager.setValidIcons()
             val config = configManager.getConfig()
             PlayerJoinEventListener.PING_FIRST_TEXT = config.pingPass.pingFirstText
@@ -40,7 +40,7 @@ class YeeeesMOTDCommand: CommandExecutor {
             sender.sendMessage("Successfully reload")
         }
 
-        if (command.label == "yesmotd:clear" || args.first() == "clear") {
+        if (command.label == "yesmotd:clear" || (args.firstOrNull() ?: "null") == "clear") {
             skinHeadManager.clear()
             sender.sendMessage("Successfully clear")
         }

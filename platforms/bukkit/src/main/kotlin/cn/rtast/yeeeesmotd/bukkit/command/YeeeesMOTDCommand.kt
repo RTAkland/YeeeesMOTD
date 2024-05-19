@@ -25,14 +25,14 @@ import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 
-class YeeeesMOTDCommand: CommandExecutor {
+class YeeeesMOTDCommand : CommandExecutor {
 
     override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
         if (!sender.hasPermission("yeeeesmotd.admin")) {
             sender.sendMessage("You don't have permission to use this command!")
         }
 
-        if (command.label == "yesmotd:reload") {
+        if (command.label == "yesmotd:reload" || (args.firstOrNull() ?: "null") == "reload") {
             faviconManager.setValidIcons()
             val config = configManager.getConfig()
             PlayerJoinEventListener.PING_FIRST_TEXT = config.pingPass.pingFirstText
@@ -40,7 +40,7 @@ class YeeeesMOTDCommand: CommandExecutor {
             sender.sendMessage("Successfully reload")
         }
 
-        if (command.label == "yesmotd:clear") {
+        if (command.label == "yesmotd:clear" || (args.firstOrNull() ?: "null") == "clear") {
             skinHeadManager.clear()
             sender.sendMessage("Successfully clear")
         }

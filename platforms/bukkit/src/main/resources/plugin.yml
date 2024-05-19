@@ -10,13 +10,13 @@ website: https://github.com/RTAkland/YeeeesMOTD
 
 commands:
   yeeeesmotd:
-    description: YesMOTD Command
-    permission: yesmotd.admin
-    usage: /yesmotd <args>
+    description: YeeeesMOTD Command
+    permission: yeeeesmotd.admin
+    usage: /yeeeesmotd [reload clear]
     aliases: [reload, clear]
     permission-message: You do not have permission to use this command
 
 permissions:
-  yesmotd.admin:
+  yeeeesmotd.admin:
     description: YeeeesMOTD admin
     default: op
