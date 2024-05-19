@@ -9,7 +9,6 @@ jobs:
           - 21
         os:
           - ubuntu-latest
-        modules: [ 'velocity', 'bukkit' ]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
@@ -25,7 +24,7 @@ jobs:
       - name: Build
         run: ./gradlew build
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v4.3.3
+        uses: actions/upload-artifact@v4
         with:
           name: YeeeesMOTD
           path: |
