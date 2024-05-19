@@ -7,7 +7,7 @@ val paperVersion: String by project
 val minecraftVersion: String by project
 
 base {
-    archivesName = rootProject.name + ".bukkit+$minecraftVersion"
+    archivesName = rootProject.name + ".bukkit+mc.$minecraftVersion"
 }
 
 repositories {
@@ -30,7 +30,8 @@ dependencies {
 
 tasks.processResources {
     val properties = mapOf(
-        "version" to pluginVersion
+        "version" to pluginVersion,
+        "description" to "Customize server motd and icon"
     )
     inputs.properties(properties)
     filesMatching("plugin.yml") {
