@@ -20,9 +20,9 @@
 
 # 使用
 
-> 在[`Releases`](https://github.com/RTAkland/YeeeesMOTD/releases/)中下载插件, 将插件放入plugins文件夹内即可使用
+> 在[`Releases`](https://github.com/RTAkland/YeeeesMOTD/releases/)中找到你的服务端对应的文件下载插件, 将插件放入plugins文件夹内即可使用
 
-# 使用
+# 配置
 
 ## ip指纹
 
@@ -114,8 +114,10 @@
 
 > 在上面的json文本中`hitokoto`根下的`enabled`表示是否开启此功能,默认关闭.  
 > `color` 表示字体的颜色可以用RGB 16进制表示 ***请务必带上前面的 `#`***  
-> `probability`表示一言当作MOTD概率默认为30%， 范围0 ~ 100 如果不在这个闭区间内则概率为0, 概率的计算方式见 [概率计算](#概率计算)   
-> `type` 表示一言的种类可选的种类具体见下图: 当然你也可以使用填写`all`来指定所有的类别
+> `probability`表示一言当作MOTD概率默认为30%， 范围0 ~ 100 如果不在这个闭区间内则概率为0,
+> 当然如果你的概率设置成100的话那么最终显示出的概率也只有`50%`, 因为`ip指纹`占用了剩余的`50%`
+> 概率的计算方式见 [概率计算](#概率计算)   
+> `type` 表示一言的种类可选的种类具体见下图: 当然你也可以使用`all`来指定所有的类别
 
 ![hitokototype.png](images/hitokototype.png)
 
@@ -128,10 +130,9 @@
 ```json
 [
   {
-    "line1": "<yellow><bold>YeeeesMOTD",
     // 这里表示黄色和加粗
-    "line2": "<light_purple>test</light_purple>"
-    // 你也可以用成对的标签来精确的控制哪些需要颜色
+    "line1": "<yellow><bold>YeeeesMOTD",
+    "line2": "<light_purple>test"
   },
   {
     "line1": "<#00ff00><italic>DangoTown 团子小镇 生电服务器欢迎你",
@@ -141,9 +142,18 @@
 ]
 ```
 
-##    
-
 > 更多MiniMessage的用法请前往[MiniMessage Docs](https://docs.advntr.dev/minimessage/format.html#standard-tags)
+
+> ***注意***在`Spigot`平台你不能使用成对的颜色标签来表示颜色例如下方示例
+
+```json
+  {
+    // 不能这样使用
+    "line1": "<yellow>YeeeesMOTD</yellow>",
+    // 你应该使用单个标签
+    "line2": "<light_purple>test<green>test2"
+  }
+```
 
 # 概率计算
 
@@ -159,7 +169,7 @@
 # 注意事项
 
 * 仅能在开启了正版验证的服务器使用,离线服务器因玩家UUID计算方式和正版有区别所以无法使用
-* 此插件仅在有公网IP的服务器生效, 如果使用的是FRP映射技术则无法使用
+* 此插件仅在有公网IP的服务器生效, 如果使用的是FRP端口映射技术则无法使用
 
 # 开源
 
