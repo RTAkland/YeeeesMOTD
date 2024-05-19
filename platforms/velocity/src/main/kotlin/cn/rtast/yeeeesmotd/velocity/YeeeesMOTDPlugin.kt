@@ -29,7 +29,7 @@ import com.velocitypowered.api.proxy.ProxyServer
 import net.kyori.adventure.text.minimessage.MiniMessage
 import org.slf4j.Logger
 
-class YeeeesMOTDPlugin @Inject constructor(private val logger: Logger, private val proxy: ProxyServer) {
+class YeeeesMOTDPlugin @Inject constructor(logger: Logger, private val proxy: ProxyServer) {
 
     companion object {
         val miniMessage: MiniMessage = MiniMessage.miniMessage()
