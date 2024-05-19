@@ -9,7 +9,7 @@ jobs:
           - 21
         os:
           - ubuntu-latest
-        modules: [ 'velocity' ]
+        modules: [ 'velocity', 'bukkit' ]
     runs-on: ${{ matrix.os }}
     steps:
       - name: Checkout repository
@@ -34,4 +34,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: YeeeesMOTD
-          path: dist/jars/*-all.jar
+          path: dist/jars/*.jar
