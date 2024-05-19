@@ -17,7 +17,7 @@
 
 package cn.rtast.yeeeesmotd.bukkit.events
 
-import cn.rtast.yeeeesmotd.bukkit.DEFAULT_ICON
+import cn.rtast.yeeeesmotd.DEFAULT_ICON
 import cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin.Companion.configManager
 import cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin.Companion.faviconManager
 import cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin.Companion.hitokotoManager
