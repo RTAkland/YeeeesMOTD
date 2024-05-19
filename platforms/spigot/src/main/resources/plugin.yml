@@ -1,0 +1,22 @@
+name: yeeeesmotd
+version: "${version}"
+main: cn.rtast.yeeeesmotd.spigot.YeeeesMOTDPlugin
+api-version: "1.20"
+prefix: YeeeesMOTD
+load: STARTUP
+authors: [ RTAkland ]
+description: "${description}"
+website: https://github.com/RTAkland/YeeeesMOTD
+
+commands:
+  yeeeesmotd:
+    description: YesMOTD Command
+    permission: yesmotd.admin
+    usage: /yesmotd <args>
+    aliases: [reload, clear]
+    permission-message: You do not have permission to use this command
+
+permissions:
+  yesmotd.admin:
+    description: YeeeesMOTD admin
+    default: op

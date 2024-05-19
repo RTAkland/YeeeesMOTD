@@ -1,0 +1,46 @@
+/*
+ * Copyright 2024 RTAkland
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+
+
+package cn.rtast.yeeeesmotd.spigot
+
+import cn.rtast.yeeeesmotd.spigot.command.YeeeesMOTDCommand
+import cn.rtast.yeeeesmotd.spigot.listeners.PlayerJoinEventListener
+import cn.rtast.yeeeesmotd.spigot.listeners.ServerListPingEventListener
+import cn.rtast.yeeeesmotd.utils.file.*
+import org.bukkit.plugin.java.JavaPlugin
+
+class YeeeesMOTDPlugin : JavaPlugin() {
+
+    companion object {
+        val faviconManager: FaviconManager = FaviconManager()
+        val skinHeadManager: SkinHeadManager = SkinHeadManager()
+        val pingRecordManager: PingRecordManager = PingRecordManager()
+        val configManager: ConfigManager = ConfigManager()
+        val hitokotoManager = HitokotoManager(configManager.hitokoto().type)
+    }
+
+    init {
+        faviconManager.setValidIcons()
+    }
+
+    override fun onEnable() {
+        logger.info("YeeeesMOTD Plugin Enabled")
+        this.server.pluginManager.registerEvents(ServerListPingEventListener(this.server), this)
+        this.server.pluginManager.registerEvents(PlayerJoinEventListener(this.server), this)
+        this.getCommand("yeeeesmotd")?.setExecutor(YeeeesMOTDCommand())
+    }
+}
