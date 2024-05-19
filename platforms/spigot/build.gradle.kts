@@ -14,7 +14,7 @@ dependencies {
 tasks.processResources {
     val properties = mapOf(
         "version" to pluginVersion,
-        "description" to "Customize server motd"
+        "description" to "返回个性化的MOTD"
     )
     inputs.properties(properties)
     filteringCharset = "UTF-8"
