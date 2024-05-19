@@ -24,7 +24,7 @@ import cn.rtast.yeeeesmotd.velocity.listeners.LoginEventListener
 import com.velocitypowered.api.command.BrigadierCommand
 import net.kyori.adventure.text.Component
 
-object YesMOTDCommand {
+object YeeeesMOTDCommand {
 
     fun createCommand(): BrigadierCommand {
         val node = BrigadierCommand.literalArgumentBuilder("yesmotd")

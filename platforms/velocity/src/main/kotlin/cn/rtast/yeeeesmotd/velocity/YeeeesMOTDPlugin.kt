@@ -20,7 +20,7 @@ package cn.rtast.yeeeesmotd.velocity
 import cn.rtast.yeeeesmotd.velocity.listeners.LoginEventListener
 import cn.rtast.yeeeesmotd.velocity.listeners.ProxyPingEventListener
 import cn.rtast.yeeeesmotd.utils.file.*
-import cn.rtast.yeeeesmotd.velocity.command.YesMOTDCommand.createCommand
+import cn.rtast.yeeeesmotd.velocity.command.YeeeesMOTDCommand.createCommand
 import com.google.inject.Inject
 import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.proxy.ProxyInitializeEvent
