@@ -17,7 +17,6 @@
 
 package cn.rtast.yeeeesmotd.velocity.listeners
 
-import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin
 import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.configManager
 import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.pingRecordManager
 import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.skinHeadManager
