@@ -10,9 +10,6 @@ base {
     archivesName = rootProject.name + ".bukkit+$minecraftVersion"
 }
 
-group = "cn.rtast"
-version = pluginVersion
-
 repositories {
     mavenCentral()
     maven {

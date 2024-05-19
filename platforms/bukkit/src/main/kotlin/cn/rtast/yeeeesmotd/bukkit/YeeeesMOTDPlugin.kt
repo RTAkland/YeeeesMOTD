@@ -21,7 +21,6 @@ class YeeeesMOTDPlugin : JavaPlugin() {
 
     override fun onEnable() {
         server.pluginManager.registerEvents(ServerListPingEventListener(server), this)
-//        server.pluginManager.registerEvents(PlayerLoginEventListener(), this)
         server.pluginManager.registerEvents(PlayerJoinEventListener(server), this)
 
         this.getCommand("yesmotd")?.setExecutor(YeeeesMOTDCommand())
