@@ -26,6 +26,7 @@ jobs:
         run: ./gradlew build
       - name: Collect JARs
         run: |
+          pwd
           mkdir -p dist/jars
           for module in ${{ matrix.module }}; do
               cp platforms/$module/build/libs/*.jar dist/jars/
@@ -34,4 +35,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: YeeeesMOTD
-          path: dist/jars/*.jar
+          path: ./dist/jars/*.jar
