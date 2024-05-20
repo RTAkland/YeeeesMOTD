@@ -12,6 +12,8 @@
 
 </div>
 
+<h1>English document is NOT UPDATE TO DATE! please go to Chinese document and translate into english</h1>
+
 * 中文文档 [README](./README.md)
 
 # Overview

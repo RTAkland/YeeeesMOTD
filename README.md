@@ -16,11 +16,32 @@
 
 # 概述
 
-> 可以让你的服务器信息个性化,包括:`ip指纹`、 `随机MOTD描述信息`、 `虚假的在线玩家数`、`虚假的最大玩家数`、`随机服务器icon`、`*防压测*`、`hitokoto一言`
+> 此插件可以让你的服务器信息个性化,包括:`ip指纹(将玩家皮肤的头像作为Icon)`、
+> `随机MOTD描述信息`、 `虚假的在线玩家数`、`虚假的最大玩家数`、`随机服务器icon`、`*防压测*`、`hitokoto一言`
+
+# 功能完整性
+
+> 你可以点击下方展开按钮查看每个平台功能适配
+
+<details>
+<summary>点击这里展开表格</summary>
+
+|     平台     | Velocity | Bukkit & Paper | Spigot | BungeeCord |
+|:----------:|:--------:|:--------------:|:------:|:----------:|
+|    ip指纹    |    ✅     |       ✅        |   ✅    |     ✅      |
+|  虚假最大玩家数   |    ✅     |       ✅        |   ✅    |     ✅      |
+|  虚假在线玩家数   |    ✅     |       ❌        |   ❌    |     ❌      |
+|  随机MOTD信息  |    ✅     |       ✅        |   ✅    |     ✅      |
+|   随机ICON   |    ✅     |       ✅        |   ✅    |     ✅      |
+|    防压测     |    ✅     |       ✅        |   ✅    |     ✅      |
+| hitokoto一言 |    ✅     |       ✅        |   ✅    |     ✅      |
+
+</details>
 
 # 使用
 
-> 在[`Releases`](https://github.com/RTAkland/YeeeesMOTD/releases/)中找到你的服务端对应的文件下载插件, 将插件放入plugins文件夹内即可使用
+> 在[`Releases`](https://github.com/RTAkland/YeeeesMOTD/releases/)中找到你的服务端对应的文件下载插件,
+> 将插件放入plugins文件夹内即可使用
 
 # 配置
 
@@ -103,13 +124,13 @@
 
 ```json
   // ...
-  "hitokoto": {
-    "enabled": false,
-    "color": "#00E5EE",
-    "type": "a",
-    "probability": 30
-  }
-  // ...
+"hitokoto": {
+"enabled": false,
+"color": "#00E5EE",
+"type": "a",
+"probability": 30
+}
+// ...
 ```
 
 > 在上面的json文本中`hitokoto`根下的`enabled`表示是否开启此功能,默认关闭.  
@@ -148,11 +169,11 @@
 
 ```json
   {
-    // 不能这样使用
-    "line1": "<yellow>YeeeesMOTD</yellow>",
-    // 你应该使用单个标签
-    "line2": "<light_purple>test<green>test2"
-  }
+  // 不能这样使用
+  "line1": "<yellow>YeeeesMOTD</yellow>",
+  // 你应该使用单个标签
+  "line2": "<light_purple>test<green>test2"
+}
 ```
 
 # 概率计算
