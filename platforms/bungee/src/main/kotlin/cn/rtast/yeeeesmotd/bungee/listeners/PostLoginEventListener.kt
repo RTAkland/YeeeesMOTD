@@ -21,15 +21,17 @@ import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.PING_AGAIN_TEXT
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.PING_FIRST_TEXT
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.configManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.pingRecordManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.serializer.bungeecord.BungeeComponentSerializer
+import net.md_5.bungee.api.ProxyServer
 import net.md_5.bungee.api.event.PostLoginEvent
 import net.md_5.bungee.api.event.ServerConnectedEvent
 import net.md_5.bungee.api.plugin.Listener
 import net.md_5.bungee.event.EventHandler
 import java.time.Instant
 
-class PostLoginEventListener : Listener {
+class PostLoginEventListener(private val proxy: ProxyServer) : Listener {
 
     @EventHandler
     fun onPostLoginEvent(event: PostLoginEvent) {
@@ -56,7 +58,18 @@ class PostLoginEventListener : Listener {
 
     @EventHandler
     fun onServerConnectedEvent(event: ServerConnectedEvent) {
-        val ip = event.player.socketAddress.toString()
+        val ip = event.player.socketAddress.toString().split(":").first().replace("/", "")
+        val name = event.player.name
+        val uuid = event.player.uniqueId.toString()
+
+        if (proxy.config.isOnlineMode) {
+            if (!skinHeadManager.exists(ip)) {
+                skinHeadManager.addHead(name, uuid, ip)
+            } else {
+                skinHeadManager.updateHead(name, uuid, ip)
+            }
+        }
+
         if (configManager.pingPass().enabled) {
             if (pingRecordManager.exists(ip)) {
                 pingRecordManager.removeRecord(ip)

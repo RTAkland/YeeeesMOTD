@@ -23,7 +23,7 @@ class YeeeesMOTDPlugin : Plugin(), IYeeeesMOTD {
 
     override fun onEnable() {
         this.proxy.pluginManager.registerListener(this, ProxyPingEventListener())
-        this.proxy.pluginManager.registerListener(this, PostLoginEventListener())
+        this.proxy.pluginManager.registerListener(this, PostLoginEventListener(this.proxy))
         this.proxy.pluginManager.registerCommand(this, YeeeesMOTDCommand("yeeeesmotd"))
         logger.info("YeeeesMOTD is enabled")
     }
