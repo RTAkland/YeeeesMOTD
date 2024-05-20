@@ -18,9 +18,9 @@
 package cn.rtast.yeeeesmotd.entity
 
 data class Skin(
-    val properties: List<Properties>,
+    val properties: List<Property>,
 ) {
-    data class Properties(
+    data class Property(
         val value: String,
     )
 }

@@ -17,11 +17,14 @@
 
 package cn.rtast.yeeeesmotd.utils
 
+import cn.rtast.yeeeesmotd.SESSION_VERVER_URL
 import cn.rtast.yeeeesmotd.entity.DecodedSkin
+import cn.rtast.yeeeesmotd.entity.Skin
 import cn.rtast.yeeeesmotd.gson
 import java.awt.AlphaComposite
 import java.awt.image.BufferedImage
 import java.net.URI
+import java.util.*
 import javax.imageio.ImageIO
 
 
@@ -53,6 +56,14 @@ object SkinHeadUtil {
 
     fun getSkinFavicon(skinContent: String): BufferedImage {
         val decodedSkinUrl = gson.fromJson(skinContent, DecodedSkin::class.java).textures.skin.url
-        return getSkinHead(decodedSkinUrl)
+        return this.getSkinHead(decodedSkinUrl)
+    }
+
+    fun getSkinFaviconWithUUID(uuid: String): BufferedImage {
+        val skinResult = URI(SESSION_VERVER_URL + uuid).toURL().readText()
+        val skinResultJson = gson.fromJson(skinResult, Skin::class.java)
+        val decodedSkinContent =
+            String(Base64.getDecoder().decode(skinResultJson.properties.first().value), Charsets.UTF_8)
+        return this.getSkinFavicon(decodedSkinContent)
     }
 }
