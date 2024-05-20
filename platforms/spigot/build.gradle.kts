@@ -1,5 +1,4 @@
 val pluginVersion: String by project
-val paperVersion: String by project
 val minecraftVersion: String by project
 
 base {
@@ -8,7 +7,7 @@ base {
 
 dependencies {
     api(project(":core"))
-    compileOnly("org.spigotmc:spigot-api:$paperVersion")
+    compileOnly(libs.spigot)
 }
 
 tasks.processResources {

@@ -3,7 +3,6 @@ plugins {
 }
 
 val pluginVersion: String by project
-val paperVersion: String by project
 val minecraftVersion: String by project
 
 base {
@@ -16,7 +15,7 @@ repositories {
 
 dependencies {
     api(project(":core"))
-    compileOnly("io.papermc.paper:paper-api:$paperVersion")
+    compileOnly(libs.paper)
 }
 
 tasks.processResources {

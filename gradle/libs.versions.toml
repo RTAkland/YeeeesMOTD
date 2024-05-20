@@ -1,0 +1,24 @@
+[versions]
+# Common
+gsonVersion = "2.10.1"
+adventureVersion = "4.17.0"
+# Velocity
+velocityVersion = "3.3.0-SNAPSHOT"
+# Bukkit & Paper & Spigot
+paperApiVersion = "1.20.4-R0.1-SNAPSHOT"
+# Bungee
+bungeeVersion = "1.20-R0.1-SNAPSHOT"
+bungeeAdventureVersion = "4.3.2"
+
+[libraries]
+gson = { group = "com.google.code.gson", name = "gson", version.ref = "gsonVersion" }
+paper = { group = "io.papermc.paper", name = "paper-api", version.ref = "paperApiVersion" }
+miniMessage = { group = "net.kyori", name = "adventure-text-minimessage", version.ref = "adventureVersion" }
+bungeeAdventure = { group = "net.kyori", name = "adventure-platform-bungeecord", version.ref = "bungeeAdventureVersion" }
+bungeecord = { group = "net.md-5", name = "bungeecord-api", version.ref = "bungeeVersion" }
+spigot = { group = "org.spigotmc", name = "spigot-api", version.ref = "paperApiVersion" }
+velocity = { group = "com.velocitypowered", name = "velocity-api", version.ref = "velocityVersion" }
+
+[bundles]
+
+[plugins]

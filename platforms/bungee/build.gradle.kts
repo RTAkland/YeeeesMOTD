@@ -1,17 +1,14 @@
-val bungeeVersion: String by project
 val pluginVersion: String by project
-val bungeeAdventureVersion: String by project
-val miniMessageVersion: String by project
 
 base {
-    archivesName = rootProject.name + ".bungeecord+$bungeeVersion"
+    archivesName = rootProject.name + ".bungeecord"
 }
 
 dependencies {
     api(project(":core"))
-    compileOnly("net.md-5:bungeecord-api:$bungeeVersion")
-    implementation("net.kyori:adventure-platform-bungeecord:$bungeeAdventureVersion")
-    implementation("net.kyori:adventure-text-minimessage:$miniMessageVersion")
+    compileOnly(libs.bungeecord)
+    implementation(libs.bungeeAdventure)
+    implementation(libs.miniMessage)
 }
 
 tasks.processResources {

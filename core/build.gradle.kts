@@ -6,5 +6,5 @@ repositories {
 }
 
 dependencies {
-    implementation("com.google.code.gson:gson:${gsonVersion}")
+    implementation(libs.gson)
 }
