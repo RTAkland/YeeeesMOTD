@@ -7,8 +7,8 @@ base {
 dependencies {
     api(project(":core"))
     compileOnly(libs.bungeecord)
-    implementation(libs.bungeeAdventure)
-    implementation(libs.miniMessage)
+    implementation(libs.bungeePlatformAdventure)
+    implementation(libs.adventure)
 }
 
 tasks.processResources {
