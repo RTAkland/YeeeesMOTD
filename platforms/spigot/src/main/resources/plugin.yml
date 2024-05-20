@@ -1,4 +1,4 @@
-name: yeeeesmotd
+name: YeeeesMOTD
 version: "${version}"
 main: cn.rtast.yeeeesmotd.spigot.YeeeesMOTDPlugin
 api-version: "1.20"
