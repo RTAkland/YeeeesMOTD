@@ -39,7 +39,6 @@ subprojects {
     }
 
     tasks.shadowJar {
-        exclude("com/velocitypowered/**")
         exclude("com/google/gson/**")
         exclude("org/jetbrains/**")
         exclude("org/intellij/**")

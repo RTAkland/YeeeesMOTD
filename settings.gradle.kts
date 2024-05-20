@@ -1,6 +1,9 @@
 rootProject.name = "YeeeesMOTD"
 
-include(":core")
-include(":platforms:velocity")
-include(":platforms:bukkit")
-include(":platforms:spigot")
+include(
+    ":core",
+    ":platforms:velocity",
+    ":platforms:bukkit",
+    ":platforms:spigot",
+    ":platforms:bungee"
+)

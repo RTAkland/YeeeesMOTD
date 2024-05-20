@@ -35,6 +35,8 @@ const val DEFAULT_PING_INTERVAL = 120
 
 const val HITOKOTO_SENTENCE_URL = "https://static.rtast.cn/hitokoto"
 
+const val SESSION_VERVER_URL = "https://sessionserver.mojang.com/session/minecraft/profile/"
+
 val BUILD_IN_DESCRIPTIONS = listOf(
     "\$player <#A020F0>是吧? 还不赶快进来\n<#A020F0>不然有你好果子吃的!",
     "<bold><#EE82EE>这是 \$player <bold><#EE82EE>的专属服务器呀~",
