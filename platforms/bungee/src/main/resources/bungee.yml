@@ -1,0 +1,10 @@
+name: YeeeesMOTD
+version: '${version}'
+main: cn.rtast.yeeeesmotd.bungee.YeeeesMOTDPlugin
+author: RTAkland
+description: '${description}'
+
+permissions:
+  yeeeesmotd.admin:
+    description: YeeeesMOTD Command
+    default: true
