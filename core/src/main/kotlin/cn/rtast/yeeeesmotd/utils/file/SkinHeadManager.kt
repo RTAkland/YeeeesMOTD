@@ -60,10 +60,33 @@ class SkinHeadManager : IJsonManager<MutableList<Head>>("heads.json", mutableLis
         }
     }
 
+    fun addHead(name: String, uuid: String, ip: String) {
+        thread {
+            val allHeads = this.read()
+            val skin = SkinHeadUtil.getSkinFaviconWithUUID(uuid)
+            val encodedSkinImage =
+                String(Base64.getEncoder().encode(this.bufferedImageToByteArray(skin)), Charsets.UTF_8)
+            allHeads.add(Head(name, uuid, encodedSkinImage, ip))
+            this.write(allHeads)
+        }
+    }
+
     fun updateHead(name: String, uuid: String, ip: String, textureContent: String) {
         thread {
             val allHeads = this.read()
             val skin = SkinHeadUtil.getSkinFavicon(textureContent)
+            val encodedSkinImage =
+                String(Base64.getEncoder().encode(this.bufferedImageToByteArray(skin)), Charsets.UTF_8)
+            allHeads.removeAll { it.ip == ip }
+            allHeads.add(Head(name, uuid, encodedSkinImage, ip))
+            this.write(allHeads)
+        }
+    }
+
+    fun updateHead(name: String, uuid: String, ip: String) {
+        thread {
+            val allHeads = this.read()
+            val skin = SkinHeadUtil.getSkinFaviconWithUUID(uuid)
             val encodedSkinImage =
                 String(Base64.getEncoder().encode(this.bufferedImageToByteArray(skin)), Charsets.UTF_8)
             allHeads.removeAll { it.ip == ip }
