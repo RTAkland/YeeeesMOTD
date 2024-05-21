@@ -67,3 +67,4 @@ const val DEFAULT_ICON =
             "aPyPVvQCHJyNXoCDs9ELcHA2egEOzkYv4M/nH5ctU24+XUWm" +
             "2Ed7AQ40xUKrpthHewEONMVCq6bYR3sBDjTFQqum2EdPv4B3" +
             "trmZei1ahp0AAAAASUVORK5CYII="
+
