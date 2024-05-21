@@ -26,7 +26,7 @@
 <details>
 <summary>点击这里展开表格</summary>
 
-|     平台     | Velocity | Bukkit & Paper | Spigot | BungeeCord |
+|   功能/平台    | Velocity | Bukkit & Paper | Spigot | BungeeCord |
 |:----------:|:--------:|:--------------:|:------:|:----------:|
 |    ip指纹    |    ✅     |       ✅        |   ✅    |     ✅      |
 |  虚假最大玩家数   |    ✅     |       ✅        |   ✅    |     ✅      |
