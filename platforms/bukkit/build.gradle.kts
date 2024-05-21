@@ -9,10 +9,6 @@ base {
     archivesName = rootProject.name + ".bukkit+mc.$minecraftVersion"
 }
 
-repositories {
-    mavenCentral()
-}
-
 dependencies {
     api(project(":core"))
     compileOnly(libs.paper)
