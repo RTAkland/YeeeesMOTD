@@ -17,14 +17,13 @@
 
 package cn.rtast.yeeeesmotd.bukkit.listeners
 
-import cn.rtast.yeeeesmotd.DEFAULT_ICON
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.configManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.defaultIcon
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.faviconManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.hitokotoManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.pingRecordManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin.Companion.miniMessage
-import cn.rtast.yeeeesmotd.utils.byteArrayToBufferedImage
 import cn.rtast.yeeeesmotd.utils.nextBoolean
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.Style
@@ -33,7 +32,6 @@ import org.bukkit.Server
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.server.ServerListPingEvent
-import java.awt.image.BufferedImage
 import java.io.ByteArrayInputStream
 import java.util.*
 import javax.imageio.ImageIO
@@ -41,16 +39,11 @@ import kotlin.random.Random
 
 class ServerListPingEventListener(private val server: Server) : Listener {
 
-    private fun getDefaultIcon(): BufferedImage {
-        val imageByteArray = Base64.getDecoder().decode(DEFAULT_ICON)
-        return byteArrayToBufferedImage(imageByteArray)
-    }
-
     @EventHandler
     fun onServerListPingEvent(event: ServerListPingEvent) {
         val ip = event.address.hostName
 
-        var favicon = server.loadServerIcon(this.getDefaultIcon())
+        var favicon = server.loadServerIcon(defaultIcon)
         val showHead = Random.nextBoolean()
 
         val randomDescription = configManager.getRandomDescription()

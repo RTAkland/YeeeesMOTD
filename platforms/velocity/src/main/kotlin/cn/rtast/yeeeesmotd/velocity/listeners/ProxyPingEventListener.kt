@@ -18,12 +18,12 @@
 package cn.rtast.yeeeesmotd.velocity.listeners
 
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.configManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.defaultIcon
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.faviconManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.hitokotoManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.pingRecordManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import cn.rtast.yeeeesmotd.utils.nextBoolean
-import cn.rtast.yeeeesmotd.velocity.DEFAULT_ICON
 import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.miniMessage
 import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.proxy.ProxyPingEvent
@@ -42,7 +42,7 @@ class ProxyPingEventListener {
     fun onProxyPingEvent(event: ProxyPingEvent) {
         val ip = event.connection.remoteAddress.hostName
 
-        var favicon = Favicon(DEFAULT_ICON)
+        var favicon = Favicon.create(defaultIcon)
         val showHead = Random.nextBoolean()
 
         val randomDescription = configManager.getRandomDescription()

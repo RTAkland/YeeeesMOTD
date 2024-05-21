@@ -17,6 +17,7 @@
 
 package cn.rtast.yeeeesmotd
 
+import cn.rtast.yeeeesmotd.utils.Favicon
 import cn.rtast.yeeeesmotd.utils.file.*
 
 interface IYeeeesMOTD {
@@ -27,6 +28,7 @@ interface IYeeeesMOTD {
         val pingRecordManager: PingRecordManager = PingRecordManager()
         val configManager: ConfigManager = ConfigManager()
         val hitokotoManager = HitokotoManager(configManager.hitokoto().type)
+        val defaultIcon = Favicon.getDefaultIcon()
 
         var PING_FIRST_TEXT = configManager.pingPass().pingFirstText
         var PING_AGAIN_TEXT = configManager.pingPass().pingAgainText

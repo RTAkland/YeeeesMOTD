@@ -18,13 +18,13 @@
 package cn.rtast.yeeeesmotd.spigot.listeners
 
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.configManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.defaultIcon
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.faviconManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.hitokotoManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.pingRecordManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import cn.rtast.yeeeesmotd.entity.Config
 import cn.rtast.yeeeesmotd.spigot.utils.ColorUtil
-import cn.rtast.yeeeesmotd.utils.Favicon
 import cn.rtast.yeeeesmotd.utils.nextBoolean
 import org.bukkit.Server
 import org.bukkit.event.EventHandler
@@ -41,7 +41,7 @@ class ServerListPingEventListener(private val server: Server) : Listener {
     fun onServerListPingEvent(event: ServerListPingEvent) {
         val ip = event.address.hostName
 
-        var favicon = server.loadServerIcon(Favicon.getDefaultIcon())
+        var favicon = server.loadServerIcon(defaultIcon)
         val showHead = Random.nextBoolean()
 
         val randomDescription = configManager.getRandomDescription()

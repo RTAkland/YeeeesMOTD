@@ -18,12 +18,12 @@
 package cn.rtast.yeeeesmotd.bungee.listeners
 
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.configManager
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.defaultIcon
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.faviconManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.hitokotoManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.pingRecordManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import cn.rtast.yeeeesmotd.bungee.YeeeesMOTDPlugin.Companion.miniMessage
-import cn.rtast.yeeeesmotd.utils.Favicon.getDefaultIcon
 import cn.rtast.yeeeesmotd.utils.nextBoolean
 import net.kyori.adventure.text.serializer.bungeecord.BungeeComponentSerializer
 import net.md_5.bungee.api.Favicon
@@ -42,8 +42,7 @@ class ProxyPingEventListener : Listener {
     fun onProxyPingEvent(event: ProxyPingEvent) {
         val ip = event.connection.socketAddress.toString().split(":").first().replace("/", "")
 
-
-        var favicon = Favicon.create(getDefaultIcon())
+        var favicon = Favicon.create(defaultIcon)
         val showHead = Random.nextBoolean()
 
         val randomDescription = configManager.getRandomDescription()
