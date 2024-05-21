@@ -23,7 +23,6 @@ import cn.rtast.yeeeesmotd.entity.DecodedSkin
 import cn.rtast.yeeeesmotd.entity.Skin
 import cn.rtast.yeeeesmotd.entity.UsernameUUID
 import cn.rtast.yeeeesmotd.gson
-import com.google.gson.annotations.SerializedName
 import java.awt.AlphaComposite
 import java.awt.image.BufferedImage
 import java.net.URI
