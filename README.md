@@ -52,6 +52,7 @@
 > 将玩家皮肤的头作为服务器的icon显示给玩家):
 
 ![showcase](./images/description.png)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FRTAkland%2FYeeeesMOTD.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FRTAkland%2FYeeeesMOTD?ref=badge_shield)
 
 ## 随机服务器icon
 
@@ -207,3 +208,7 @@
 <a href="https://www.jetbrains.com/opensource/"><code>JetBrains Open Source</code></a> 提供的强大IDE支持
 
 </div>
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FRTAkland%2FYeeeesMOTD.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FRTAkland%2FYeeeesMOTD?ref=badge_large)
