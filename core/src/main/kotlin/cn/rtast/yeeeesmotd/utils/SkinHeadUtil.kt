@@ -17,10 +17,13 @@
 
 package cn.rtast.yeeeesmotd.utils
 
-import cn.rtast.yeeeesmotd.SESSION_VERVER_URL
+import cn.rtast.yeeeesmotd.SKIN_SERVER_URL
+import cn.rtast.yeeeesmotd.UUID_LOOKUP_URL
 import cn.rtast.yeeeesmotd.entity.DecodedSkin
 import cn.rtast.yeeeesmotd.entity.Skin
+import cn.rtast.yeeeesmotd.entity.UsernameUUID
 import cn.rtast.yeeeesmotd.gson
+import com.google.gson.annotations.SerializedName
 import java.awt.AlphaComposite
 import java.awt.image.BufferedImage
 import java.net.URI
@@ -60,10 +63,16 @@ object SkinHeadUtil {
     }
 
     fun getSkinFaviconWithUUID(uuid: String): BufferedImage {
-        val skinResult = URI(SESSION_VERVER_URL + uuid).toURL().readText()
+        val skinResult = URI(SKIN_SERVER_URL + uuid).toURL().readText()
         val skinResultJson = gson.fromJson(skinResult, Skin::class.java)
         val decodedSkinContent =
             String(Base64.getDecoder().decode(skinResultJson.properties.first().value), Charsets.UTF_8)
         return this.getSkinFavicon(decodedSkinContent)
+    }
+
+    fun getSkinFaviconWithUsername(username: String): BufferedImage {
+        val userSkinContent = URI(UUID_LOOKUP_URL + username).toURL().readText()
+        val uuid = gson.fromJson(userSkinContent, UsernameUUID::class.java).id
+        return this.getSkinFaviconWithUUID(uuid)
     }
 }
