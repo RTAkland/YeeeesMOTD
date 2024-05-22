@@ -20,6 +20,7 @@ package cn.rtast.yeeeesmotd.entity
 data class Config(
     val schemaVersion: Double,
     val pingPass: PingPass,
+    val fakeProtocol: FakeProtocol,
     val hitokoto: Hitokoto,
     val maximumPlayer: Int,
     val onlinePlayer: Int,
@@ -43,5 +44,12 @@ data class Config(
         val color: String,
         val type: String,
         val probability: Int,
+    )
+
+    data class FakeProtocol(
+        val enabled: Boolean,
+        val protocolNumberPool: List<Int>,
+        val protocolNamePool: List<String>,
+        val alwaysInvalidProtocolNumber: Boolean,
     )
 }

@@ -7,7 +7,7 @@
     "interval": 120
   },
   "fakeProtocol": {
-    "enabled": true,
+    "enabled": false,
     "protocolNumberPool": [],
     "protocolNamePool": [],
     "alwaysInvalidProtocolNumber": false

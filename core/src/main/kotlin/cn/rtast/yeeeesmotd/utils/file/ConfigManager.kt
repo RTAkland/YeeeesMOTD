@@ -17,22 +17,27 @@
 
 package cn.rtast.yeeeesmotd.utils.file
 
-import cn.rtast.yeeeesmotd.*
+import cn.rtast.yeeeesmotd.BUILD_IN_DESCRIPTIONS
+import cn.rtast.yeeeesmotd.DEFAULT_CONFIG
+import cn.rtast.yeeeesmotd.DEFAULT_CONFIG_URL
 import cn.rtast.yeeeesmotd.entity.Config
+import cn.rtast.yeeeesmotd.gson
+import com.google.gson.JsonObject
 
 class ConfigManager :
     IJsonManager<Config>(
         "config.json",
-        Config(
-            SCHEMA_VERSION,
-            Config.PingPass(false, PING_FIRST_TEXT, RE_PING_TEXT, DEFAULT_PING_INTERVAL),
-            Config.Hitokoto(false, "#00E5EE", "a", 30),  // Turquoise2
-            -1,
-            -1,
-            true,
-            DEFAULT_DESCRIPTIONS
-        )
+        DEFAULT_CONFIG
     ) {
+
+    init {
+        if (this.checkConfigConflict(DEFAULT_CONFIG)) {
+            println(
+                "Please go to $DEFAULT_CONFIG_URL to download the latest config file!!!!" +
+                        "or you want to crash!!!!!"
+            )
+        }
+    }
 
     private fun read(): Config {
         val str = this.file.readText()
@@ -42,6 +47,19 @@ class ConfigManager :
     private fun write(config: Config) {
         val serData = gson.toJson(config)
         this.file.writeText(serData)
+    }
+
+    private fun write(config: JsonObject) {
+        val serData = gson.toJson(config)
+        this.file.writeText(serData)
+    }
+
+    private fun checkConfigConflict(newConfig: Config): Boolean {
+        return this.read().schemaVersion != newConfig.schemaVersion
+    }
+
+    private fun fakeProtocol(): Config.FakeProtocol {
+        return this.read().fakeProtocol
     }
 
     fun getConfig(): Config {
@@ -60,6 +78,25 @@ class ConfigManager :
 
     fun getRandomBuildInDescription(): String {
         return BUILD_IN_DESCRIPTIONS.random()
+    }
+
+    fun getRandomProtocolNumber(): Int? {
+        val fakeProtocol = this.fakeProtocol()
+        if (fakeProtocol.alwaysInvalidProtocolNumber) {
+            return -1
+        }
+        if (fakeProtocol.protocolNumberPool.isEmpty()) {
+            return null
+        }
+        return fakeProtocol.protocolNumberPool.random()
+    }
+
+    fun getRandomProtocolName(): String? {
+        val protocolNamePool = this.fakeProtocol().protocolNamePool
+        if (protocolNamePool.isEmpty()) {
+            return null
+        }
+        return protocolNamePool.random()
     }
 
     fun pingPass(): Config.PingPass {

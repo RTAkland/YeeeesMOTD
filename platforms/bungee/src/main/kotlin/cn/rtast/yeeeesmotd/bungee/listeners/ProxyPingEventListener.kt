@@ -27,6 +27,7 @@ import cn.rtast.yeeeesmotd.bungee.YeeeesMOTDPlugin.Companion.miniMessage
 import cn.rtast.yeeeesmotd.utils.nextBoolean
 import net.kyori.adventure.text.serializer.bungeecord.BungeeComponentSerializer
 import net.md_5.bungee.api.Favicon
+import net.md_5.bungee.api.ServerPing
 import net.md_5.bungee.api.ServerPing.PlayerInfo
 import net.md_5.bungee.api.event.ProxyPingEvent
 import net.md_5.bungee.api.plugin.Listener
@@ -86,10 +87,14 @@ class ProxyPingEventListener : Listener {
         val deserializedDescription =
             BungeeComponentSerializer.get().serialize(miniMessage.deserialize(finalDescription.toString()))
 
+        val randomProtocolVersion = configManager.getRandomProtocolNumber() ?: event.response.version.protocol
+        val randomProtocolName = configManager.getRandomProtocolName() ?: event.response.version.name
+
         event.response.descriptionComponent = deserializedDescription.first()
         event.response.setFavicon(favicon)
         event.response.players.max = configManager.getConfig().maximumPlayer
         event.response.players.online = configManager.getConfig().onlinePlayer
+        event.response.version = ServerPing.Protocol(randomProtocolName, randomProtocolVersion)
         if (configManager.getConfig().clearSamplePlayer) {
             event.response.players.sample = arrayOf<PlayerInfo>()
         }

@@ -27,6 +27,7 @@ import cn.rtast.yeeeesmotd.utils.nextBoolean
 import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.miniMessage
 import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.proxy.ProxyPingEvent
+import com.velocitypowered.api.proxy.server.ServerPing
 import com.velocitypowered.api.util.Favicon
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.Style
@@ -90,11 +91,15 @@ class ProxyPingEventListener {
             }
         }
 
+        val randomProtocolVersion = configManager.getRandomProtocolNumber() ?: event.ping.version.protocol
+        val randomProtocolName = configManager.getRandomProtocolName() ?: event.ping.version.name
+
         val pong = event.ping.asBuilder()
         pong.description(finalDescription.build())
             .favicon(favicon)
             .onlinePlayers(configManager.getConfig().onlinePlayer)
             .maximumPlayers(configManager.getConfig().maximumPlayer)
+            .version(ServerPing.Version(randomProtocolVersion, randomProtocolName))
 
         if (configManager.getConfig().clearSamplePlayer) {
             pong.clearSamplePlayers()

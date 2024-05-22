@@ -26,15 +26,16 @@
 <details>
 <summary>点击这里展开表格</summary>
 
-|   功能/平台    | Velocity | Bukkit & Paper | Spigot | BungeeCord |
-|:----------:|:--------:|:--------------:|:------:|:----------:|
-|    ip指纹    |    ✅     |       ✅        |   ✅    |     ✅      |
-|  虚假最大玩家数   |    ✅     |       ✅        |   ✅    |     ✅      |
-|  虚假在线玩家数   |    ✅     |       ❌        |   ❌    |     ✅      |
-|  随机MOTD信息  |    ✅     |       ✅        |   ✅    |     ✅      |
-|   随机ICON   |    ✅     |       ✅        |   ✅    |     ✅      |
-|    防压测     |    ✅     |       ✅        |   ✅    |     ✅      |
-| hitokoto一言 |    ✅     |       ✅        |   ✅    |     ✅      |
+|    功能/平台    | Velocity | Bukkit & Paper | Spigot | BungeeCord |
+|:-----------:|:--------:|:--------------:|:------:|:----------:|
+|    ip指纹     |    ✅     |       ✅        |   ✅    |     ✅      |
+|   虚假最大玩家数   |    ✅     |       ✅        |   ✅    |     ✅      |
+|   虚假在线玩家数   |    ✅     |       ❌        |   ❌    |     ✅      |
+|  随机MOTD信息   |    ✅     |       ✅        |   ✅    |     ✅      |
+|   随机ICON    |    ✅     |       ✅        |   ✅    |     ✅      |
+|     防压测     |    ✅     |       ✅        |   ✅    |     ✅      |
+| hitokoto一言  |    ✅     |       ✅        |   ✅    |     ✅      |
+| 虚假协议版本和版本描述 |    ✅     |       ❌        |   ❌    |     ✅      |
 
 </details>
 
@@ -143,6 +144,34 @@
 ![hitokototype.png](images/hitokototype.png)
 
 > ***此图截取自: hitokoto[开发文档](https://developer.hitokoto.cn/sentence/)***
+
+## 虚假版本协议以及协议描述
+> 这个功能可以让你的服务器返回给玩家配置文件内的随即版本号(Protocol Number)以及随即版本描述(Protocol Name)  
+> 版本号就是游戏数据包版本号, 你可以在[这里](https://wiki.vg/Protocol_version_numbers)找到每个版本对应的版本号,
+> 版本描述就是`1.20.4`这是版本描述, 版本号是`765`,765是1.20.4的版本号  
+> ***注意***: 当然这个功能仅仅是返回了虚假的版本信息并不会真正的影响到游玩, 下方是效果图:
+
+![fake_protocol.png](images/fake_protocol.png)
+
+> 其中`shit bro`可以更改成你想要的文字, 如果服务器返回的版本号和客户端的版本号不一致则最右方服务器状态信息就会显示一个❌  
+> 下方是这个功能的配置文件片段:
+
+```json
+// ...
+"fakeProtocol": {
+  "enabled": false,
+  "protocolNumberPool": [],
+  "protocolNamePool": [],
+  "alwaysInvalidProtocolNumber": false
+},
+
+```
+
+> `enabled`表示是否开启默认为关闭, 
+> `protocolNumberPool`表示版本号列表,可以填写整形数组例如`[1,2,3,4,5]`请务必使用半角逗号(英文逗号),
+> `protocolNamePool` 表示版本描述列表,可以填写字符串数组例如`["Shit bro", "Test"]`请使用半角引号(英文引号),
+> `alwaysInvalidProtocolNumber`表示是否总是无效的版本号, 如果设置为`true`则`protocolNumberPool`内的设置不会生效
+> 这会让服务器总是返回版本号为`-1`
 
 ### MiniMessage
 
