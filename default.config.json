@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1.1,
+  "pingPass": {
+    "enabled": false,
+    "pingFirstText": "Please ping the server first! / 请先在服务器列表Ping一次服务器",
+    "pingAgainText": "Please ping the server again! / 请重新Ping一次服务器",
+    "interval": 120
+  },
+  "fakeProtocol": {
+    "enabled": true,
+    "protocolNumberPool": [],
+    "protocolNamePool": [],
+    "alwaysInvalidProtocolNumber": false
+  },
+  "hitokoto": {
+    "enabled": false,
+    "color": "#00E5EE",
+    "type": "a",
+    "probability": 30
+  },
+  "maximumPlayer": -1,
+  "onlinePlayer": -1,
+  "clearSamplePlayer": true,
+  "descriptions": [
+    {
+      "line1": "<yellow><bold>YeeeesMOTD",
+      "line2": "<light_purple><bold>Powered by RTAkland: https://github.com/RTAkland"
+    },
+    {
+      "line1": "<#00ff00><bold>DangoTown 团子小镇 生电服务器欢迎你",
+      "line2": "<yellow><bold>https://dgtmc.top"
+    },
+    {
+      "line1": "<#00FFFF><bold>团子小镇是一个历史悠久的服务器",
+      "line2": "<#00FFFF><bold>服务器于2016年开服至今"
+    }
+  ]
+}
