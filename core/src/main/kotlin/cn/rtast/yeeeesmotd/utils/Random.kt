@@ -20,7 +20,7 @@ package cn.rtast.yeeeesmotd.utils
 import kotlin.random.Random
 
 
-fun Random.nextBoolean(p: Int): Boolean {
+fun nextBoolean(p: Int): Boolean {
     if (p !in 0..100) {
         return false
     }

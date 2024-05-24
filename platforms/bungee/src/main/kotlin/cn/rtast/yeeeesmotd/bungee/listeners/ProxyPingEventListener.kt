@@ -56,7 +56,7 @@ class ProxyPingEventListener : Listener {
         }
 
         val p = configManager.hitokoto().probability
-        val showHitokoto = Random.nextBoolean(p)
+        val showHitokoto = nextBoolean(p)
         if (configManager.hitokoto().enabled && showHitokoto) {
             val hitokoto = hitokotoManager.getSentence()
             val color = configManager.hitokoto().color
