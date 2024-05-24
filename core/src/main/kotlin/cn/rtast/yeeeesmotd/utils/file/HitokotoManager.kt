@@ -23,12 +23,14 @@ import cn.rtast.yeeeesmotd.entity.Config
 import cn.rtast.yeeeesmotd.entity.Sentence
 import cn.rtast.yeeeesmotd.gson
 import com.google.gson.reflect.TypeToken
+import io.github.oshai.kotlinlogging.KotlinLogging
 import java.io.File
 import java.net.URI
 
 class HitokotoManager(type: String) {
 
     private var sentenceFile: File
+    private val logger = KotlinLogging.logger {}
 
     init {
         val hitokotoDir = File(ROOT_PATH, "hitokoto")
@@ -44,11 +46,14 @@ class HitokotoManager(type: String) {
     }
 
     private fun downloadSentence(type: String, file: File) {
-        println("正在下载Hitokoto语句: $type.json")
-        println("如果下载缓慢或者卡死, 你可以点击$HITOKOTO_SENTENCE_URL/$type.json 来手动下载,并将其放入hitokoto文件夹内")
+        logger.info { "Downloading Hitokoto sentences: $type.json" }
+        logger.info {
+            "if the download is slow, please go to $HITOKOTO_SENTENCE_URL/$type.json to download manually," +
+                    " and drop the file into $ROOT_PATH/hitokoto folder."
+        }
         val content = URI("$HITOKOTO_SENTENCE_URL/$type.json").toURL().readText()
         file.writeText(content)
-        println("Hitokoto语句下载完成")
+        logger.info { "Hitokoto sentence downloaded" }
     }
 
     fun getSentence(): Config.Description {

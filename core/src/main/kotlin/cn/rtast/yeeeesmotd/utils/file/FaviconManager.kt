@@ -18,6 +18,7 @@
 package cn.rtast.yeeeesmotd.utils.file
 
 import cn.rtast.yeeeesmotd.ROOT_PATH
+import io.github.oshai.kotlinlogging.KotlinLogging
 import java.awt.image.BufferedImage
 import java.io.File
 import javax.imageio.ImageIO
@@ -27,8 +28,8 @@ class FaviconManager {
 
     private val iconsPath = File(ROOT_PATH, "icons")
     private var icons = iconsPath.listFiles()
-
     private val validIcons = mutableListOf<File>()
+    private val logger = KotlinLogging.logger {}
 
     init {
         if (!iconsPath.exists()) {
@@ -55,8 +56,9 @@ class FaviconManager {
                     this.validIcons.add(i)
                 }
             }
+            logger.info { "Loaded ${this.validIcons.size} icon(s)" }
         } else {
-            println("No icons found")
+            logger.info { "No icons found" }
         }
     }
 
