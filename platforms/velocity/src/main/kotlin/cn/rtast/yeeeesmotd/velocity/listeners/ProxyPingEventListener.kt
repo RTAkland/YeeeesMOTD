@@ -99,7 +99,10 @@ class ProxyPingEventListener {
             .favicon(favicon)
             .onlinePlayers(configManager.getConfig().onlinePlayer)
             .maximumPlayers(configManager.getConfig().maximumPlayer)
-            .version(ServerPing.Version(randomProtocolVersion, randomProtocolName))
+
+        if (configManager.fakeProtocol().enabled) {
+            pong.version(ServerPing.Version(randomProtocolVersion, randomProtocolName))
+        }
 
         if (configManager.getConfig().clearSamplePlayer) {
             pong.clearSamplePlayers()

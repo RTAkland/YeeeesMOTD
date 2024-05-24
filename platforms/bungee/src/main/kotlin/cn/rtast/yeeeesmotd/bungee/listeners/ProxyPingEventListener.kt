@@ -94,7 +94,9 @@ class ProxyPingEventListener : Listener {
         event.response.setFavicon(favicon)
         event.response.players.max = configManager.getConfig().maximumPlayer
         event.response.players.online = configManager.getConfig().onlinePlayer
-        event.response.version = ServerPing.Protocol(randomProtocolName, randomProtocolVersion)
+        if (configManager.fakeProtocol().enabled) {
+            event.response.version = ServerPing.Protocol(randomProtocolName, randomProtocolVersion)
+        }
         if (configManager.getConfig().clearSamplePlayer) {
             event.response.players.sample = arrayOf<PlayerInfo>()
         }

@@ -61,10 +61,6 @@ class ConfigManager :
         return this.read().schemaVersion != newConfig.schemaVersion
     }
 
-    private fun fakeProtocol(): Config.FakeProtocol {
-        return this.read().fakeProtocol
-    }
-
     fun getConfig(): Config {
         return this.read()
     }
@@ -108,5 +104,9 @@ class ConfigManager :
 
     fun hitokoto(): Config.Hitokoto {
         return this.read().hitokoto
+    }
+
+    fun fakeProtocol(): Config.FakeProtocol {
+        return this.read().fakeProtocol
     }
 }
