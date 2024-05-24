@@ -21,10 +21,10 @@
 
 # 功能完整性
 
-> 你可以点击下方展开按钮查看每个平台功能适配
+你可以点击下方展开按钮查看每个平台功能适配
 
 <details>
-<summary>点击这里展开表格</summary>
+<summary>展开</summary>
 
 |    功能/平台    | Velocity | Bukkit & Paper | Spigot | BungeeCord |
 |:-----------:|:--------:|:--------------:|:------:|:----------:|
@@ -41,37 +41,36 @@
 
 # 使用
 
-> 在[`Releases`](https://github.com/RTAkland/YeeeesMOTD/releases/)中找到你的服务端对应的文件下载插件,
-> 将插件放入plugins文件夹内即可使用
+在[`Releases`](https://github.com/RTAkland/YeeeesMOTD/releases/)中找到你的服务端对应的文件下载插件,
+将插件放入plugins文件夹内即可使用
 
 # 配置
 
 ## ip指纹
 
-> 此功能需要服务器`开启正版验证`并且服务器`有公网IP`  
-> ip指纹可以记录玩家登陆游戏的ip在下次玩家使用这个ip ping服务器的时候就会有如下效果(
-> 将玩家皮肤的头作为服务器的icon显示给玩家):
+此功能需要服务器`开启正版验证`并且服务器`有公网IP`
+ip指纹可以记录玩家登陆游戏的ip在下次玩家使用这个ip ping服务器的时候就会有如下效果(
+将玩家皮肤的头作为服务器的icon显示给玩家):
 
 ![showcase](./images/description.png)
 
 ## 随机服务器icon
 
-> 随机服务器的icon需要提前准备几张`64x64`像素大小的图片放入服务器`plugins/YeeeesMotd/icons`
-> 文件夹内且图片格式必须为`png`
-
-> 使用`yesmotd reload`可以热重载服务器随机icon列表
+随机服务器的icon需要提前准备几张`64x64`像素大小的图片放入服务器`plugins/YeeeesMotd/icons`
+文件夹内且图片格式必须为`png`
+> 使用用`yeeeesmotd reload`可以热重载服务器随机icon列表
 
 ## MOTD信息
 
-> 你需要先启动一次反向代理初始化所需的文件, 在`plugins/YeeeesMotd/`文件夹内你可以找到
-> `descriptions.json`文件, 用任意一个文本编辑器(比如: Windows自带的记事本, vi, vim等)
-> 需要实现以下效果：
+你需要先启动一插件初始化所需的文件, 在`plugins/YeeeesMotd/`文件夹内你可以找到
+`descriptions.json`文件, 用任意一个文本编辑器(比如: Windows自带的记事本, vi, vim等)
+需要实现以下效果：
 
 ![description](./images/description.png)
 
-> 你需要打开`config.json`, 找到`descriptions`根下， 你可以看到以下内容，可以修改对应行的内容
-> 其中`line1`表示第一行, `line2`表示第二行, 语法支持[MiniMessage](https://github.com/KyoriPowered/adventure)
-> 以下为默认的描述文件
+你需要打开`config.json`, 找到`descriptions`根下， 你可以看到以下内容，可以修改对应行的内容
+其中`line1`表示第一行, `line2`表示第二行, 语法支持[MiniMessage](https://github.com/KyoriPowered/adventure)
+以下为默认的描述文件
 
 ```json
 [
@@ -88,18 +87,18 @@
 
 ### 在线列表
 
-> 你需要打开`config.json`, 然后找到 `maximumPlayer` `onlinePlayer` `clearSamplePlayer` 字样  
-> 这三个属性分别代表: 最大玩家数, 在线玩家数, 是否不显示在线玩家列表  
-> 三个属性的默认值分别为 `maximumPlayer`: `-1` | `onlinePlayer`: `-1` | `clearSamplePlayer`: `false`
-> 可以参考下图:
+你需要打开`config.json`, 然后找到 `maximumPlayer` `onlinePlayer` `clearSamplePlayer` 字样  
+这三个属性分别代表: 最大玩家数, 在线玩家数, 是否不显示在线玩家列表  
+三个属性的默认值分别为 `maximumPlayer`: `-1` | `onlinePlayer`: `-1` | `clearSamplePlayer`: `false`
+可以参考下图:
 
 ![playerlist](./images/playerlist.png)
 
 ## 防压测
 
-> 此功能时防止恶意压测服务器， 所以玩家进服务器之前需要ping一次服务器,
-> 如果ping服务器的事件和进入服务器的过长，则需要重新ping一次服务器,
-> 以下为配置文件
+此功能时防止恶意压测服务器， 所以玩家进服务器之前需要ping一次服务器,
+如果ping服务器的事件和进入服务器的过长，则需要重新ping一次服务器,
+以下为配置文件
 
 ```json
 {
@@ -113,15 +112,15 @@
 }
 ```
 
-> 其中`enabled`表示是否开启防压测，默认为关闭`false`.  
-> `pingFirstText`表示玩家没有先ping服务器就进入服务器，将玩家断开连接的时候提示的信息.  
-> `rePingText`表示玩家ping服务器的时间和进入服务器的时间间隔过长的提示信息.  
-> `interval`表示ping服务器和进入服务器的最大间隔时间单位为 `秒`
+其中`enabled`表示是否开启防压测，默认为关闭`false`.  
+`pingFirstText`表示玩家没有先ping服务器就进入服务器，将玩家断开连接的时候提示的信息.  
+`rePingText`表示玩家ping服务器的时间和进入服务器的时间间隔过长的提示信息.  
+`interval`表示ping服务器和进入服务器的最大间隔时间单位为 `秒`
 
 ## Hitokoto一言
 
-> 此功能可以随机一言里的句子当作服务器描述信息, 你可以修改一言出现的`概率`(范围0 ~ 100)
-> 可以设置一言句子的`种类` 和 `字体颜色`, 下面是详细的配置文件:
+此功能可以随机一言里的句子当作服务器描述信息, 你可以修改一言出现的`概率`(范围0 ~ 100)
+可以设置一言句子的`种类` 和 `字体颜色`, 下面是详细的配置文件:
 
 ```json
   // ...
@@ -134,48 +133,48 @@
 // ...
 ```
 
-> 在上面的json文本中`hitokoto`根下的`enabled`表示是否开启此功能,默认关闭.  
-> `color` 表示字体的颜色可以用RGB 16进制表示 ***请务必带上前面的 `#`***  
-> `probability`表示一言当作MOTD概率默认为30%， 范围0 ~ 100 如果不在这个闭区间内则概率为0,
-> 当然如果你的概率设置成100的话那么最终显示出的概率也只有`50%`, 因为`ip指纹`占用了剩余的`50%`
-> 概率的计算方式见 [概率计算](#概率计算)   
-> `type` 表示一言的种类可选的种类具体见下图: 当然你也可以使用`all`来指定所有的类别
-
+在上面的json文本中`hitokoto`根下的`enabled`表示是否开启此功能,默认关闭.  
+`color` 表示字体的颜色可以用RGB 16进制表示 ***请务必带上前面的 `#`***  
+`probability`表示一言当作MOTD概率默认为30%， 范围0 ~ 100 如果不在这个闭区间内则概率为0,
+当然如果你的概率设置成100的话那么最终显示出的概率也只有`50%`, 因为`ip指纹`占用了剩余的`50%`
+概率的计算方式见 [概率计算](#概率计算)   
+`type` 表示一言的种类可选的种类具体见下图: 当然你也可以使用`all`来指定所有的类别
 ![hitokototype.png](images/hitokototype.png)
 
 > ***此图截取自: hitokoto[开发文档](https://developer.hitokoto.cn/sentence/)***
 
 ## 虚假版本协议以及协议描述
-> 这个功能可以让你的服务器返回给玩家配置文件内的随即版本号(Protocol Number)以及随即版本描述(Protocol Name)  
-> 版本号就是游戏数据包版本号, 你可以在[这里](https://wiki.vg/Protocol_version_numbers)找到每个版本对应的版本号,
-> 版本描述就是`1.20.4`这是版本描述, 版本号是`765`,765是1.20.4的版本号  
-> ***注意***: 当然这个功能仅仅是返回了虚假的版本信息并不会真正的影响到游玩, 下方是效果图:
+
+这个功能可以让你的服务器返回给玩家配置文件内的随即版本号(Protocol Number)以及随即版本描述(Protocol Name)  
+版本号就是游戏数据包版本号, 你可以在[这里](https://wiki.vg/Protocol_version_numbers)找到每个版本对应的版本号,
+版本描述就是`1.20.4`这是版本描述, 版本号是`765`,765是1.20.4的版本号  
+***注意***: 当然这个功能仅仅是返回了虚假的版本信息并不会真正的影响到游玩, 下方是效果图:
 
 ![fake_protocol.png](images/fake_protocol.png)
 
-> 其中`shit bro`可以更改成你想要的文字, 如果服务器返回的版本号和客户端的版本号不一致则最右方服务器状态信息就会显示一个❌  
-> 下方是这个功能的配置文件片段:
+其中`shit bro`可以更改成你想要的文字,
+如果服务器返回的版本号和客户端的版本号不一致则最右方服务器状态信息就会显示一个❌  
+下方是这个功能的配置文件片段:
 
 ```json
-// ...
 "fakeProtocol": {
-  "enabled": false,
-  "protocolNumberPool": [],
-  "protocolNamePool": [],
-  "alwaysInvalidProtocolNumber": false
+"enabled": false,
+"protocolNumberPool": [],
+"protocolNamePool": [],
+"alwaysInvalidProtocolNumber": false
 },
 
 ```
 
-> `enabled`表示是否开启默认为关闭, 
-> `protocolNumberPool`表示版本号列表,可以填写整形数组例如`[1,2,3,4,5]`请务必使用半角逗号(英文逗号),
-> `protocolNamePool` 表示版本描述列表,可以填写字符串数组例如`["Shit bro", "Test"]`请使用半角引号(英文引号),
-> `alwaysInvalidProtocolNumber`表示是否总是无效的版本号, 如果设置为`true`则`protocolNumberPool`内的设置不会生效
-> 这会让服务器总是返回版本号为`-1`
+`enabled`表示是否开启默认为关闭,
+`protocolNumberPool`表示版本号列表,可以填写整形数组例如`[1,2,3,4,5]`请务必使用半角逗号(英文逗号),
+`protocolNamePool` 表示版本描述列表,可以填写字符串数组例如`["Shit bro", "Test"]`请使用半角引号(英文引号),
+`alwaysInvalidProtocolNumber`表示是否总是无效的版本号, 如果设置为`true`则`protocolNumberPool`内的设置不会生效
+这会让服务器总是返回版本号为`-1`
 
 ### MiniMessage
 
-> 这里会展示一些MiniMessage格式的用法
+ 这里展示了一些MiniMessage格式的用法
 
 ```json
 [
@@ -194,7 +193,7 @@
 
 > 更多MiniMessage的用法请前往[MiniMessage Docs](https://docs.advntr.dev/minimessage/format.html#standard-tags)
 
-> ***注意***在`Spigot`平台你不能使用成对的颜色标签来表示颜色例如下方示例
+ ***注意*** :在`Spigot`平台你不能使用成对的颜色标签来表示颜色例如下方示例
 
 ```json
   {
