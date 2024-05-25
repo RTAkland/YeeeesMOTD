@@ -41,17 +41,17 @@ object SkinHeadUtil {
             // single layer skin
             subImage = image.getSubimage(40, 8, 8, 8)
         } else {
-            // multi layer skin
+            // double layer skin
             val hairLayer = image.getSubimage(40, 8, 8, 8)
             val combined = BufferedImage(subImage.width, subImage.height, BufferedImage.TYPE_INT_ARGB)
             val g2d = combined.createGraphics()
-            g2d.drawImage(subImage, 0, 0, null);
+            g2d.drawImage(subImage, 0, 0, null)
             g2d.composite = AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1.0f)
-            g2d.drawImage(hairLayer, 0, 0, null)
+            g2d.drawImage(hairLayer, 0, 0, null)  // draw hair layer on face layer
             g2d.dispose()
             subImage = combined
         }
-        val zoom = zoomTo64(subImage)
+        val zoom = scaleImage(subImage)
         return zoom
     }
 

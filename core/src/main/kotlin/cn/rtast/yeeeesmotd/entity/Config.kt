@@ -21,7 +21,6 @@ data class Config(
     val schemaVersion: Double,
     val pingPass: PingPass,
     val fakeProtocol: FakeProtocol,
-    val test: Int,
     val hitokoto: Hitokoto,
     val maximumPlayer: Int,
     val onlinePlayer: Int,

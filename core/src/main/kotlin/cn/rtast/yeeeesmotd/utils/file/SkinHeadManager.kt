@@ -20,6 +20,7 @@ package cn.rtast.yeeeesmotd.utils.file
 import cn.rtast.yeeeesmotd.entity.Head
 import cn.rtast.yeeeesmotd.gson
 import cn.rtast.yeeeesmotd.utils.SkinHeadUtil
+import cn.rtast.yeeeesmotd.utils.bufferedImageToByteArray
 import com.google.gson.reflect.TypeToken
 import java.awt.image.BufferedImage
 import java.io.ByteArrayOutputStream
@@ -41,20 +42,12 @@ class SkinHeadManager : IJsonManager<MutableList<Head>>("heads.json", mutableLis
         this.file.writeText(serData)
     }
 
-    private fun bufferedImageToByteArray(image: BufferedImage?): ByteArray {
-        val baos = ByteArrayOutputStream()
-        ImageIO.write(image, "png", baos)
-        val byteArray = baos.toByteArray()
-        baos.close()
-        return byteArray
-    }
-
     fun addHead(name: String, uuid: String, ip: String, textureContent: String) {
         thread {
             val allHeads = this.read()
             val skin = SkinHeadUtil.getSkinFavicon(textureContent)
             val encodedSkinImage =
-                String(Base64.getEncoder().encode(this.bufferedImageToByteArray(skin)), Charsets.UTF_8)
+                String(Base64.getEncoder().encode(bufferedImageToByteArray(skin)), Charsets.UTF_8)
             allHeads.add(Head(name, uuid, encodedSkinImage, ip))
             this.write(allHeads)
         }
@@ -65,7 +58,7 @@ class SkinHeadManager : IJsonManager<MutableList<Head>>("heads.json", mutableLis
             val allHeads = this.read()
             val skin = SkinHeadUtil.getSkinFaviconWithUUID(uuid)
             val encodedSkinImage =
-                String(Base64.getEncoder().encode(this.bufferedImageToByteArray(skin)), Charsets.UTF_8)
+                String(Base64.getEncoder().encode(bufferedImageToByteArray(skin)), Charsets.UTF_8)
             allHeads.add(Head(name, uuid, encodedSkinImage, ip))
             this.write(allHeads)
         }
@@ -76,7 +69,7 @@ class SkinHeadManager : IJsonManager<MutableList<Head>>("heads.json", mutableLis
             val allHeads = this.read()
             val skin = SkinHeadUtil.getSkinFavicon(textureContent)
             val encodedSkinImage =
-                String(Base64.getEncoder().encode(this.bufferedImageToByteArray(skin)), Charsets.UTF_8)
+                String(Base64.getEncoder().encode(bufferedImageToByteArray(skin)), Charsets.UTF_8)
             allHeads.removeAll { it.ip == ip }
             allHeads.add(Head(name, uuid, encodedSkinImage, ip))
             this.write(allHeads)
@@ -88,7 +81,7 @@ class SkinHeadManager : IJsonManager<MutableList<Head>>("heads.json", mutableLis
             val allHeads = this.read()
             val skin = SkinHeadUtil.getSkinFaviconWithUUID(uuid)
             val encodedSkinImage =
-                String(Base64.getEncoder().encode(this.bufferedImageToByteArray(skin)), Charsets.UTF_8)
+                String(Base64.getEncoder().encode(bufferedImageToByteArray(skin)), Charsets.UTF_8)
             allHeads.removeAll { it.ip == ip }
             allHeads.add(Head(name, uuid, encodedSkinImage, ip))
             this.write(allHeads)

@@ -77,7 +77,6 @@ val DEFAULT_CONFIG = Config(
     SCHEMA_VERSION,
     Config.PingPass(false, PING_FIRST_TEXT, RE_PING_TEXT, DEFAULT_PING_INTERVAL),
     Config.FakeProtocol(false, listOf(), listOf(), false),
-    -1,
     Config.Hitokoto(false, "#00E5EE", "a", 30),  // Turquoise2
     -1,
     -1,
