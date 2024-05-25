@@ -34,8 +34,8 @@ import java.util.*
 class LoginEventListener(private val proxy: ProxyServer) {
 
     private fun getTextureContent(profile: GameProfile): String {
-        val texturesBase64 = profile.properties.toString().split(",")[1].split("=")[1].replace("'", "")
-        return String(Base64.getDecoder().decode(texturesBase64), Charsets.UTF_8)
+        println(profile.properties.first().value)
+        return String(Base64.getDecoder().decode(profile.properties.first().value), Charsets.UTF_8)
     }
 
     @Subscribe
