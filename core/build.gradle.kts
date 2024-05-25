@@ -7,5 +7,4 @@ repositories {
 
 dependencies {
     implementation(libs.gson)
-    implementation(libs.kotlinLogging)
 }

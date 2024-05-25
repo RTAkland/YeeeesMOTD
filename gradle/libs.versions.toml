@@ -1,7 +1,6 @@
 [versions]
 # Common
 gsonVersion = "2.10.1"
-kotlinLoggingVersion = "5.1.0"
 adventureVersion = "4.17.0"
 # Velocity
 velocityVersion = "3.3.0-SNAPSHOT"
@@ -13,7 +12,6 @@ bungeeAdventureVersion = "4.3.2"
 
 [libraries]
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gsonVersion" }
-kotlinLogging = { group = "io.github.oshai", name = "kotlin-logging-jvm", version.ref = "kotlinLoggingVersion" }
 paper = { group = "io.papermc.paper", name = "paper-api", version.ref = "paperApiVersion" }
 adventure = { group = "net.kyori", name = "adventure-text-minimessage", version.ref = "adventureVersion" }
 bungeePlatformAdventure = { group = "net.kyori", name = "adventure-platform-bungeecord", version.ref = "bungeeAdventureVersion" }

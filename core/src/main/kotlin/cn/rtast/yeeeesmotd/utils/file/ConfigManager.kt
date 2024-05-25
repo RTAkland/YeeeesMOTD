@@ -23,7 +23,6 @@ import cn.rtast.yeeeesmotd.DEFAULT_CONFIG_URL
 import cn.rtast.yeeeesmotd.entity.Config
 import cn.rtast.yeeeesmotd.gson
 import com.google.gson.JsonObject
-import io.github.oshai.kotlinlogging.KotlinLogging
 
 class ConfigManager :
     IJsonManager<Config>(
@@ -31,14 +30,12 @@ class ConfigManager :
         DEFAULT_CONFIG
     ) {
 
-    private val logger = KotlinLogging.logger {}
-
     init {
         if (this.checkConfigConflict(DEFAULT_CONFIG)) {
-            logger.error {
+            println(
                 "Please go to $DEFAULT_CONFIG_URL to download the latest config file!!!!" +
                         "or you want to crash!!!!!"
-            }
+            )
         }
     }
 
