@@ -47,13 +47,13 @@ subprojects {
     }
 
     tasks.compileJava {
-        sourceCompatibility = "17"
-        targetCompatibility = "17"
+        sourceCompatibility = "21"
+        targetCompatibility = "21"
         options.encoding = "UTF-8"
     }
 
     tasks.compileKotlin {
-        kotlinOptions.jvmTarget = "17"
+        kotlinOptions.jvmTarget = "21"
     }
 
     dependencies {
