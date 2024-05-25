@@ -174,7 +174,7 @@ ip指纹可以记录玩家登陆游戏的ip在下次玩家使用这个ip ping服
 
 ### MiniMessage
 
- 这里展示了一些MiniMessage格式的用法
+这里展示了一些MiniMessage格式的用法
 
 ```json
 [
@@ -193,7 +193,7 @@ ip指纹可以记录玩家登陆游戏的ip在下次玩家使用这个ip ping服
 
 > 更多MiniMessage的用法请前往[MiniMessage Docs](https://docs.advntr.dev/minimessage/format.html#standard-tags)
 
- ***注意*** :在`Spigot`平台你不能使用成对的颜色标签来表示颜色例如下方示例
+***注意*** :在`Spigot`平台你不能使用成对的颜色标签来表示颜色例如下方示例
 
 ```json
   {
@@ -219,6 +219,19 @@ ip指纹可以记录玩家登陆游戏的ip在下次玩家使用这个ip ping服
 
 * 仅能在开启了正版验证的服务器使用,离线服务器因玩家UUID计算方式和正版有区别所以无法使用
 * 此插件仅在有公网IP的服务器生效, 如果使用的是FRP端口映射技术则无法使用
+
+# 开发
+
+建议使用[Intellij IDEA](https://www.jetbrains.com/idea/)进行开发, 本项目百分之百使用[Kotlin](https://kotl.in)
+
+* 1.Clone仓库
+
+```shell
+$ git clone https://github.com/RTAkland/YeeeesMOTD.git
+```
+
+* 2.等待IDEA索引完成
+* 3.阅读源代码并遵循Apache-2.0协议进行开发和开源
 
 # 开源
 
