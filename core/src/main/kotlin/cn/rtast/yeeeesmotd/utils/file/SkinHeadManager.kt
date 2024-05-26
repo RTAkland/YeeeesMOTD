@@ -22,10 +22,7 @@ import cn.rtast.yeeeesmotd.gson
 import cn.rtast.yeeeesmotd.utils.SkinHeadUtil
 import cn.rtast.yeeeesmotd.utils.bufferedImageToByteArray
 import com.google.gson.reflect.TypeToken
-import java.awt.image.BufferedImage
-import java.io.ByteArrayOutputStream
 import java.util.*
-import javax.imageio.ImageIO
 import kotlin.concurrent.thread
 
 
