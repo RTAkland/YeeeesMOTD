@@ -47,7 +47,7 @@ class HitokotoManager(type: String) {
         println("Downloading Hitokoto sentences: $type.json")
         println(
             "if the download is slow, please go to $HITOKOTO_SENTENCE_URL/$type.json to download manually," +
-                    " and drop the file into $ROOT_PATH/hitokoto folder."
+                    " and drop the file into ${ROOT_PATH}hitokoto folder."
         )
         val content = URI("$HITOKOTO_SENTENCE_URL/$type.json").toURL().readText()
         file.writeText(content)
