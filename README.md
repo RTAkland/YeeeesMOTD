@@ -58,7 +58,7 @@ ip指纹可以记录玩家登陆游戏的ip在下次玩家使用这个ip ping服
 
 随机服务器的icon需要提前准备几张`64x64`像素大小的图片放入服务器`plugins/YeeeesMotd/icons`
 文件夹内且图片格式必须为`png`
-> 使用用`yeeeesmotd reload`可以热重载服务器随机icon列表
+> 使用`yeeeesmotd reload`可以热重载服务器随机icon列表
 
 ## MOTD信息
 
