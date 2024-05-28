@@ -7,6 +7,7 @@ load: STARTUP
 authors: [ RTAkland ]
 description: "${description}"
 website: https://github.com/RTAkland/YeeeesMOTD
+folia-supported: true
 
 commands:
   yeeeesmotd:
