@@ -1,5 +1,5 @@
 plugins {
-    id("xyz.jpenilla.run-velocity") version ("2.3.0")
+    alias(libs.plugins.runVelocity)
 }
 
 val pluginVersion: String by project

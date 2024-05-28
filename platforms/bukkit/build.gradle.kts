@@ -1,5 +1,5 @@
 plugins {
-    id("xyz.jpenilla.run-paper") version ("2.3.0")
+    alias(libs.plugins.runPaper)
 }
 
 val pluginVersion: String by project

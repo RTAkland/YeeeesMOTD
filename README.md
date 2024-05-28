@@ -7,7 +7,7 @@
 
 <br>
 <img alt="GitHub Workflow Status" src="https://img.shields.io/github/actions/workflow/status/DangoTown/YeeeesMOTD/main.yml">
-<img alt="Kotlin Version" src="https://img.shields.io/badge/Kotlin-1.9.24-pink?logo=kotlin">
+<img alt="Kotlin Version" src="https://img.shields.io/badge/Kotlin-2.0.0-pink?logo=kotlin">
 <img alt="GitHub" src="https://img.shields.io/github/license/RTAkland/YeeeesMOTD?logo=apache">
 
 </div>

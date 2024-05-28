@@ -1,9 +1,12 @@
 [versions]
 # Common
+kotlinPluginVersion = "2.0.0"
+shadowVersion = "8.1.1"
 gsonVersion = "2.10.1"
 adventureVersion = "4.17.0"
 # Velocity
 velocityVersion = "3.3.0-SNAPSHOT"
+runTaskVersion = "2.3.0"
 # Bukkit & Paper & Spigot
 paperApiVersion = "1.20.4-R0.1-SNAPSHOT"
 # Bungee
@@ -22,3 +25,7 @@ velocity = { group = "com.velocitypowered", name = "velocity-api", version.ref =
 [bundles]
 
 [plugins]
+kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlinPluginVersion" }
+shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadowVersion" }
+runVelocity = { id = "xyz.jpenilla.run-velocity", version.ref = "runTaskVersion" }
+runPaper = { id = "xyz.jpenilla.run-paper", version.ref = "runTaskVersion" }

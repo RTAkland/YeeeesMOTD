@@ -1,7 +1,8 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
-    id("java")
-    kotlin("jvm") version ("1.9.24")
-    id("com.github.johnrengelman.shadow") version ("8.1.1")
+    alias(libs.plugins.kotlin)
+    alias(libs.plugins.shadow)
 }
 
 allprojects {
@@ -29,7 +30,6 @@ subprojects {
     version = pluginVersion
 
     apply {
-        plugin("java")
         plugin("org.jetbrains.kotlin.jvm")
         plugin("com.github.johnrengelman.shadow")
     }
@@ -53,7 +53,7 @@ subprojects {
     }
 
     tasks.compileKotlin {
-        kotlinOptions.jvmTarget = "21"
+        compilerOptions.jvmTarget = JvmTarget.JVM_21
     }
 
     dependencies {
