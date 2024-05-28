@@ -5,5 +5,5 @@ include(
     ":platforms:velocity",
     ":platforms:bukkit",
     ":platforms:spigot",
-    ":platforms:bungee"
+    ":platforms:bungee",
 )
