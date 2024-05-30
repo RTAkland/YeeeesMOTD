@@ -44,6 +44,9 @@
 在[`Releases`](https://github.com/RTAkland/YeeeesMOTD/releases/)中找到你的服务端对应的文件下载插件,
 将插件放入plugins文件夹内即可使用
 
+> YeeeesMOTD现支持`Spigot` `Paper` `Purpur` `Velocity` `Bukkit` `BungeeCord` `Luminol` `Folia`
+> 以及各自的衍生服务端, 以上为测试过的服务端
+
 # 配置
 
 ## ip指纹
