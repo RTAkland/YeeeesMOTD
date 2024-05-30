@@ -1,8 +1,8 @@
 val pluginVersion: String by project
-val minecraftVersion: String by project
+val spigotMinecraftVersion: String by project
 
 base {
-    archivesName = rootProject.name + ".spigot+mc.$minecraftVersion"
+    archivesName = rootProject.name + ".spigot+mc.$spigotMinecraftVersion"
 }
 
 dependencies {

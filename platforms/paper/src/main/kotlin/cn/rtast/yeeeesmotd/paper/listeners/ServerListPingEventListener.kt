@@ -15,7 +15,7 @@
  */
 
 
-package cn.rtast.yeeeesmotd.bukkit.listeners
+package cn.rtast.yeeeesmotd.paper.listeners
 
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.configManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.defaultIcon
@@ -23,7 +23,7 @@ import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.faviconManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.hitokotoManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.pingRecordManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
-import cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin.Companion.miniMessage
+import cn.rtast.yeeeesmotd.paper.YeeeesMOTDPlugin.Companion.miniMessage
 import cn.rtast.yeeeesmotd.utils.nextBoolean
 import net.kyori.adventure.text.Component
 import net.kyori.adventure.text.format.Style

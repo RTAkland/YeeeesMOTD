@@ -4,22 +4,24 @@ kotlinPluginVersion = "2.0.0"
 shadowVersion = "8.1.1"
 gsonVersion = "2.10.1"
 adventureVersion = "4.17.0"
+runTaskVersion = "2.3.0"
 # Velocity
 velocityVersion = "3.3.0-SNAPSHOT"
-runTaskVersion = "2.3.0"
-# Bukkit & Paper & Spigot
-paperApiVersion = "1.20.4-R0.1-SNAPSHOT"
-# Bungee
+# Paper
+paperApiVersion = "1.20.6-R0.1-SNAPSHOT"
+# Spigot
+spigotApiVersion = "1.20.6-R0.1-SNAPSHOT"
+# BungeeCord
 bungeeVersion = "1.20-R0.1-SNAPSHOT"
 bungeeAdventureVersion = "4.3.2"
 
 [libraries]
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gsonVersion" }
-paper = { group = "io.papermc.paper", name = "paper-api", version.ref = "paperApiVersion" }
 adventure = { group = "net.kyori", name = "adventure-text-minimessage", version.ref = "adventureVersion" }
 bungeePlatformAdventure = { group = "net.kyori", name = "adventure-platform-bungeecord", version.ref = "bungeeAdventureVersion" }
+paper = { group = "io.papermc.paper", name = "paper-api", version.ref = "paperApiVersion" }
 bungeecord = { group = "net.md-5", name = "bungeecord-api", version.ref = "bungeeVersion" }
-spigot = { group = "org.spigotmc", name = "spigot-api", version.ref = "paperApiVersion" }
+spigot = { group = "org.spigotmc", name = "spigot-api", version.ref = "spigotApiVersion" }
 velocity = { group = "com.velocitypowered", name = "velocity-api", version.ref = "velocityVersion" }
 
 [bundles]

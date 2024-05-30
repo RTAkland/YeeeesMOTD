@@ -15,13 +15,13 @@
  */
 
 
-package cn.rtast.yeeeesmotd.bukkit
+package cn.rtast.yeeeesmotd.paper
 
 import cn.rtast.yeeeesmotd.IYeeeesMOTD
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.faviconManager
-import cn.rtast.yeeeesmotd.bukkit.command.YeeeesMOTDCommand
-import cn.rtast.yeeeesmotd.bukkit.listeners.PlayerJoinEventListener
-import cn.rtast.yeeeesmotd.bukkit.listeners.ServerListPingEventListener
+import cn.rtast.yeeeesmotd.paper.command.YeeeesMOTDCommand
+import cn.rtast.yeeeesmotd.paper.listeners.PlayerJoinEventListener
+import cn.rtast.yeeeesmotd.paper.listeners.ServerListPingEventListener
 import net.kyori.adventure.text.minimessage.MiniMessage
 import org.bukkit.plugin.java.JavaPlugin
 

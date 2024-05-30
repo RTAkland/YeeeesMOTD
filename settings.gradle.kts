@@ -3,7 +3,7 @@ rootProject.name = "YeeeesMOTD"
 include(
     ":core",
     ":platforms:velocity",
-    ":platforms:bukkit",
+    ":platforms:paper",
     ":platforms:spigot",
     ":platforms:bungee",
 )

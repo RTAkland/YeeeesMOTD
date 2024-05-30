@@ -3,10 +3,10 @@ plugins {
 }
 
 val pluginVersion: String by project
-val minecraftVersion: String by project
+val paperMinecraftVersion: String by project
 
 base {
-    archivesName = rootProject.name + ".bukkit+mc.$minecraftVersion"
+    archivesName = rootProject.name + ".paper+mc.$paperMinecraftVersion"
 }
 
 dependencies {
@@ -26,7 +26,7 @@ tasks.processResources {
 }
 
 tasks.runServer {
-    minecraftVersion(minecraftVersion)
+    minecraftVersion(paperMinecraftVersion)
 }
 
 

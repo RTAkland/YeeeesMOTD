@@ -26,7 +26,7 @@ import kotlin.random.Random
 class FaviconManager {
 
     private val iconsPath = File(ROOT_PATH, "icons")
-    private var icons = iconsPath.listFiles()!!
+    private var icons = iconsPath.listFiles()
     private val validIcons = mutableListOf<File>()
 
     init {
@@ -46,9 +46,9 @@ class FaviconManager {
 
     fun setValidIcons() {
         this.validIcons.clear()
-        icons = iconsPath.listFiles()!!
-        if (icons.isNotEmpty()) {
-            for (i in icons) {
+        icons = iconsPath.listFiles()
+        if (icons?.isNotEmpty() == true) {
+            for (i in icons!!) {
                 if (i.isFile && i.extension == "png") {
                     this.validIcons.add(i)
                 }

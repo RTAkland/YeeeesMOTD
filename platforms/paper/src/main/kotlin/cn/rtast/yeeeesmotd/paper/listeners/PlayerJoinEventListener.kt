@@ -15,7 +15,7 @@
  */
 
 
-package cn.rtast.yeeeesmotd.bukkit.listeners
+package cn.rtast.yeeeesmotd.paper.listeners
 
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.PING_AGAIN_TEXT
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.PING_FIRST_TEXT

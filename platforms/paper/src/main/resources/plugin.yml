@@ -1,7 +1,7 @@
 name: yeeeesmotd
 version: "${version}"
-main: cn.rtast.yeeeesmotd.bukkit.YeeeesMOTDPlugin
-api-version: "1.20"
+main: cn.rtast.yeeeesmotd.paper.YeeeesMOTDPlugin
+api-version: "1.20.6"
 prefix: YeeeesMOTD
 load: STARTUP
 authors: [ RTAkland ]

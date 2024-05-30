@@ -15,7 +15,7 @@
  */
 
 
-package cn.rtast.yeeeesmotd.bukkit.command
+package cn.rtast.yeeeesmotd.paper.command
 
 import cn.rtast.yeeeesmotd.IYeeeesMOTD
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.configManager
