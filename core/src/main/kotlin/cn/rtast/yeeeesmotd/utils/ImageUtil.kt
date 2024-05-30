@@ -53,8 +53,8 @@ fun byteArrayToBufferedImage(byteArray: ByteArray): BufferedImage {
 }
 
 fun bufferedImageToByteArray(image: BufferedImage): ByteArray {
-    ByteArrayOutputStream().use { baos ->
-        ImageIO.write(image, "png", baos)
-        return baos.toByteArray()
+    ByteArrayOutputStream().use { outputStream ->
+        ImageIO.write(image, "png", outputStream)
+        return outputStream.toByteArray()
     }
 }

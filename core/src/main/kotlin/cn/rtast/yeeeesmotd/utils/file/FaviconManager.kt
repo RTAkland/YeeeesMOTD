@@ -18,15 +18,15 @@
 package cn.rtast.yeeeesmotd.utils.file
 
 import cn.rtast.yeeeesmotd.ROOT_PATH
+import cn.rtast.yeeeesmotd.utils.byteArrayToBufferedImage
 import java.awt.image.BufferedImage
 import java.io.File
-import javax.imageio.ImageIO
 import kotlin.random.Random
 
 class FaviconManager {
 
     private val iconsPath = File(ROOT_PATH, "icons")
-    private var icons = iconsPath.listFiles()
+    private var icons = iconsPath.listFiles()!!
     private val validIcons = mutableListOf<File>()
 
     init {
@@ -41,14 +41,13 @@ class FaviconManager {
         }
         val rnd = Random.nextInt(0, validIcons.size)
         val icon = validIcons[rnd]
-        val byteArray = icon.readBytes()
-        return ImageIO.read(byteArray.inputStream())
+        return byteArrayToBufferedImage(icon.readBytes())
     }
 
     fun setValidIcons() {
         this.validIcons.clear()
-        icons = iconsPath.listFiles()
-        if (icons?.isNotEmpty() == true) {
+        icons = iconsPath.listFiles()!!
+        if (icons.isNotEmpty()) {
             for (i in icons) {
                 if (i.isFile && i.extension == "png") {
                     this.validIcons.add(i)
