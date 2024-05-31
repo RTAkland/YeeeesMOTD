@@ -21,7 +21,10 @@ import cn.rtast.yeeeesmotd.entity.Config
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 
-val gson: Gson = GsonBuilder().disableHtmlEscaping().create()
+val gson: Gson = GsonBuilder()
+    .disableHtmlEscaping()
+    .setPrettyPrinting()
+    .create()
 
 const val SCHEMA_VERSION = 1.1  // 1.1 for fake protocol version
 
