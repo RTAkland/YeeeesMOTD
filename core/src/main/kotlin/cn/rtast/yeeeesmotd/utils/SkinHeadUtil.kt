@@ -17,8 +17,6 @@
 
 package cn.rtast.yeeeesmotd.utils
 
-import cn.rtast.yeeeesmotd.SKIN_SERVER_URL
-import cn.rtast.yeeeesmotd.UUID_LOOKUP_URL
 import cn.rtast.yeeeesmotd.entity.DecodedSkin
 import cn.rtast.yeeeesmotd.entity.Skin
 import cn.rtast.yeeeesmotd.entity.UsernameUUID
@@ -31,6 +29,10 @@ import javax.imageio.ImageIO
 
 
 object SkinHeadUtil {
+
+    private const val UUID_LOOKUP_URL = "https://api.mojang.com/users/profiles/minecraft/"
+    private const val SKIN_SERVER_URL = "https://sessionserver.mojang.com/session/minecraft/profile/"
+
 
     private fun getSkinHead(skinUrl: String): BufferedImage {
         val url = URI(skinUrl).toURL()

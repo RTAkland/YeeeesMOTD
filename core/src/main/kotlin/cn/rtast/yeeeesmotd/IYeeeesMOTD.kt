@@ -18,17 +18,19 @@
 package cn.rtast.yeeeesmotd
 
 import cn.rtast.yeeeesmotd.utils.Favicon
+import cn.rtast.yeeeesmotd.utils.SamplePlayerGenerator
 import cn.rtast.yeeeesmotd.utils.file.*
 
 interface IYeeeesMOTD {
 
     companion object {
-        val faviconManager: FaviconManager = FaviconManager()
-        val skinHeadManager: SkinHeadManager = SkinHeadManager()
-        val pingRecordManager: PingRecordManager = PingRecordManager()
-        val configManager: ConfigManager = ConfigManager()
+        val faviconManager = FaviconManager()
+        val skinHeadManager = SkinHeadManager()
+        val pingRecordManager = PingRecordManager()
+        val configManager = ConfigManager()
         val hitokotoManager = HitokotoManager(configManager.hitokoto().type)
         val defaultIcon = Favicon.getDefaultIcon()
+        val fakeSamplePlayerGenerator = SamplePlayerGenerator()
 
         var PING_FIRST_TEXT = configManager.pingPass().pingFirstText
         var PING_AGAIN_TEXT = configManager.pingPass().pingAgainText

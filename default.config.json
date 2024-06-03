@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1.1,
+  "schemaVersion": 1.2,
   "pingPass": {
     "enabled": false,
     "pingFirstText": "Please ping the server first! / 请先在服务器列表Ping一次服务器",
@@ -11,6 +11,10 @@
     "protocolNumberPool": [],
     "protocolNamePool": [],
     "alwaysInvalidProtocolNumber": false
+  },
+  "fakeSamplePlayer": {
+    "enabled": false,
+    "fakePlayersCount": 10
   },
   "hitokoto": {
     "enabled": false,

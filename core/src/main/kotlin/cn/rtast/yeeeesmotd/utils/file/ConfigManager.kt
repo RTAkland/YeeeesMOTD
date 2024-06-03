@@ -19,7 +19,6 @@ package cn.rtast.yeeeesmotd.utils.file
 
 import cn.rtast.yeeeesmotd.BUILD_IN_DESCRIPTIONS
 import cn.rtast.yeeeesmotd.DEFAULT_CONFIG
-import cn.rtast.yeeeesmotd.DEFAULT_CONFIG_URL
 import cn.rtast.yeeeesmotd.entity.Config
 import cn.rtast.yeeeesmotd.gson
 import com.google.gson.JsonObject
@@ -37,6 +36,10 @@ class ConfigManager :
                         "or you want to crash!!!!!"
             )
         }
+    }
+
+    companion object {
+        private const val DEFAULT_CONFIG_URL = "https://github.com/RTAkland/YeeeesMOTD/blob/main/default.config.json"
     }
 
     private fun read(): Config {
@@ -105,5 +108,9 @@ class ConfigManager :
 
     fun fakeProtocol(): Config.FakeProtocol {
         return this.read().fakeProtocol
+    }
+
+    fun fakeSamplePlayer(): Config.FakeSamplePlayer {
+        return this.read().fakeSamplePlayer
     }
 }

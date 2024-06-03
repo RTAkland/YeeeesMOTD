@@ -26,7 +26,7 @@ val gson: Gson = GsonBuilder()
     .setPrettyPrinting()
     .create()
 
-const val SCHEMA_VERSION = 1.1  // 1.1 for fake protocol version
+const val SCHEMA_VERSION = 1.2  // 1.2 for fake sample player version
 
 const val ROOT_PATH = "./plugins/YeeeesMotd/"
 
@@ -35,14 +35,6 @@ const val PING_FIRST_TEXT = "Please ping the server first! / 请先在服务器�
 const val RE_PING_TEXT = "Please ping the server again! / 请重新Ping一次服务器"
 
 const val DEFAULT_PING_INTERVAL = 120
-
-const val HITOKOTO_SENTENCE_URL = "https://static.rtast.cn/hitokoto"
-
-const val SKIN_SERVER_URL = "https://sessionserver.mojang.com/session/minecraft/profile/"
-
-const val UUID_LOOKUP_URL = "https://api.mojang.com/users/profiles/minecraft/"
-
-const val DEFAULT_CONFIG_URL = "https://github.com/RTAkland/YeeeesMOTD/blob/main/default.config.json"
 
 val BUILD_IN_DESCRIPTIONS = listOf(
     "\$player <#A020F0>是吧? 还不赶快进来\n<#A020F0>不然有你好果子吃的!",
@@ -80,7 +72,10 @@ val DEFAULT_CONFIG = Config(
     SCHEMA_VERSION,
     Config.PingPass(false, PING_FIRST_TEXT, RE_PING_TEXT, DEFAULT_PING_INTERVAL),
     Config.FakeProtocol(false, listOf(), listOf(), false),
-    Config.Hitokoto(false, "#00E5EE", "a", 30),  // Turquoise2
+    Config.FakeSamplePlayer(false, 10),
+    Config.Hitokoto(
+        false, "#00E5EE", "a", 30
+    ),  // Turquoise2
     -1,
     -1,
     true,

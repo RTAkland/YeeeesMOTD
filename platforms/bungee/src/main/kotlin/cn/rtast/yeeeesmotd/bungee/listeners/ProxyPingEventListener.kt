@@ -19,12 +19,14 @@ package cn.rtast.yeeeesmotd.bungee.listeners
 
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.configManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.defaultIcon
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.fakeSamplePlayerGenerator
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.faviconManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.hitokotoManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.pingRecordManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import cn.rtast.yeeeesmotd.bungee.YeeeesMOTDPlugin.Companion.miniMessage
 import cn.rtast.yeeeesmotd.utils.nextBoolean
+import cn.rtast.yeeeesmotd.utils.str.toUUID
 import net.kyori.adventure.text.serializer.bungeecord.BungeeComponentSerializer
 import net.md_5.bungee.api.Favicon
 import net.md_5.bungee.api.ServerPing
@@ -97,6 +99,21 @@ class ProxyPingEventListener : Listener {
         if (configManager.fakeProtocol().enabled) {
             event.response.version = ServerPing.Protocol(randomProtocolName, randomProtocolVersion)
         }
+
+        if (configManager.fakeSamplePlayer().enabled) {
+            var fakeSamplePlayerCount = configManager.fakeSamplePlayer().fakePlayersCount
+            if (fakeSamplePlayerCount > 400) {
+                println("DO NOT SET THE FAKE PLAYER COUNT MORE THAN 400! ALREADY SET THE COUNT TO 10")
+                fakeSamplePlayerCount = 10
+            }
+            val fakePlayers = fakeSamplePlayerGenerator.generate(fakeSamplePlayerCount)
+            val samplePlayers = mutableListOf<PlayerInfo>()
+            fakePlayers.forEach { player ->
+                samplePlayers.add(PlayerInfo(player.name, player.uuid.toUUID()))
+            }
+            event.response.players.sample = samplePlayers.toTypedArray()
+        }
+
         if (configManager.getConfig().clearSamplePlayer) {
             event.response.players.sample = arrayOf<PlayerInfo>()
         }

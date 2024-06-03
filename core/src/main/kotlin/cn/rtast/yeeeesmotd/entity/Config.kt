@@ -21,6 +21,7 @@ data class Config(
     val schemaVersion: Double,
     val pingPass: PingPass,
     val fakeProtocol: FakeProtocol,
+    val fakeSamplePlayer: FakeSamplePlayer,
     val hitokoto: Hitokoto,
     val maximumPlayer: Int,
     val onlinePlayer: Int,
@@ -51,5 +52,10 @@ data class Config(
         val protocolNumberPool: List<Int>,
         val protocolNamePool: List<String>,
         val alwaysInvalidProtocolNumber: Boolean,
+    )
+
+    data class FakeSamplePlayer(
+        val enabled: Boolean,
+        val fakePlayersCount: Int,
     )
 }

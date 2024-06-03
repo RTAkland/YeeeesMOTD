@@ -19,11 +19,13 @@ package cn.rtast.yeeeesmotd.velocity.listeners
 
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.configManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.defaultIcon
+import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.fakeSamplePlayerGenerator
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.faviconManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.hitokotoManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.pingRecordManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import cn.rtast.yeeeesmotd.utils.nextBoolean
+import cn.rtast.yeeeesmotd.utils.str.toUUID
 import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.miniMessage
 import com.velocitypowered.api.event.Subscribe
 import com.velocitypowered.api.event.proxy.ProxyPingEvent
@@ -102,6 +104,20 @@ class ProxyPingEventListener {
 
         if (configManager.fakeProtocol().enabled) {
             pong.version(ServerPing.Version(randomProtocolVersion, randomProtocolName))
+        }
+
+        if (configManager.fakeSamplePlayer().enabled) {
+            var fakeSamplePlayerCount = configManager.fakeSamplePlayer().fakePlayersCount
+            if (fakeSamplePlayerCount > 400) {
+                println("DO NOT SET THE FAKE PLAYER COUNT MORE THAN 400! ALREADY SET THE COUNT TO 10")
+                fakeSamplePlayerCount = 10
+            }
+            val fakePlayers = fakeSamplePlayerGenerator.generate(fakeSamplePlayerCount)
+            val samplePlayers = mutableListOf<ServerPing.SamplePlayer>()
+            fakePlayers.forEach { player ->
+                samplePlayers.add(ServerPing.SamplePlayer(player.name, player.uuid.toUUID()))
+            }
+            pong.samplePlayers(*samplePlayers.toTypedArray())
         }
 
         if (configManager.getConfig().clearSamplePlayer) {

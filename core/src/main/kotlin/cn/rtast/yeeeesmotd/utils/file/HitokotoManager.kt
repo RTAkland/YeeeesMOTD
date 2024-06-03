@@ -17,7 +17,6 @@
 
 package cn.rtast.yeeeesmotd.utils.file
 
-import cn.rtast.yeeeesmotd.HITOKOTO_SENTENCE_URL
 import cn.rtast.yeeeesmotd.ROOT_PATH
 import cn.rtast.yeeeesmotd.entity.Config
 import cn.rtast.yeeeesmotd.entity.Sentence
@@ -41,6 +40,10 @@ class HitokotoManager(type: String) {
         }
 
         sentenceFile = file
+    }
+
+    companion object {
+        private const val HITOKOTO_SENTENCE_URL = "https://static.rtast.cn/hitokoto"
     }
 
     private fun downloadSentence(type: String, file: File) {
