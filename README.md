@@ -61,43 +61,60 @@ ip指纹可以记录玩家登陆游戏的ip在下次玩家使用这个ip ping服
 
 ## 随机服务器icon
 
+这个功能可以实现随机的icon, 可以自定义
+
 随机服务器的icon需要提前准备几张`64x64`像素大小的图片放入服务器`plugins/YeeeesMotd/icons`
 文件夹内且图片格式必须为`png`
+
 > 使用`yeeeesmotd reload`可以热重载服务器随机icon列表
 
 ## MOTD信息
 
-你需要先启动一插件初始化所需的文件, 在`plugins/YeeeesMotd/`文件夹内你可以找到
-`descriptions.json`文件, 用任意一个文本编辑器(比如: Windows自带的记事本, vi, vim等)
-需要实现以下效果：
+这个功能是修改随机的MOTD描述信息,可以自定义, 需要实现如下效果:
 
 ![description](./images/description.png)
 
 你需要打开`config.json`, 找到`descriptions`根下， 你可以看到以下内容，可以修改对应行的内容
 其中`line1`表示第一行, `line2`表示第二行, 语法支持[MiniMessage](https://github.com/KyoriPowered/adventure)
-以下为默认的描述文件
+以下为默认的配置
 
 ```json
-[
-  {
-    "line1": "<yellow><bold>YeeeesMOTD",
-    "line2": "<light_purple><bold>Powered by RTAkland: https://github.com/RTAkland"
-  },
-  {
-    "line1": "<green><bold>DangoTown 团子小镇 生电服务器欢迎你",
-    "line2": "<yellow><bold>https://dgtmc.top"
-  }
+ "descriptions": [
+{
+"line1": "<yellow><bold>YeeeesMOTD",
+"line2": "<light_purple><bold>Powered by RTAkland: https://github.com/RTAkland"
+},
+{
+"line1": "<#00ff00><bold>DangoTown 团子小镇 生电服务器欢迎你",
+"line2": "<yellow><bold>https://dgtmc.top"
+},
+{
+"line1": "<#00FFFF><bold>团子小镇是一个历史悠久的服务器",
+"line2": "<#00FFFF><bold>服务器于2016年开服至今"
+}
 ]
 ```
 
 ## 玩家在线数和最大玩家数
 
-你需要打开`config.json`, 然后找到 `maximumPlayer` `onlinePlayer` `clearSamplePlayer` 字样  
-这三个属性分别代表: 最大玩家数, 在线玩家数, 是否不显示在线玩家列表  
-三个属性的默认值分别为 `maximumPlayer`: `-1` | `onlinePlayer`: `-1` | `clearSamplePlayer`: `false`
-可以参考下图:
+这个功能可以设置虚假的在线玩家数和最大玩家数
+**注意: 此功能在`Bukkit & Paper & Spigot服务端无法使用**
 
-![playerlist](./images/playerlist.png)
+默认配置如下:
+
+```json
+"maximumPlayer": -1,
+"onlinePlayer": -1,
+"clearSamplePlayer": true
+```
+
+`maximumPlayer`表示最大玩家数默认为`-1`,
+`onlinePlayer`表示在线玩家数默认为`-1`,
+`clearSamplePlayer`表示是否清除在线玩家列表, 没有清除的效果图见[虚假在线玩家列表](#虚假在线玩家列表)
+默认为开启
+
+**注意: 这个功能只是将虚假的数据发送给玩家客户端实际上服务器的最大玩家数并不会受影响, 如果你要更改服务器的最大玩家数你需要更改服务端的配置文件
+**
 
 ## 虚假在线玩家列表
 
