@@ -68,7 +68,7 @@ ip指纹可以记录玩家登陆游戏的ip在下次玩家使用这个ip ping服
 
 > 使用`yeeeesmotd reload`可以热重载服务器随机icon列表
 
-## MOTD信息
+## 随机MOTD信息
 
 这个功能是修改随机的MOTD描述信息,可以自定义, 需要实现如下效果:
 
@@ -136,6 +136,10 @@ ip指纹可以记录玩家登陆游戏的ip在下次玩家使用这个ip ping服
 **该值不要设置超过400过大的话玩家ping服务器会出错, 超过400会被自动设置为10**
 
 如果你将`clearSamplePlayer`设置为`true`那么这个配置将不会生效即使`enabled`改为`true`
+
+> 如果你想将自己的名字添加进这个随机名字列表你可以点击[这里](https://github.com/RTAkland/Static/edit/main/static/username.txt)
+> fork仓库并修改然后提交Pull Request, 在我审核后即可将你的名字加入这个列表  
+> 你也可以点击[这里](https://static.rtast.cn/static/username.txt)来查看已有玩家列表
 
 ## 防压测
 
