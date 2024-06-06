@@ -23,7 +23,6 @@ import java.util.*
 
 object Favicon {
     fun getDefaultIcon(): BufferedImage {
-        val imageByteArray = Base64.getDecoder().decode(DEFAULT_ICON)
-        return byteArrayToBufferedImage(imageByteArray)
+        return Base64.getDecoder().decode(DEFAULT_ICON).toBufferedImage()
     }
 }

@@ -39,7 +39,7 @@ object SkinHeadUtil {
         val image = ImageIO.read(url)
         var subImage = image.getSubimage(8, 8, 8, 8)
 
-        if (isFullyTransparent(subImage)) {
+        if (subImage.isFullyTransparent()) {
             // single layer skin
             subImage = image.getSubimage(40, 8, 8, 8)
         } else {
@@ -53,7 +53,7 @@ object SkinHeadUtil {
             g2d.dispose()
             subImage = combined
         }
-        val zoom = scaleImage(subImage)
+        val zoom = subImage.scaleImage(64 to 64)
         return zoom
     }
 

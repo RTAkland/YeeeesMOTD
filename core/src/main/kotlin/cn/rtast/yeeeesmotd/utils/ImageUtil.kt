@@ -22,12 +22,12 @@ import java.io.ByteArrayInputStream
 import java.io.ByteArrayOutputStream
 import javax.imageio.ImageIO
 
-fun isFullyTransparent(image: BufferedImage): Boolean {
-    val width = image.width
-    val height = image.height
+fun BufferedImage.isFullyTransparent(): Boolean {
+    val width = this.width
+    val height = this.height
     for (y in 0 until height) {
         for (x in 0 until width) {
-            val pixel = image.getRGB(x, y)
+            val pixel = this.getRGB(x, y)
             if ((pixel shr 24) != 0x00) {
                 return false
             }
@@ -36,25 +36,23 @@ fun isFullyTransparent(image: BufferedImage): Boolean {
     return true
 }
 
-fun scaleImage(image: BufferedImage): BufferedImage {
-    val newWidth = 64
-    val newHeight = 64
-    val scaledImage = BufferedImage(newWidth, newHeight, image.type)
+fun BufferedImage.scaleImage(size: Pair<Int, Int>): BufferedImage {
+    val scaledImage = BufferedImage(size.first, size.second, this.type)
     val graphics2d = scaledImage.createGraphics()
-    graphics2d.drawImage(image, 0, 0, newWidth, newHeight, null)
+    graphics2d.drawImage(this, 0, 0, size.first, size.second, null)
     graphics2d.dispose()
     return scaledImage
 }
 
-fun byteArrayToBufferedImage(byteArray: ByteArray): BufferedImage {
-    ByteArrayInputStream(byteArray).use { inputStream ->
+fun ByteArray.toBufferedImage(): BufferedImage {
+    ByteArrayInputStream(this).use { inputStream ->
         return ImageIO.read(inputStream)
     }
 }
 
-fun bufferedImageToByteArray(image: BufferedImage): ByteArray {
+fun BufferedImage.toByteArray(): ByteArray {
     ByteArrayOutputStream().use { outputStream ->
-        ImageIO.write(image, "png", outputStream)
+        ImageIO.write(this, "png", outputStream)
         return outputStream.toByteArray()
     }
 }

@@ -21,10 +21,15 @@ import cn.rtast.yeeeesmotd.DEFAULT_CONFIG
 import cn.rtast.yeeeesmotd.gson
 import java.io.File
 
-fun main() {
+fun generateDefaultConfigFile(): String {
     val defaultConfigFile = File("./default.config.json")
-    println("New schema version: ${DEFAULT_CONFIG.schemaVersion}")
     val obj = gson.toJson(DEFAULT_CONFIG)
     defaultConfigFile.writeText(obj)
+    return defaultConfigFile.readText()
+}
+
+fun main() {
+    println("New schema version: ${DEFAULT_CONFIG.schemaVersion}")
+    generateDefaultConfigFile()
     println("Done")
 }

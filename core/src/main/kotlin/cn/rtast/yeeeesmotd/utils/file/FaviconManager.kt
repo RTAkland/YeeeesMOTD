@@ -18,7 +18,7 @@
 package cn.rtast.yeeeesmotd.utils.file
 
 import cn.rtast.yeeeesmotd.ROOT_PATH
-import cn.rtast.yeeeesmotd.utils.byteArrayToBufferedImage
+import cn.rtast.yeeeesmotd.utils.toBufferedImage
 import java.awt.image.BufferedImage
 import java.io.File
 import kotlin.random.Random
@@ -40,8 +40,7 @@ class FaviconManager {
             return null
         }
         val rnd = Random.nextInt(0, validIcons.size)
-        val icon = validIcons[rnd]
-        return byteArrayToBufferedImage(icon.readBytes())
+        return validIcons[rnd].readBytes().toBufferedImage()
     }
 
     fun setValidIcons() {
