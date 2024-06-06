@@ -59,6 +59,13 @@ ip指纹可以记录玩家登陆游戏的ip在下次玩家使用这个ip ping服
 
 ![showcase](./images/description.png)
 
+以下是默认的配置文件
+```json
+  "ipFingerprint": {
+"enabled": true
+},
+```
+
 ## 随机服务器icon
 
 这个功能可以实现随机的icon, 可以自定义
