@@ -5,3 +5,4 @@
 /config
 /.kotlin
 **/plugins
+core/default.config.json
