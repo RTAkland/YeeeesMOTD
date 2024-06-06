@@ -4,3 +4,4 @@
 **/run
 /config
 /.kotlin
+**/plugins
