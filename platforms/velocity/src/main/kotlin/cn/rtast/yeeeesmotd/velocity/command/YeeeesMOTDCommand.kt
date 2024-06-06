@@ -28,7 +28,7 @@ object YeeeesMOTDCommand {
 
     fun createCommand(): BrigadierCommand {
         val node = BrigadierCommand.literalArgumentBuilder("yesmotd")
-            .requires { it.hasPermission("yesmotd.player") }
+            .requires { it.hasPermission("yesmotd.admin") }
             .then(
                 BrigadierCommand.literalArgumentBuilder("reload")
                     .executes {

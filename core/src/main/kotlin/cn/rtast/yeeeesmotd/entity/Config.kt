@@ -23,6 +23,7 @@ data class Config(
     val fakeProtocol: FakeProtocol,
     val fakeSamplePlayer: FakeSamplePlayer,
     val hitokoto: Hitokoto,
+    val ipFingerprint: IpFingerprint,
     val maximumPlayer: Int,
     val onlinePlayer: Int,
     val clearSamplePlayer: Boolean,
@@ -57,5 +58,9 @@ data class Config(
     data class FakeSamplePlayer(
         val enabled: Boolean,
         val fakePlayersCount: Int,
+    )
+
+    data class IpFingerprint(
+        val enabled: Boolean,
     )
 }

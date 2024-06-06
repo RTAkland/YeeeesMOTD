@@ -70,7 +70,7 @@ class ServerListPingEventListener(private val server: Server) : Listener {
         }
 
 
-        if (showHead && skinHeadManager.exists(ip)) {
+        if (showHead && skinHeadManager.exists(ip) && configManager.ipFingerprint().enabled) {
             val userData = skinHeadManager.getHead(ip)
             val decodedHead = Base64.getDecoder().decode(userData.head)
             val bufferedHead = ImageIO.read(ByteArrayInputStream(decodedHead))
