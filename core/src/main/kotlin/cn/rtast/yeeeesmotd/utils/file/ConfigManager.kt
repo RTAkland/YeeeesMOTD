@@ -113,4 +113,8 @@ class ConfigManager :
     fun fakeSamplePlayer(): Config.FakeSamplePlayer {
         return this.read().fakeSamplePlayer
     }
+
+    fun ipFingerprint(): Config.IpFingerprint {
+        return this.read().ipFingerprint
+    }
 }
