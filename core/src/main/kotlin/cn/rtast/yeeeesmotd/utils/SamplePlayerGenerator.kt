@@ -25,15 +25,11 @@ import java.util.*
 class SamplePlayerGenerator {
 
     private val usernameDb = File(ROOT_PATH, "username.txt")
-    private lateinit var allUsername: List<String>
+    private val allUsername: List<String> = this.downloadUsernameDatabase()
 
     init {
         if (!this.usernameDb.exists()) {
             this.usernameDb.createNewFile()
-            println("Downloading fake username list from: $USERNAME_DB")
-            this.downloadUsernameDatabase()
-            println("Fake username list downloaded")
-            allUsername = this.usernameDb.readLines()
         }
     }
 
@@ -41,8 +37,14 @@ class SamplePlayerGenerator {
         private const val USERNAME_DB = "https://static.rtast.cn/static/username.txt"
     }
 
-    private fun downloadUsernameDatabase() {
-        this.usernameDb.writeText(URI(USERNAME_DB).toURL().readText())
+    private fun downloadUsernameDatabase(): List<String> {
+        if (!this.usernameDb.exists()) {
+            val usernames = URI(USERNAME_DB).toURL()
+            this.usernameDb.writeText(usernames.readText())
+            return usernames.readText().lines()
+        } else {
+            return this.usernameDb.readLines()
+        }
     }
 
     private fun getRandomUsername(): String {
