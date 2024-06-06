@@ -24,6 +24,7 @@ bungeecord = { group = "net.md-5", name = "bungeecord-api", version.ref = "bunge
 spigot = { group = "org.spigotmc", name = "spigot-api", version.ref = "spigotApiVersion" }
 velocity = { group = "com.velocitypowered", name = "velocity-api", version.ref = "velocityVersion" }
 
+kotlinTest = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref = "kotlinPluginVersion" }
 [bundles]
 
 [plugins]
