@@ -2,7 +2,7 @@
 **/.gradle
 **/build
 **/run
-/config
-/.kotlin
+**/config
+**/.kotlin
 **/plugins
 core/default.config.json
