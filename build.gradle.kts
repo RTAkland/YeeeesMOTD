@@ -31,6 +31,17 @@ subprojects {
     dependencies {
         implementation(kotlin("stdlib"))
     }
+
+    publishing {
+        publications {
+            create<MavenPublication>("maven") {
+                from(components["java"])
+                groupId = "cn.rtast"
+                artifactId = rootProject.name
+                version = pluginVersion
+            }
+        }
+    }
 }
 
 tasks.jar {
@@ -61,17 +72,6 @@ allprojects {
     tasks.compileJava {
         sourceCompatibility = "21"
         targetCompatibility = "21"
-    }
-}
-
-publishing {
-    publications {
-        create<MavenPublication>("maven") {
-            from(components["java"])
-            groupId = "cn.rtast"
-            artifactId = rootProject.name
-            version = pluginVersion
-        }
     }
 }
 
