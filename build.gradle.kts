@@ -3,6 +3,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 plugins {
     alias(libs.plugins.kotlin)
     alias(libs.plugins.shadow)
+    id("maven-publish")
 }
 
 val pluginVersion: String by project
@@ -61,4 +62,19 @@ allprojects {
         sourceCompatibility = "21"
         targetCompatibility = "21"
     }
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+            groupId = "cn.rtast"
+            artifactId = rootProject.name
+            version = pluginVersion
+        }
+    }
+}
+
+tasks.getByName("publishToMavenLocal") {
+    dependsOn(tasks.getByName("assemble"))
 }
