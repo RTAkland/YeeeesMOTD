@@ -28,4 +28,4 @@ jobs:
         with:
           name: YeeeesMOTD
           path: |
-            **/build/libs/YeeeesMOTD.*-all.jar
+            **/build/libs/*-all.jar
