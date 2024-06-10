@@ -7,6 +7,7 @@ base {
 dependencies {
     api(project(":core"))
     compileOnly(libs.bungeecord)
+    implementation(libs.bungeePlatformAdventure)
     implementation(libs.adventure)
 }
 
