@@ -7,6 +7,18 @@ plugins {
 
 val pluginVersion: String by project
 
+fun getCommitID(): String {
+    val command = if (System.getProperty("os.name").startsWith("Windows")) {
+        arrayOf("cmd", "/c", "git log --pretty=format:%h -1")
+    } else {
+        arrayOf("sh", "-c", "git log --pretty=format:%h -1")
+    }
+    val process = ProcessBuilder()
+        .command(*command)
+        .start()
+    return process.inputStream.bufferedReader().readLine()
+}
+
 subprojects {
     group = "cn.rtast"
     version = pluginVersion
@@ -61,5 +73,9 @@ allprojects {
     tasks.compileJava {
         sourceCompatibility = "21"
         targetCompatibility = "21"
+    }
+
+    base {
+        archivesName = rootProject.name + "-${project.name}+.${getCommitID()}"
     }
 }

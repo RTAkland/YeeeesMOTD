@@ -6,7 +6,7 @@ val pluginVersion: String by project
 val velocityVersion: String by project
 
 base {
-    archivesName = rootProject.name + ".velocity"
+    archivesName = archivesName.get().replace("+", "")
 }
 
 dependencies {

@@ -2,7 +2,8 @@ val pluginVersion: String by project
 val minecraftMajorVersion: String by project
 
 base {
-    archivesName = rootProject.name + ".spigot+bukkit+mc.$minecraftMajorVersion"
+    archivesName = archivesName.get()
+        .replace("+", "+bukkit+mc.$minecraftMajorVersion")
 }
 
 dependencies {

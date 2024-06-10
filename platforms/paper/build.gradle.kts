@@ -7,7 +7,8 @@ val minecraftMajorVersion: String by project
 val paperMinecraftVersion: String by project
 
 base {
-    archivesName = rootProject.name + ".paper+mc.$minecraftMajorVersion"
+    archivesName = archivesName.get()
+        .replace("+", "+mc.$minecraftMajorVersion")
 }
 
 dependencies {
