@@ -6,3 +6,4 @@
 **/.kotlin
 **/plugins
 core/default.config.json
+**/out
