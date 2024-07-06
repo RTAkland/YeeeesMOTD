@@ -8,9 +8,9 @@ runTaskVersion = "2.3.0"
 # Velocity
 velocityVersion = "3.3.0-SNAPSHOT"
 # Paper
-paperApiVersion = "1.20.6-R0.1-SNAPSHOT"
+paperApiVersion = "1.21-R0.1-SNAPSHOT"
 # Spigot
-spigotApiVersion = "1.20.6-R0.1-SNAPSHOT"
+spigotApiVersion = "1.21-R0.1-SNAPSHOT"
 # BungeeCord
 bungeeVersion = "1.20-R0.1-SNAPSHOT"
 bungeeAdventureVersion = "4.3.2"
