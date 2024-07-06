@@ -68,7 +68,7 @@ class ConfigManager :
     fun getRandomDescription(): Config.Description? {
         val config = this.read()
 
-        val descriptions = config.descriptions
+        val descriptions = config.pingList.descriptions
         if (descriptions.isEmpty()) {
             return null
         }
@@ -116,5 +116,9 @@ class ConfigManager :
 
     fun ipFingerprint(): Config.IpFingerprint {
         return this.read().ipFingerprint
+    }
+
+    fun pingList(): Config.PingList {
+        return this.read().pingList
     }
 }

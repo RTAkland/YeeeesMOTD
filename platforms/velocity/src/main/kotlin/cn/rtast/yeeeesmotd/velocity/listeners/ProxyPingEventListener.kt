@@ -99,8 +99,13 @@ class ProxyPingEventListener {
         val pong = event.ping.asBuilder()
         pong.description(finalDescription.build())
             .favicon(favicon)
-            .onlinePlayers(configManager.getConfig().onlinePlayer)
-            .maximumPlayers(configManager.getConfig().maximumPlayer)
+
+        if (configManager.pingList().maximumPlayerEnabled) {
+            pong.maximumPlayers(configManager.pingList().maximumPlayer)
+        }
+        if (configManager.pingList().onlinePlayerEnabled) {
+            pong.onlinePlayers(configManager.pingList().onlinePlayer)
+        }
 
         if (configManager.fakeProtocol().enabled) {
             pong.version(ServerPing.Version(randomProtocolVersion, randomProtocolName))
@@ -120,7 +125,7 @@ class ProxyPingEventListener {
             pong.samplePlayers(*samplePlayers.toTypedArray())
         }
 
-        if (configManager.getConfig().clearSamplePlayer) {
+        if (configManager.pingList().clearSamplePlayer) {
             pong.clearSamplePlayers()
         }
 

@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1.3,
+  "schemaVersion": 1.4,
   "pingPass": {
     "enabled": false,
     "pingFirstText": "Please ping the server first! / 请先在服务器列表Ping一次服务器",
@@ -25,21 +25,25 @@
   "ipFingerprint": {
     "enabled": true
   },
-  "maximumPlayer": -1,
-  "onlinePlayer": -1,
-  "clearSamplePlayer": true,
-  "descriptions": [
-    {
-      "line1": "<yellow><bold>YeeeesMOTD",
-      "line2": "<light_purple><bold>Powered by RTAkland: https://github.com/RTAkland"
-    },
-    {
-      "line1": "<#00ff00><bold>DangoTown 团子小镇 生电服务器欢迎你",
-      "line2": "<yellow><bold>https://dgtmc.top"
-    },
-    {
-      "line1": "<#00FFFF><bold>团子小镇是一个历史悠久的服务器",
-      "line2": "<#00FFFF><bold>服务器于2016年开服至今"
-    }
-  ]
+  "pingList": {
+    "maximumPlayer": -1,
+    "maximumPlayerEnabled": true,
+    "onlinePlayer": -1,
+    "onlinePlayerEnabled": true,
+    "descriptions": [
+      {
+        "line1": "<yellow><bold>YeeeesMOTD",
+        "line2": "<light_purple><bold>Powered by RTAkland: https://github.com/RTAkland"
+      },
+      {
+        "line1": "<#00ff00><bold>DangoTown 团子小镇 生电服务器欢迎你",
+        "line2": "<yellow><bold>https://dgtmc.top"
+      },
+      {
+        "line1": "<#00FFFF><bold>团子小镇是一个历史悠久的服务器",
+        "line2": "<#00FFFF><bold>服务器于2016年开服至今"
+      }
+    ],
+    "clearSamplePlayer": true
+  }
 }

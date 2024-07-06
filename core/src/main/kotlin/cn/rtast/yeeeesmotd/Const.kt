@@ -26,7 +26,7 @@ val gson: Gson = GsonBuilder()
     .setPrettyPrinting()
     .create()
 
-const val SCHEMA_VERSION = 1.3  // 1.3 for ip fingerprint version
+const val SCHEMA_VERSION = 1.4  // 1.3 for ip fingerprint version
 
 const val ROOT_PATH = "./plugins/YeeeesMotd/"
 
@@ -77,8 +77,12 @@ val DEFAULT_CONFIG = Config(
         false, "#00E5EE", "a", 30
     ),  // Turquoise2
     Config.IpFingerprint(true),
-    -1,
-    -1,
-    true,
-    DEFAULT_DESCRIPTIONS
+    Config.PingList(
+        -1,
+        true,
+        -1,
+        true,
+        DEFAULT_DESCRIPTIONS,
+        true
+    )
 )

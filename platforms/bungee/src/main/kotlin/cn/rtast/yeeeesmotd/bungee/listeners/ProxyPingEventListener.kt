@@ -94,8 +94,12 @@ class ProxyPingEventListener : Listener {
 
         event.response.descriptionComponent = deserializedDescription.first()
         event.response.setFavicon(favicon)
-        event.response.players.max = configManager.getConfig().maximumPlayer
-        event.response.players.online = configManager.getConfig().onlinePlayer
+        if (configManager.pingList().onlinePlayerEnabled) {
+            event.response.players.online = configManager.pingList().onlinePlayer
+        }
+        if (configManager.pingList().maximumPlayerEnabled) {
+            event.response.players.max = configManager.pingList().maximumPlayer
+        }
         if (configManager.fakeProtocol().enabled) {
             event.response.version = ServerPing.Protocol(randomProtocolName, randomProtocolVersion)
         }
@@ -114,7 +118,7 @@ class ProxyPingEventListener : Listener {
             event.response.players.sample = samplePlayers.toTypedArray()
         }
 
-        if (configManager.getConfig().clearSamplePlayer) {
+        if (configManager.pingList().clearSamplePlayer) {
             event.response.players.sample = arrayOf<PlayerInfo>()
         }
 

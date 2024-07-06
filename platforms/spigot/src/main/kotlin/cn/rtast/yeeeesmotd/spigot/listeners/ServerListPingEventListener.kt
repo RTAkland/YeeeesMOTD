@@ -85,7 +85,9 @@ class ServerListPingEventListener(private val server: Server) : Listener {
             }
         }
 
-        event.maxPlayers = configManager.getConfig().maximumPlayer
+        if (configManager.pingList().maximumPlayerEnabled) {
+            event.maxPlayers = configManager.pingList().maximumPlayer
+        }
         event.motd = finalDescription.toString()
         event.setServerIcon(favicon)
 

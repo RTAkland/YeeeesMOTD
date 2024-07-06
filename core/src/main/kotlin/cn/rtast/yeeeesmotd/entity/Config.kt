@@ -24,11 +24,18 @@ data class Config(
     val fakeSamplePlayer: FakeSamplePlayer,
     val hitokoto: Hitokoto,
     val ipFingerprint: IpFingerprint,
-    val maximumPlayer: Int,
-    val onlinePlayer: Int,
-    val clearSamplePlayer: Boolean,
-    val descriptions: MutableList<Description>,
+    val pingList: PingList,
 ) {
+
+    data class PingList(
+        val maximumPlayer: Int,
+        val maximumPlayerEnabled: Boolean,
+        val onlinePlayer: Int,
+        val onlinePlayerEnabled: Boolean,
+        val descriptions: MutableList<Description>,
+        val clearSamplePlayer: Boolean,
+    )
+
     data class PingPass(
         val enabled: Boolean,
         val pingFirstText: String,
