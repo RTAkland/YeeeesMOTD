@@ -19,6 +19,10 @@ fun getCommitID(): String {
     return process.inputStream.bufferedReader().readLine()
 }
 
+tasks.jar {
+    enabled = false
+}
+
 subprojects {
     group = "cn.rtast"
     version = pluginVersion
@@ -69,10 +73,6 @@ allprojects {
     tasks.compileJava {
         sourceCompatibility = "21"
         targetCompatibility = "21"
-    }
-
-    tasks.jar {
-        enabled = false
     }
 
     base {
