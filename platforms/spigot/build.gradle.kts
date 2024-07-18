@@ -1,9 +1,7 @@
 val pluginVersion: String by project
-val minecraftMajorVersion: String by project
 
 base {
-    archivesName = archivesName.get()
-        .replace("+", "+bukkit+mc.$minecraftMajorVersion")
+    archivesName = archivesName.get().replace("+", "+bukkit")
 }
 
 dependencies {
@@ -14,8 +12,7 @@ dependencies {
 tasks.processResources {
     val properties = mapOf(
         "version" to pluginVersion,
-        "description" to "返回个性化的MOTD",
-        "majorVersion" to minecraftMajorVersion
+        "description" to "返回个性化的MOTD"
     )
     inputs.properties(properties)
     filteringCharset = "UTF-8"

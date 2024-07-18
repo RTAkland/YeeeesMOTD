@@ -3,12 +3,10 @@ plugins {
 }
 
 val pluginVersion: String by project
-val minecraftMajorVersion: String by project
 val paperMinecraftVersion: String by project
 
 base {
-    archivesName = archivesName.get()
-        .replace("+", "+mc.$minecraftMajorVersion")
+    archivesName = archivesName.get().replace("+", "")
 }
 
 dependencies {
@@ -19,8 +17,7 @@ dependencies {
 tasks.processResources {
     val properties = mapOf(
         "version" to pluginVersion,
-        "description" to "Customize server motd and icon",
-        "majorVersion" to minecraftMajorVersion
+        "description" to "Customize server motd and icon"
     )
     inputs.properties(properties)
     filesMatching("plugin.yml") {
@@ -32,4 +29,4 @@ tasks.runServer {
     minecraftVersion(paperMinecraftVersion)
 }
 
-
+runPaper.folia.registerTask()

@@ -1,7 +1,7 @@
 name: YeeeesMOTD
 version: "${version}"
 main: cn.rtast.yeeeesmotd.spigot.YeeeesMOTDPlugin
-api-version: "${majorVersion}"
+api-version: 1.8
 prefix: YeeeesMOTD
 load: STARTUP
 authors: [ RTAkland ]

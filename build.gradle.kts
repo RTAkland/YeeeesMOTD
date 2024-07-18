@@ -45,10 +45,6 @@ subprojects {
     }
 }
 
-tasks.jar {
-    enabled = false
-}
-
 allprojects {
     repositories {
         mavenCentral()
@@ -73,6 +69,10 @@ allprojects {
     tasks.compileJava {
         sourceCompatibility = "21"
         targetCompatibility = "21"
+    }
+
+    tasks.jar {
+        enabled = false
     }
 
     base {
