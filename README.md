@@ -60,6 +60,7 @@ ip指纹可以记录玩家登陆游戏的ip在下次玩家使用这个ip ping服
 ![showcase](./images/description.png)
 
 以下是默认的配置文件
+
 ```json
   "ipFingerprint": {
 "enabled": true
@@ -144,7 +145,8 @@ ip指纹可以记录玩家登陆游戏的ip在下次玩家使用这个ip ping服
 
 如果你将`clearSamplePlayer`设置为`true`那么这个配置将不会生效即使`enabled`改为`true`
 
-> 如果你想将自己的名字添加进这个随机名字列表你可以点击[这里](https://github.com/RTAkland/Static/edit/main/static/username.txt)
+>
+如果你想将自己的名字添加进这个随机名字列表你可以点击[这里](https://github.com/RTAkland/Static/edit/main/static/username.txt)
 > fork仓库并修改然后提交Pull Request, 在我审核后即可将你的名字加入这个列表  
 > 你也可以点击[这里](https://static.rtast.cn/static/username.txt)来查看已有玩家列表
 
@@ -238,8 +240,10 @@ ip指纹可以记录玩家登陆游戏的ip在下次玩家使用这个ip ping服
 ```
 
 `enabled`表示是否开启默认为关闭,
-`protocolNumberPool`表示版本号列表,可以填写整形数组例如`[1,2,3,4,5]`请务必使用半角逗号(英文逗号),
-`protocolNamePool` 表示版本描述列表,可以填写字符串数组例如`["Shit bro", "Test"]`请使用半角引号(英文引号),
+`protocolNumberPool`表示版本号列表,可以填写整形数组例如`[1,2,3,4,5]`请务必使用半角逗号(英文逗号),  
+`protocolNamePool` 表示版本描述列表,可以填写字符串数组例如`["Shit bro", "Test"]`请使用半角引号(英文引号),   
+当然在这里你也可以使用MiniMessage的语法来进行自定义字体颜色样式, 但是只能使用单个标签不能使用成对的标签例如你可以使用`<green>` 
+不能使用`<green>s</green>`你可以参考这个例子进行修改`<green>测试 <yellow><bold>[<onlinePlayer>/<maxPlayer>]`  
 `alwaysInvalidProtocolNumber`表示是否总是无效的版本号, 如果设置为`true`则`protocolNumberPool`内的设置不会生效
 这会让服务器总是返回版本号为`-1`
 
