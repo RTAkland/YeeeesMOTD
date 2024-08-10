@@ -24,8 +24,8 @@ import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.hitokotoManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.pingRecordManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import cn.rtast.yeeeesmotd.entity.Config
-import cn.rtast.yeeeesmotd.spigot.utils.ColorUtil
 import cn.rtast.yeeeesmotd.utils.nextBoolean
+import cn.rtast.yeeeesmotd.utils.str.Color
 import org.bukkit.Server
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -50,7 +50,7 @@ class ServerListPingEventListener(private val server: Server) : Listener {
         if (randomDescription == null) {
             finalDescription.append(event.motd)
         } else {
-            val converted = ColorUtil.convertDescription(randomDescription)
+            val converted = Color.convertDescription(randomDescription)
             finalDescription.append("${converted.line1}\n${converted.line2}")
         }
 
@@ -59,7 +59,7 @@ class ServerListPingEventListener(private val server: Server) : Listener {
         if (configManager.hitokoto().enabled && showHitokoto) {
             val hitokoto = hitokotoManager.getSentence()
             val color = configManager.hitokoto().color
-            val convertedColor = ColorUtil.convertHexToMinecraftColor(color)
+            val convertedColor = Color.convertHexToMinecraftColor(color)
             finalDescription.clear()
                 .append("$convertedColor${hitokoto.line1}\n$convertedColor${hitokoto.line2}")
         }
@@ -73,7 +73,7 @@ class ServerListPingEventListener(private val server: Server) : Listener {
 
             val randomBuildInDesc =
                 configManager.getRandomBuildInDescription().split("\$player")
-            val converted = ColorUtil.convertDescription(Config.Description(randomBuildInDesc[0], randomBuildInDesc[1]))
+            val converted = Color.convertDescription(Config.Description(randomBuildInDesc[0], randomBuildInDesc[1]))
             finalDescription.clear()
                 .append(converted.line1)
                 .append("§x§E§E§8§2§E§E${userData.name}")

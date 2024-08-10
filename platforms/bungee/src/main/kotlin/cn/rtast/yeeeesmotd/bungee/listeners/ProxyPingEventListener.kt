@@ -26,6 +26,7 @@ import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.pingRecordManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import cn.rtast.yeeeesmotd.bungee.YeeeesMOTDPlugin.Companion.miniMessage
 import cn.rtast.yeeeesmotd.utils.nextBoolean
+import cn.rtast.yeeeesmotd.utils.str.Color
 import cn.rtast.yeeeesmotd.utils.str.toUUID
 import net.kyori.adventure.text.serializer.bungeecord.BungeeComponentSerializer
 import net.md_5.bungee.api.Favicon
@@ -101,7 +102,12 @@ class ProxyPingEventListener : Listener {
             event.response.players.max = configManager.pingList().maximumPlayer
         }
         if (configManager.fakeProtocol().enabled) {
-            event.response.version = ServerPing.Protocol(randomProtocolName, randomProtocolVersion)
+            event.response.version = ServerPing.Protocol(
+                Color.convertMiniMessage(randomProtocolName)
+                    .replace("<onlinePlayer>", event.response.players.online.toString())
+                    .replace("<maxPlayer>", event.response.players.max.toString()),
+                randomProtocolVersion
+            )
         }
 
         if (configManager.fakeSamplePlayer().enabled) {

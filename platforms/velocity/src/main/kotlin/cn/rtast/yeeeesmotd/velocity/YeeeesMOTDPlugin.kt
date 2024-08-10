@@ -32,7 +32,7 @@ import org.slf4j.Logger
 class YeeeesMOTDPlugin @Inject constructor(logger: Logger, private val proxy: ProxyServer) : IYeeeesMOTD {
 
     companion object {
-        val miniMessage: MiniMessage = MiniMessage.miniMessage()
+        val miniMessage = MiniMessage.miniMessage()
     }
 
     init {

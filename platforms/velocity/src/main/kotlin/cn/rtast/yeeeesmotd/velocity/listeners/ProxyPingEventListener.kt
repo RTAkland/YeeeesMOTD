@@ -25,6 +25,7 @@ import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.hitokotoManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.pingRecordManager
 import cn.rtast.yeeeesmotd.IYeeeesMOTD.Companion.skinHeadManager
 import cn.rtast.yeeeesmotd.utils.nextBoolean
+import cn.rtast.yeeeesmotd.utils.str.Color
 import cn.rtast.yeeeesmotd.utils.str.toUUID
 import cn.rtast.yeeeesmotd.velocity.YeeeesMOTDPlugin.Companion.miniMessage
 import com.velocitypowered.api.event.Subscribe
@@ -108,7 +109,14 @@ class ProxyPingEventListener {
         }
 
         if (configManager.fakeProtocol().enabled) {
-            pong.version(ServerPing.Version(randomProtocolVersion, randomProtocolName))
+            pong.version(
+                ServerPing.Version(
+                    randomProtocolVersion,
+                    Color.convertMiniMessage(randomProtocolName)
+                        .replace("<onlinePlayer>", pong.onlinePlayers.toString())
+                        .replace("<maxPlayer>", pong.maximumPlayers.toString())
+                )
+            )
         }
 
         if (configManager.fakeSamplePlayer().enabled) {

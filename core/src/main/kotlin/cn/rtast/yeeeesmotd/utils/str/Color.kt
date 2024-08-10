@@ -1,25 +1,16 @@
 /*
- * Copyright 2024 RTAkland
- *
- *    Licensed under the Apache License, Version 2.0 (the "License");
- *    you may not use this file except in compliance with the License.
- *    you may obtain a copy of the License at
- *
- *        http://www.apache.org/licenses/LICENSE-2.0
- *
- *    Unless required by applicable law or agreed to in writing, software
- *    distributed under the License is distributed on an "AS IS" BASIS,
- *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *    See the License for the specific language governing permissions and
- *    limitations under the License.
+ * Copyright © 2024 RTAkland
+ * Author: RTAkland
+ * Date: 2024/8/10
  */
 
-package cn.rtast.yeeeesmotd.spigot.utils
+
+package cn.rtast.yeeeesmotd.utils.str
 
 import cn.rtast.yeeeesmotd.entity.Config
 import java.util.regex.Pattern
 
-object ColorUtil {
+object Color {
 
     private val HEX_COLOR_PATTERN = Pattern.compile("<#([A-Fa-f0-9]{6})>")
     private val BOLD_PATTERN = Pattern.compile("<bold>")
@@ -94,7 +85,7 @@ object ColorUtil {
         return sb.toString()
     }
 
-    private fun convertMiniMessage(message: String): String {
+    fun convertMiniMessage(message: String): String {
         var result = message
         result = replaceHexColors(result)
         result = replaceBold(result)
