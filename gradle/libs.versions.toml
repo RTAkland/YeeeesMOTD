@@ -1,7 +1,7 @@
 [versions]
 # Common
 kotlinPluginVersion = "2.0.0"
-shadowVersion = "8.1.1"
+shadowVersion = "8.3.0"
 gsonVersion = "2.10.1"
 adventureVersion = "4.17.0"
 runTaskVersion = "2.3.0"
@@ -14,6 +14,8 @@ spigotApiVersion = "1.21-R0.1-SNAPSHOT"
 # BungeeCord
 bungeeVersion = "1.20-R0.1-SNAPSHOT"
 bungeeAdventureVersion = "4.3.2"
+# Fabric
+#loomVersion = "1.7.1"
 
 [libraries]
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gsonVersion" }
@@ -29,6 +31,7 @@ kotlinTest = { group = "org.jetbrains.kotlin", name = "kotlin-test", version.ref
 
 [plugins]
 kotlin = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlinPluginVersion" }
-shadow = { id = "com.github.johnrengelman.shadow", version.ref = "shadowVersion" }
+shadow = { id = "com.gradleup.shadow", version.ref = "shadowVersion" }
 runVelocity = { id = "xyz.jpenilla.run-velocity", version.ref = "runTaskVersion" }
 runPaper = { id = "xyz.jpenilla.run-paper", version.ref = "runTaskVersion" }
+#loom = { id = "fabric-loom", version.ref = "loomVersion" }

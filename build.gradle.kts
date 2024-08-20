@@ -29,7 +29,7 @@ subprojects {
 
     apply {
         plugin("org.jetbrains.kotlin.jvm")
-        plugin("com.github.johnrengelman.shadow")
+        plugin("com.gradleup.shadow")
     }
 
     tasks.build {
