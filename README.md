@@ -297,7 +297,8 @@ ip指纹可以记录玩家登陆游戏的ip在下次玩家使用这个ip ping服
 
 # 开发
 
-建议使用[Intellij IDEA](https://www.jetbrains.com/idea/)进行开发, 本项目百分之百使用[Kotlin](https://kotl.in)
+建议使用[Intellij IDEA](https://www.jetbrains.com/idea/)进行开发, 本项目百分之百使用[Kotlin](https://kotl.in)  
+如果你正在学习Kotlin, 那么本项目可能是你的选择, 项目代码简单易阅读
 
 * 1.Clone仓库
 
