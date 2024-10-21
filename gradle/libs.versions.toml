@@ -1,6 +1,6 @@
 [versions]
 # Common
-kotlinPluginVersion = "2.0.0"
+kotlinPluginVersion = "2.0.20"
 shadowVersion = "8.3.0"
 gsonVersion = "2.10.1"
 adventureVersion = "4.17.0"
