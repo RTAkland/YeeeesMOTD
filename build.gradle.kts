@@ -52,18 +52,6 @@ subprojects {
 allprojects {
     repositories {
         mavenCentral()
-        maven {
-            name = "sonatype"
-            url = uri("https://oss.sonatype.org/content/groups/public/")
-        }
-        maven {
-            name = "papermc-repo"
-            url = uri("https://repo.papermc.io/repository/maven-public/")
-        }
-        maven {
-            name = "spigotmc-repo"
-            url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
-        }
     }
 
     tasks.compileKotlin {
