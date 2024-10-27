@@ -18,6 +18,7 @@
 package cn.rtast.yeeeesmotd.utils.file
 
 import cn.rtast.yeeeesmotd.ROOT_PATH
+import cn.rtast.yeeeesmotd.utils.scaleImage
 import cn.rtast.yeeeesmotd.utils.toBufferedImage
 import java.awt.image.BufferedImage
 import java.io.File
@@ -40,7 +41,7 @@ class FaviconManager {
             return null
         }
         val rnd = Random.nextInt(0, validIcons.size)
-        return validIcons[rnd].readBytes().toBufferedImage()
+        return validIcons[rnd].readBytes().toBufferedImage().scaleImage(64 to 64)
     }
 
     fun setValidIcons() {
