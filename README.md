@@ -21,7 +21,7 @@
 > `*防压测*`、`hitokoto一言`、`随机版本协议号和描述`、 `虚假在线玩家列表`
 
 [!IMPORTANT]
-使用此插件需要使用jdk21版本以上
+除Bungeecord和Velocity只需要java17就能运行其余平台均需要java21才能运行
 
 # 功能完整性
 

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 val pluginVersion: String by project
 
 base {
@@ -19,4 +21,18 @@ tasks.processResources {
     filesMatching("plugin.yml") {
         expand(properties)
     }
+}
+
+tasks.compileKotlin {
+    compilerOptions.jvmTarget = JvmTarget.JVM_21
+}
+
+tasks.compileJava {
+    sourceCompatibility = "21"
+    targetCompatibility = "21"
+}
+
+tasks.compileJava {
+    sourceCompatibility = "21"
+    targetCompatibility = "21"
 }

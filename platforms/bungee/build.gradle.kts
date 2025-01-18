@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 val pluginVersion: String by project
 
 base {
@@ -21,4 +23,13 @@ tasks.processResources {
     filesMatching("bungee.yml") {
         expand(properties)
     }
+}
+
+tasks.compileKotlin {
+    compilerOptions.jvmTarget = JvmTarget.JVM_17
+}
+
+tasks.compileJava {
+    sourceCompatibility = "17"
+    targetCompatibility = "17"
 }

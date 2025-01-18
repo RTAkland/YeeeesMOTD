@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.runPaper)
 }
@@ -30,3 +32,18 @@ tasks.runServer {
 }
 
 runPaper.folia.registerTask()
+
+
+tasks.compileKotlin {
+    compilerOptions.jvmTarget = JvmTarget.JVM_21
+}
+
+tasks.compileJava {
+    sourceCompatibility = "21"
+    targetCompatibility = "21"
+}
+
+tasks.compileJava {
+    sourceCompatibility = "21"
+    targetCompatibility = "21"
+}

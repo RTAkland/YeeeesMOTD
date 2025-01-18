@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
+
 plugins {
     alias(libs.plugins.runVelocity)
 }
@@ -32,3 +34,12 @@ tasks.runVelocity {
 }
 
 tasks.create("generateTemplates") {}
+
+tasks.compileKotlin {
+    compilerOptions.jvmTarget = JvmTarget.JVM_17
+}
+
+tasks.compileJava {
+    sourceCompatibility = "17"
+    targetCompatibility = "17"
+}

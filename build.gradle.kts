@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.dsl.JvmTarget
-
 plugins {
     alias(libs.plugins.kotlin)
     alias(libs.plugins.shadow)
@@ -21,6 +19,23 @@ fun getCommitID(): String {
 
 tasks.jar {
     enabled = false
+}
+
+tasks.register<Copy>("collectJars") {
+    group = "build"
+    val outputDir = layout.buildDirectory.dir("libs")
+    into(outputDir)
+    subprojects.forEach { subproject ->
+        dependsOn(subproject.tasks.named("build"))
+        val jarTask = subproject.tasks.findByName("jar")
+        if (jarTask != null) {
+            from(subproject.layout.buildDirectory.dir("libs"))
+        }
+    }
+}
+
+tasks.build {
+    dependsOn(tasks.named("collectJars"))
 }
 
 subprojects {
@@ -64,15 +79,6 @@ allprojects {
             name = "spigotmc-repo"
             url = uri("https://hub.spigotmc.org/nexus/content/repositories/snapshots/")
         }
-    }
-
-    tasks.compileKotlin {
-        compilerOptions.jvmTarget = JvmTarget.JVM_21
-    }
-
-    tasks.compileJava {
-        sourceCompatibility = "21"
-        targetCompatibility = "21"
     }
 
     base {
