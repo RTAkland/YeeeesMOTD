@@ -40,7 +40,7 @@ This plugin can modify the server info like favicon, server motd. It has many fe
 ![showcase](./images/description.png)
 
 [!IMPORTANT]
-All platforms need java 21 to run expecting Bungeecord and Velocity They just need run it with java 17
+All platforms need java 21 to run expecting Bungeecord and Velocity They just need java 17 to run.
 
 # Feature completeness
 
