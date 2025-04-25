@@ -37,7 +37,7 @@ This plugin can modify the server info like favicon, server motd. It has many fe
 > the server, the following effects will occur:（
 > Display the head of the player's skin as the server icon to the player:
 
-![showcase](./images/description. png)
+![showcase](./images/description.png)
 
 [!IMPORTANT]
 All platforms need java 21 to run expecting Bungeecord and Velocity They just need run it with java 17
