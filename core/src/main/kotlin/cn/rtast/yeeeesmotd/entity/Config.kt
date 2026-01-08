@@ -69,5 +69,6 @@ data class Config(
 
     data class IpFingerprint(
         val enabled: Boolean,
+        val probability: Int = 30
     )
 }

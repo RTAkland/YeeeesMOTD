@@ -42,7 +42,7 @@ class ServerListPingEventListener(private val server: Server) : Listener {
         val ip = event.address.hostName
 
         var favicon = server.loadServerIcon(defaultIcon)
-        val showHead = Random.nextBoolean()
+        val showHead = nextBoolean(configManager.ipFingerprint().probability)
 
         val randomDescription = configManager.getRandomDescription()
         val finalDescription = StringBuilder()

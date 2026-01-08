@@ -80,7 +80,7 @@ val DEFAULT_CONFIG = Config(
     Config.Hitokoto(
         false, "#00E5EE", "a", 30
     ),  // Turquoise2
-    Config.IpFingerprint(true),
+    Config.IpFingerprint(true, 30),
     Config.PingList(
         -1,
         true,

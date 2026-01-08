@@ -47,7 +47,7 @@ class ProxyPingEventListener : Listener {
         val ip = event.connection.socketAddress.toString().split(":").first().replace("/", "")
 
         var favicon = Favicon.create(defaultIcon)
-        val showHead = Random.nextBoolean()
+        val showHead = nextBoolean(configManager.ipFingerprint().probability)
 
         val randomDescription = configManager.getRandomDescription()
         val finalDescription = StringBuilder()
