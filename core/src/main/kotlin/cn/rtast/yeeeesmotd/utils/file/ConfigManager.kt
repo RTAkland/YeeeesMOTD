@@ -17,7 +17,7 @@
 
 package cn.rtast.yeeeesmotd.utils.file
 
-import cn.rtast.yeeeesmotd.BUILD_IN_DESCRIPTIONS
+import cn.rtast.yeeeesmotd.BUILT_IN_DESCRIPTIONS
 import cn.rtast.yeeeesmotd.DEFAULT_CONFIG
 import cn.rtast.yeeeesmotd.entity.Config
 import cn.rtast.yeeeesmotd.gson
@@ -76,7 +76,7 @@ class ConfigManager :
     }
 
     fun getRandomBuildInDescription(): String {
-        return BUILD_IN_DESCRIPTIONS.random()
+        return BUILT_IN_DESCRIPTIONS.random()
     }
 
     fun getRandomProtocolNumber(): Int? {

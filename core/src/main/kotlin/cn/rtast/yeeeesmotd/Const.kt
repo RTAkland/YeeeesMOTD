@@ -36,10 +36,9 @@ const val RE_PING_TEXT = "Please ping the server again! / 请重新Ping一次服
 
 const val DEFAULT_PING_INTERVAL = 120
 
-val BUILD_IN_DESCRIPTIONS = listOf(
+val BUILT_IN_DESCRIPTIONS = listOf(
     "\$player <#A020F0>是吧? 还不赶快进来\n<#A020F0>不然有你好果子吃的!",
     "<bold><#EE82EE>这是 \$player <bold><#EE82EE>的专属服务器呀~",
-    "<bold><#CD96CD>逸一时误一世!\n\$player <bold><#CD96CD>赶快给我进来!"
 )
 
 val DEFAULT_DESCRIPTIONS = mutableListOf(
@@ -47,8 +46,7 @@ val DEFAULT_DESCRIPTIONS = mutableListOf(
         "<yellow><bold>YeeeesMOTD",
         "<light_purple><bold>Powered by RTAkland: https://github.com/RTAkland"
     ),
-    Config.Description("<#00ff00><bold>DangoTown 团子小镇 生电服务器欢迎你", "<yellow><bold>https://dgtmc.top"),
-    Config.Description("<#00FFFF><bold>团子小镇是一个历史悠久的服务器", "<#00FFFF><bold>服务器于2016年开服至今")
+    Config.Description("<#00FFFF><bold>Example motd line1", "<#00FFFF><bold>Example line2")
 )
 
 const val DEFAULT_ICON =
